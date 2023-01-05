@@ -2,9 +2,13 @@ package com.example.web.controller;
 
 import com.example.web.Service.CustomerService;
 import com.example.web.model.Customer;
+<<<<<<< HEAD
 import com.example.web.model.User;
 import com.example.web.model.customer.CustomerRender;
 import com.example.web.repository.customer.UserRepository;
+=======
+import com.example.web.model.customer.DataChoice;
+>>>>>>> origin/ninh
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
