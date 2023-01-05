@@ -1,4 +1,4 @@
-package com.example.web.ControllerAdmin;
+package com.example.web.controller.ControllerAdmin;
 
 import com.example.web.ServiceAdmin.AdminService;
 import com.example.web.model.Company;
