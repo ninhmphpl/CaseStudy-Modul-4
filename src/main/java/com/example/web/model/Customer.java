@@ -16,15 +16,11 @@ import java.util.List;
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private Long id;
-    @Column(name = "birth")
     private LocalDate birth;
-    @Column(name = "education")
     private String education;
-    @Column(name = "exp_work")
     private String expWord;
-    @JoinColumn(name = "user")
+//    @JoinColumn(name = "user")
     @OneToOne
     private User user;
     @ManyToMany
