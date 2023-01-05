@@ -15,14 +15,12 @@ import java.util.List;
 public class Company {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private Long id;
-    @JoinColumn(name = "user")
+    private String name;
+//    @JoinColumn(name = "user")
     @OneToOne
     private User user;
-    @Column(name = "career")
     private String career;
-    @Column(name = "description")
     private String description;
     @OneToMany
     private List<Offer> offer;

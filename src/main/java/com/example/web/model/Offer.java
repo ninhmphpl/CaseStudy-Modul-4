@@ -16,23 +16,17 @@ import java.util.List;
 public class Offer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private Long id;
-    @Column(name = "career")
     private String career;
-    @Column(name = "description")
     private String description;
-    @Column(name = "end_date")
     private LocalDate endDate;
-    @Column(name = "city")
     private String city;
-    @Column(name = "amount")
     private int amount;
-    @Column(name = "work_experience")
     private int workExperience;
-    @JoinColumn(name = "skill")
+//    @JoinColumn(name = "skill")
     @OneToMany
     private List<Skill> skill;
+    private String status;
 
 
 
