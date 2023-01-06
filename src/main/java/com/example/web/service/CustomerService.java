@@ -8,6 +8,7 @@ import com.example.web.repository.customer.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 @Service
 public class CustomerService implements ICrudService<Customer, Long> {
@@ -21,6 +22,11 @@ public class CustomerService implements ICrudService<Customer, Long> {
     GenderRepository genderRepository;
     @Autowired
     ExpWorkRepository expWorkRepository;
+
+    @Override
+    public List<Customer> findAll() {
+        return null;
+    }
 
     @Override
     public Optional<Customer> findById(Long id) {
