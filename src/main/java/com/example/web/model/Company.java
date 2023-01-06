@@ -17,11 +17,14 @@ public class Company {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    private String career;
+    private String description;
+    private String address;
+    private String phoneNumber;
 //    @JoinColumn(name = "user")
     @OneToOne
     private User user;
-    private String career;
-    private String description;
+
     @OneToMany
     private List<Offer> offer;
 
