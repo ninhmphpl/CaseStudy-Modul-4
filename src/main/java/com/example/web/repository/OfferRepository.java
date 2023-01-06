@@ -1,4 +1,4 @@
-package com.example.web.repository.admin;
+package com.example.web.repository;
 
 import com.example.web.model.Offer;
 import org.springframework.data.jpa.repository.JpaRepository;

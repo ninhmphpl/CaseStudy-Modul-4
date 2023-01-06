@@ -1,6 +1,6 @@
 package com.example.web.service.admin;
 
-import com.example.web.repository.admin.OfferRepository;
+import com.example.web.repository.OfferRepository;
 import com.example.web.model.Offer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
