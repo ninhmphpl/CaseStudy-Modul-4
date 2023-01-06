@@ -1,7 +1,7 @@
 package com.example.web.controller;
 
 import com.example.web.model.Skill;
-import com.example.web.repository.SkillRepository;
+import com.example.web.repository.offer.SkillRepository;
 import com.example.web.service.SkillService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

@@ -11,10 +11,10 @@ function form(name, city, endDate, amount, career, skill) {
 
                 <div class="job-desc">
                   <div class="job-title">
-                    <a href="#">${name}</a>
+                    <a href="jd-page.html">${name}</a>
                   </div>
                   <div class="job-company">
-                    <a href="#">${career}</a> | <a href="#" class="job-address"><i class="fa fa-map-marker" aria-hidden="true"></i>
+                    <a href="jd-page">${career}</a> | <a href="#" class="job-address"><i class="fa fa-map-marker" aria-hidden="true"></i>
 ${city}</a>
                   </div>
 
@@ -38,6 +38,7 @@ ${city}</a>
               </div>
             </div>`
 }
+
 function skillForm(skill) {
     let content = "";
     for (let i = 0; i < skill.length; i++) {
@@ -67,10 +68,10 @@ function render() {
     let content = ""
     $.ajax({
         type: "GET",
-        url: "http://localhost:8080/admOffer",
+        url: "http://localhost:8081/admOffer",
         success: function (data) {
             for (let i = 0; i < data.length; i++) {
-                content += form(data[i].name,data[i].city.name,data[i].endDate,data[i].amount,data[i].career.name, data[i].skill)
+                content += form(data[i].name, data[i].city.name, data[i].endDate, data[i].amount, data[i].career.name, data[i].skill)
             }
             document.getElementById("listOffer").innerHTML = content;
         }

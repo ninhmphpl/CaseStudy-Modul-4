@@ -34,4 +34,6 @@ public class Offer {
     private List<Skill> skill;
     @ManyToOne
     private Status status;
+    @ManyToOne
+    private Company company;
 }

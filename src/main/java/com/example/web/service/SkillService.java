@@ -1,7 +1,7 @@
 package com.example.web.service;
 
 import com.example.web.model.Skill;
-import com.example.web.repository.SkillRepository;
+import com.example.web.repository.offer.SkillRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
