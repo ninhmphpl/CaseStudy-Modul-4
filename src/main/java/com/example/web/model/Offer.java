@@ -1,5 +1,6 @@
 package com.example.web.model;
 
+import com.example.web.model.admin.Status;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -26,9 +27,6 @@ public class Offer {
 //    @JoinColumn(name = "skill")
     @OneToMany
     private List<Skill> skill;
-    private String status;
-
-
-
-
+    @ManyToOne
+    private Status status;
 }
