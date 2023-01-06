@@ -1,4 +1,4 @@
-package com.example.web.service.admin;
+package com.example.web.service;
 
 import com.example.web.model.User;
 import com.example.web.repository.UserRepository;

@@ -1,7 +1,7 @@
-package com.example.web.controller.admin;
+package com.example.web.controller;
 
 import com.example.web.model.Offer;
-import com.example.web.service.admin.OfferService;
+import com.example.web.service.OfferService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,10 +17,10 @@ import java.util.List;
 @RequestMapping("/admOffer")
 public class OfferController {
     @Autowired
-    OfferService adminService;
+    OfferService offerService;
     @GetMapping
     public ResponseEntity<List<Offer>> findAll(){
-       return new ResponseEntity<>(adminService.findAll() , HttpStatus.OK);
+       return new ResponseEntity<>(offerService.findAll() , HttpStatus.OK);
     }
 
 }
