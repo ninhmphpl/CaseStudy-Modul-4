@@ -17,6 +17,7 @@ public class Offer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String name;
     private String career;
     private String description;
     private LocalDate endDate;
@@ -24,7 +25,7 @@ public class Offer {
     private int amount;
     private int workExperience;
 //    @JoinColumn(name = "skill")
-    @OneToMany
+    @ManyToMany
     private List<Skill> skill;
     private String status;
 
