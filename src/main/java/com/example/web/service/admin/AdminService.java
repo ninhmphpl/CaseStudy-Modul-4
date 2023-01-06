@@ -1,8 +1,7 @@
-package com.example.web.ServiceAdmin;
+package com.example.web.service.admin;
 
-import com.example.web.RepositoryAdmin.IAdminRepository;
+import com.example.web.repository.admin.IAdminRepository;
 import com.example.web.model.Company;
-import com.example.web.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

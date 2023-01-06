@@ -1,4 +1,4 @@
-package com.example.web.Service;
+package com.example.web.service;
 
 import com.example.web.model.Customer;
 import com.example.web.model.User;

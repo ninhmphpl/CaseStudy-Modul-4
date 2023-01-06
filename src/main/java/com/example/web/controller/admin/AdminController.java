@@ -1,8 +1,7 @@
-package com.example.web.ControllerAdmin;
+package com.example.web.controller.admin;
 
-import com.example.web.ServiceAdmin.AdminService;
+import com.example.web.service.admin.AdminService;
 import com.example.web.model.Company;
-import com.example.web.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.http.HttpStatus;

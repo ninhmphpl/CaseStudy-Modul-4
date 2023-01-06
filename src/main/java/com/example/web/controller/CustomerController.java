@@ -1,6 +1,6 @@
 package com.example.web.controller;
 
-import com.example.web.Service.CustomerService;
+import com.example.web.service.CustomerService;
 import com.example.web.model.Customer;
 import com.example.web.model.User;
 import com.example.web.model.customer.CustomerRender;

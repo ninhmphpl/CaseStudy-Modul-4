@@ -1,7 +1,6 @@
-package com.example.web.RepositoryAdmin;
+package com.example.web.repository.admin;
 
 import com.example.web.model.Company;
-import com.example.web.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
