@@ -1,7 +1,9 @@
 package com.example.web.service.company;
 
 import com.example.web.model.Company;
+import com.example.web.model.User;
 import com.example.web.repository.company.ICompanyRepository;
+import com.example.web.repository.customer.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +14,8 @@ import java.util.Optional;
 public class CompanyService implements ICompanyService{
    @Autowired
     ICompanyRepository companyRepository;
+   @Autowired
+    UserRepository userRepository;
     @Override
     public List<Company> findAll() {
         return companyRepository.findAll();
@@ -35,5 +39,9 @@ public class CompanyService implements ICompanyService{
     @Override
     public void delete(Long aLong) {
 
+    }
+    public Company findCompanyByEmail(String email){
+        User user= userRepository.findUsersByEmail(email);
+        return companyRepository.findByUser(user);
     }
 }

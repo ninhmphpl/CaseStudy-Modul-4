@@ -1,6 +1,7 @@
 package com.example.web.controller.company;
 
 import com.example.web.model.Company;
+import com.example.web.service.company.CompanyService;
 import com.example.web.service.company.ICompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,20 +15,22 @@ import java.util.List;
 @RequestMapping("/api/companies")
 public class CompanyController {
     @Autowired
-    ICompanyService companyService;
+    CompanyService companyService;
 
     @GetMapping
     public List<Company> showCompany(){
         return companyService.findAll();
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Company> showUpdate(@PathVariable Long id){
-        return new ResponseEntity<>(companyService.findById(id).get(), HttpStatus.OK);
-    }
+//    @GetMapping()
+//    public ResponseEntity<Company> showUpdate(@PathVariable Long id){
+//        return new ResponseEntity<>(companyService.findById(id).get(), HttpStatus.OK);
+//    }
 
-    @PutMapping("/{id}")
+    @PutMapping
     public ResponseEntity<Company>update(@RequestBody Company company){
+        Company company1= companyService.findCompanyByEmail("dhghd@gmail");
+        company.setId(company1.getId());
         return new ResponseEntity<>(companyService.save(company),HttpStatus.OK);
     }
 }

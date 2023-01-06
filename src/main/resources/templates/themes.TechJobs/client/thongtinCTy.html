@@ -21,10 +21,12 @@
 
   <!-- select 2 css -->
   <link rel="stylesheet" href="css/select2.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
 
   <!-- main css -->
   <link rel="stylesheet" type="text/css" href="css/style.css">
+
+
 </head>
 <body>
 <!-- main nav -->
@@ -105,24 +107,27 @@
   <div class="collapse navbar-collapse container" id="navbarNava">
     <ul class="navbar-nav nav-recuitment-li">
       <li class="nav-item active">
+        <a class="nav-link" href="#">Quản lý đăng tuyển</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Quản lý ứng viên</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Quản lý đăng tin</a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" href="#">Quản lý hồ sơ</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Việc làm của tôi</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Việc làm đã lưu</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Quản lý hồ sơ</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Cài đặt</a>
+        <a class="nav-link" href="#">Tài khoản</a>
       </li>
     </ul>
     <ul class="rec-nav-right">
       <li class="nav-item">
-        <a class="nav-link" href="#">Tạo hồ sơ</a>
+        <a class="nav-link" href="#">Tìm hồ sơ</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Đăng tuyển</a>
       </li>
     </ul>
   </div>
@@ -150,93 +155,113 @@
   <div class="container published-recuitment-content">
     <div class="row">
       <div class="col-md-8 col-sm-12 col-12 recuitment-inner">
-        <form class="employee-form">
-          <div class="accordion" id="accordionExample">
-            <div class="card recuitment-card">
-              <div class="card-header recuitment-card-header" id="headingOne">
-                <h2 class="mb-0">
-                  <a class="btn btn-link btn-block text-left recuitment-header" type="button" data-toggle="collapse"
-                     data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                    Thông tin tài khoản
-                    <span id="clickc1_advance2" class="clicksd">
+
+
+          <div class="card recuitment-card">
+
+
+          </div>
+
+          <div class="card recuitment-card">
+            <div class="card-header recuitment-card-header" id="heading4">
+              <h2 class="mb-0">
+                <a class="btn btn-link btn-block text-left collapsed recuitment-header" type="button"
+                   data-toggle="collapse" data-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+                  Thông tin công ty
+                  <span id="clickc1_advance4" class="clicksd">
                       <i class="fa fa fa-angle-up"></i>
                     </span>
-                  </a>
-                </h2>
-              </div>
-
-              <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-                <div class="card-body recuitment-body row">
-                  <div class="col-md-3">
-                    <div class="avatar-upload">
-                      <div class="avatar-edit">
-                        <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg"/>
-                        <label for="imageUpload"></label>
-                      </div>
-                      <div class="avatar-preview">
-                        <div id="imagePreview" style="background-image: url(https://i.pravatar.cc/500?img=7);">
-                        </div>
-                      </div>
-                    </div>
+                </a>
+              </h2>
+            </div>
+            <div id="collapse4" class="collapse show" aria-labelledby="heading4" data-parent="#collapse4">
+              <div class="card-body recuitment-body">
+                <div class="form-group row">
+                  <label class="col-sm-3 col-form-label text-right label">Tên công ty<span style="color: red"
+                                                                                           class="pl-2">*</span></label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" placeholder="Tên công ty"id="name"/>
                   </div>
-                  <div class="col-md-9">
-                    <div class="form-group row">
-                      <label class="col-sm-3 col-form-label text-right label">Tên công ty</label>
-                      <div class="col-sm-9">
-                        <input type="text" class="form-control" placeholder="Nhập tên công ty">
-                      </div>
-                    </div>
-
-                    <div class="form-group row">
-                      <label class="col-sm-3 col-form-label text-right label">Số điện thoại</label>
-                      <div class="col-sm-9">
-                        <input type="text" class="form-control" placeholder="Nhập Số điện thoại">
-                      </div>
-                    </div>
-
-                    <div class="form-group row">
-                      <label class="col-sm-3 col-form-label text-right label">Email</label>
-                      <div class="col-sm-9">
-                        <input type="text" class="form-control" placeholder="Nhập email">
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label class="col-sm-3 col-form-label text-right label">Password</label>
-                      <div class="col-sm-9">
-                        <input type="text" class="form-control" placeholder="Nhập password">
-                      </div>
-                    </div>
-
-                    <div class="form-group row">
-                      <label class="col-sm-3 col-form-label text-right label">Giới thiệu về công ty</label>
-                      <div class="col-sm-9">
-                        <input type="text" class="form-control" placeholder="">
-                      </div>
-                    </div>
-
-
-                    <div class="form-group row">
-                      <label class="col-sm-3 col-form-label text-right label">Địa chỉ công ty</label>
-                      <div class="col-sm-9">
-                        <input type="text" class="form-control" placeholder="Nhập địa chỉ">
-                      </div>
-                    </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-3 col-form-label text-right label">Nghành Nghề<span style="color: red"
+                                                                                           class="pl-2">*</span></label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" placeholder="Tên nghành nghề"id="career"/>
                   </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-3 col-form-label text-right label">Email<span style="color: red"
+                                                                                           class="pl-2">*</span></label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" placeholder="Email" id="email"/>
+                  </div>
+                </div>
 
+                <div class="form-group row">
+                  <label class="col-sm-3 col-form-label text-right label">Địa chỉ<span style="color: red"
+                                                                                       class="pl-2">*</span></label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" placeholder="Nhập địa chỉ" id="address"/>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-3 col-form-label text-right label">Điện thoại<span style="color: red"
+                                                                                          class="pl-2">*</span></label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" placeholder="Nhập số điện thoại" id="phoneNumber"/>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label class="col-sm-3 col-form-label text-right label">Quy mô nhân sự<span style="color: red"
+                                                                                              class="pl-2">*</span></label>
+                  <div class="col-sm-9">
+                    <select type="text" class="form-control" id="jobEmployerScale">
+                      <option value="">Chọn quy mô</option>
+                      <option selected="selected" value="1">Dưới 20 người</option>
+                      <option value="2">20 - 150 người</option>
+                      <option value="3">150 - 300 người</option>
+                      <option value="4">Trên 300 người</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-3 col-form-label text-right label">Sơ lược về công ty<span style="color: red"
+                                                                                                  class="pl-2">*</span></label>
+                  <div class="col-sm-9">
+                    <textarea type="text" class="form-control" placeholder="Sơ lược về công ty" rows="5" id="description"></textarea>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-3 col-form-label text-right label">Logo</label>
+                  <div class="col-sm-9 ">
+                    <div id="drop-area">
+
+                      <input type="file" id="fileElem" multiple accept="image/*" onchange="handleFiles(this.files)">
+                      <label style="cursor: pointer;" for="fileElem">Tải ảnh lên hoặc kéo thả vào đây</label>
+                      <progress id="progress-bar" max=100 value=0 class="d-none"></progress>
+                      <div id="gallery"></div>
+
+                    </div>
+
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-3 col-form-label text-right label">Website</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" placeholder="Website"/>
+                  </div>
                 </div>
               </div>
             </div>
-
-
-
           </div>
 
           <div class="rec-submit">
-            <button type="submit" class="btn-submit-recuitment mb-3 ml-3" name="">
-              <i class="fa fa-floppy-o pr-2"></i>Lưu Hồ Sơ
+            <button onclick="save()" class="btn-submit-recuitment" name="">
+              <i class="fa fa-floppy-o pr-2"></i>Lưu Tin
             </button>
           </div>
-        </form>
 
       </div>
 
@@ -253,44 +278,10 @@
     </p>
   </div>
 </footer>
+<script src="js/jquery.min.js"></script>
+<script src="js/company/thongtin.js"></script>
 
-
-<!-- (end) footer -->
-
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="js/jquery-3.4.1.slim.min.js"></script>
-<script src="js/popper.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
-<script src="js/select2.min.js"></script>
-<script src="js/jobdata.js"></script>
-
-<script type="text/javascript" src="js/main.js"></script>
-<!-- Owl Stylesheets Javascript -->
-<script src="js/owlcarousel/owl.carousel.js"></script>
-<!-- Read More Plugin -->
-<script type="text/javascript">
-  // Avatar upload and preview
-  function readURL(input) {
-    if (input.files && input.files[0]) {
-      var reader = new FileReader();
-      reader.onload = function (e) {
-        $('#imagePreview').css('background-image', 'url(' + e.target.result + ')');
-        // $('#imagePreview').hide();
-        // $('#imagePreview').fadeIn(650);
-      }
-      reader.readAsDataURL(input.files[0]);
-    }
-  }
-
-  $("#imageUpload").change(function () {
-    readURL(this);
-  });
-</script>
-
 
 </body>
 </html>
