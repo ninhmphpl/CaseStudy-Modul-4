@@ -1,7 +1,7 @@
 package com.example.web.service.admin;
 
-import com.example.web.repository.admin.UserRepository;
 import com.example.web.model.User;
+import com.example.web.repository.customer.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
