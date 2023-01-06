@@ -1,10 +1,13 @@
 package com.example.web.service;
 
 import com.example.web.model.Offer;
+import com.example.web.model.offer.OfferRender;
 import com.example.web.repository.OfferRepository;
+import com.example.web.repository.customer.CityRepository;
+import com.example.web.repository.offer.CareerRepository;
+import com.example.web.repository.offer.SkillRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.yaml.snakeyaml.events.Event;
 
 import java.util.List;
 import java.util.Optional;
@@ -12,8 +15,15 @@ import java.util.Optional;
 public class OfferService implements ICrudService<Offer,Long>{
     @Autowired
     OfferRepository offerRepository;
-    @Override
+    @Autowired
+    CareerRepository careerRepository;
+    @Autowired
+    CityRepository cityRepository;
+    @Autowired
+    SkillRepository skillRepository;
 
+
+    @Override
     public List<Offer> findAll() {
         return offerRepository.findAll();
     }
@@ -32,4 +42,12 @@ public class OfferService implements ICrudService<Offer,Long>{
     public void delete(Long id) {
         offerRepository.deleteById(id);
     }
+
+    public OfferRender render(Long id){
+        return new OfferRender(cityRepository.findAll(),
+                careerRepository.findAll(), skillRepository.findAll(),
+                offerRepository.findById(id).get());
+    }
+
+
 }

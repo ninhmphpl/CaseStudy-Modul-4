@@ -1,7 +1,7 @@
-package com.example.web.controller;
+package com.example.web.controller.admin;
 
-import com.example.web.model.Offer;
-import com.example.web.service.OfferService;
+import com.example.web.model.User;
+import com.example.web.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,15 +14,13 @@ import java.util.List;
 
 @Controller
 @CrossOrigin("*")
-@RequestMapping("/admOffer")
-public class OfferController {
+@RequestMapping("/admUser")
+public class UserController {
     @Autowired
-    OfferService offerService;
+    UserService userService;
+
     @GetMapping
-    public ResponseEntity<List<Offer>> findAll(){
-       return new ResponseEntity<>(offerService.findAll() , HttpStatus.OK);
+    public ResponseEntity<List<User>> findAll() {
+        return new ResponseEntity<>(userService.findAll(), HttpStatus.OK);
     }
-
 }
-
-

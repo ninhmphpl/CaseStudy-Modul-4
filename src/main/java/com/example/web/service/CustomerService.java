@@ -25,7 +25,7 @@ public class CustomerService implements ICrudService<Customer, Long> {
 
     @Override
     public List<Customer> findAll() {
-        return null;
+        return customerRepository.findAll();
     }
 
     @Override

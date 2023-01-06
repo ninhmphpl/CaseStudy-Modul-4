@@ -1,5 +1,8 @@
 package com.example.web.model;
 
+import com.example.web.model.admin.Status;
+import com.example.web.model.customer.City;
+import com.example.web.model.offer.Career;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,18 +20,18 @@ public class Offer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String career;
+    private String name;
+    @ManyToOne
+    private Career career;
     private String description;
     private LocalDate endDate;
-    private String city;
+    @ManyToOne
+    private City city;
     private int amount;
     private int workExperience;
 //    @JoinColumn(name = "skill")
     @OneToMany
     private List<Skill> skill;
-    private String status;
-
-
-
-
+    @ManyToOne
+    private Status status;
 }
