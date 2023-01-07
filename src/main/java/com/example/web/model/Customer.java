@@ -3,6 +3,7 @@ package com.example.web.model;
 import com.example.web.model.customer.City;
 import com.example.web.model.customer.Education;
 import com.example.web.model.customer.ExpWork;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -31,7 +32,8 @@ public class Customer {
     private Gender gender;
     @OneToOne
     private User user;
-    @ManyToMany
+    @JsonIgnore
+    @ManyToMany(mappedBy = "customers")
     private List<Offer> offer;
     @ManyToOne
     private City city;

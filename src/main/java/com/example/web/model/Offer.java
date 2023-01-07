@@ -36,4 +36,6 @@ public class Offer {
     private Status status;
     @ManyToOne
     private Company company;
+    @ManyToMany
+    private List<Customer> customers;
 }
