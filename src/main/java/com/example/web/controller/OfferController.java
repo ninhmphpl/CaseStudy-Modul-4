@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -20,6 +21,9 @@ import java.util.List;
 public class OfferController {
     @Autowired
     OfferService offerService;
+    @Autowired
+    private OfferRepository offerRepository;
+
     @GetMapping
     public ResponseEntity<List<Offer>> findAll(){
        return new ResponseEntity<>(offerService.findAll() , HttpStatus.OK);
@@ -27,6 +31,10 @@ public class OfferController {
     @GetMapping("/search")
     public ResponseEntity<List<Offer>> findSearch(@RequestParam("search") String search){
         return new ResponseEntity<>(offerService.findAllByName(search) , HttpStatus.OK);
+    }
+    @GetMapping("/{id}")
+    public ResponseEntity<Offer> findById(@PathVariable Long id){
+        return new ResponseEntity<>(offerService.findById(id).get(),HttpStatus.OK);
     }
 
 }
