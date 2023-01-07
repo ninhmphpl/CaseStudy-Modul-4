@@ -5,9 +5,12 @@ import com.example.web.model.Skill;
 import com.example.web.model.customer.City;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.List;
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 public class OfferRender {
     private List<City> cities;

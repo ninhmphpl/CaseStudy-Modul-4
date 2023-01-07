@@ -39,7 +39,7 @@ ${city}</a>
             </div>`
 }
 function createLocal(id){
-    localStorage.setItem("idOffer", id)
+    sessionStorage.setItem("idOffer", id)
 }
 
 
@@ -86,3 +86,4 @@ function render() {
 }
 
 render()
+sessionStorage.setItem("doing", "http://localhost:63342/CaseStudy_Modul4/web.main/templates/themes.TechJobs/client/offer.html?_ijt=6le19t0uke8dpfltoi12ane0d2&_ij_reload=RELOAD_ON_SAVE")

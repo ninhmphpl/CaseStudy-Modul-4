@@ -115,33 +115,22 @@
                 <div class="col-md-7 col-sm-12 col-12">
                     <div class="job-detail-header-desc">
                         <div class="job-detail-header-title">
-                            <a id="namejd">[HCM] 02 Solution Architects–Up to $2000</a>
+                            <!--                            Hiển thị tên Offer-->
+
+
+                            <a id="nameJd"></a>
                         </div>
                         <div class="job-detail-header-company">
-                            <a href="#">Fpt Software</a>
+                            <a id="nameCompany"></a>
                         </div>
                         <div class="job-detail-header-de">
                             <ul>
-                                <li><i class="fa fa-map-marker icn-jd"></i><span>Đà Nẵng</span></li>
+                                <li><i class="fa fa-map-marker icn-jd"></i><span id="city"></span></li>
                                 <li><i class="fa fa-usd icn-jd"></i><span>15 triệu - 20 triệu</span></li>
-                                <li><i class="fa fa-calendar icn-jd"></i><span>15/01/2019</span></li>
+                                <li><i class="fa fa-calendar icn-jd"></i><span id="endDate"></span></li>
                             </ul>
                         </div>
-                        <div class="job-detail-header-tag">
-                            <ul>
-                                <li>
-                                    <a href="#">Java</a>
-                                </li>
-                                <li>
-                                    <a href="#">.NET</a>
-                                </li>
-                                <li>
-                                    <a href="#">SQL</a>
-                                </li>
-                                <li>
-                                    <a href="#">C#</a>
-                                </li>
-                            </ul>
+                        <div class="job-detail-header-tag" id="skill">
                         </div>
                     </div>
                 </div>
@@ -194,38 +183,7 @@
                     <h2 class="widget-title">
                         <span>Mô tả công việc</span>
                     </h2>
-                    <div class="jd-content">
-                        (*). Validus Vietnam is looking for a Senior QA Engineer for Web and Mobile applications.<br>
-                        As a Senior QA Engineer, you will be working alongside the Vietnam technology and product
-                        development teams to create and execute manual and automated tests to ensure product quality.
-                        This position works collaboratively with the regional technology team and is based in Ho Chi
-                        Minh City, Vietnam.<br>
-                        <br>
-                        (*). Responsibilities:<br>
-                        - Obtain a detailed understanding of Validus’ web & mobile applications, the lending engine
-                        platform, issues and potential issues affecting the platform.<br>
-                        - Work alongside internal and vendor product development teams across different locations (India
-                        and Singapore), communicate clearly and frequently with all team members, business stakeholders
-                        and product owners to ensure the quality of the Validus platform.<br>
-                        - Work with teams to plan projects, assess risks and help meet product deadlines.<br>
-                        - Review and analyze the effectiveness and efficiency of existing systems and develop testing
-                        strategies for improving or leveraging these systems.<br>
-                        - Conduct tests before product launches to ensure software runs smoothly and meets client needs
-                        across our web & mobile applications, testing for different browsers, devices and versions for
-                        compatibility as needed.<br>
-                        - Drive improvements in unit testing coverage, develop test suites, expand automation.<br>
-                        - Automate test plans and test cases based on business requirements, user stories and technical
-                        specifications.<br>
-                        - Create and execute test scripts, cases, and scenarios.<br>
-                        - Conduct all types of application testing as needed, such as system, unit, regression, load,
-                        and acceptance testing methods.<br>
-                        - Assist in reproducing, investigating and debugging technical issues with the product
-                        development team.<br>
-                        - Responsible for signing off on release readiness and documentation for all testing efforts,
-                        results, activities, data, logging, and tracking, closing out bugs and software issues.<br>
-                        - Communicate test progress, test results, and other relevant information to project
-                        stakeholders and management.<br>
-                        - Cultivate and disseminate knowledge of application-testing best practices.<br>
+                    <div class="jd-content" id="content_jd">
                     </div>
                     <h2 class="widget-title">
                         <span>Yêu cầu công việc</span>
@@ -285,7 +243,7 @@
                                     <span class="ji-title">Nơi làm việc:</span>
                                 </div>
                                 <div class="col-sm-8">
-                                    <span class="ji-main">Đà Nẵng</span>
+                                    <span class="ji-main" id="local"></span>
                                 </div>
                             </div>
                         </div>
@@ -293,10 +251,10 @@
                         <div class="job-info-list">
                             <div class="row">
                                 <div class="col-sm-4">
-                                    <span class="ji-title">Cấp bậc:</span>
+                                    <span class="ji-title">Số lượng:</span>
                                 </div>
                                 <div class="col-sm-8">
-                                    <span class="ji-main">Nhân viên</span>
+                                    <span class="ji-main" id ="amountJob"></span>
                                 </div>
                             </div>
                         </div>
@@ -318,7 +276,7 @@
                                     <span class="ji-title">Hạn nộp:</span>
                                 </div>
                                 <div class="col-sm-8">
-                                    <span class="ji-main">31/12/2019</span>
+                                    <span class="ji-main" id ="endDate2"></span>
                                 </div>
                             </div>
                         </div>
@@ -329,7 +287,7 @@
                                     <span class="ji-title">Ngành nghề:</span>
                                 </div>
                                 <div class="col-sm-8">
-                                    <span class="ji-main">Quảng cáo, Đối ngoại</span>
+                                    <span class="ji-main" id="career"></span>
                                 </div>
                             </div>
                         </div>
@@ -340,7 +298,7 @@
                                     <span class="ji-title">Kỹ năng:</span>
                                 </div>
                                 <div class="col-sm-8">
-                                    <span class="ji-main">PR Activity</span>
+                                    <span class="ji-main" id="skill2">PR Activity</span>
                                 </div>
                             </div>
                         </div>
@@ -351,7 +309,7 @@
                                     <span class="ji-title">Kinh nghiệm:</span>
                                 </div>
                                 <div class="col-sm-8">
-                                    <span class="ji-main">1 năm</span>
+                                    <span class="ji-main" id="workExperience"></span>
                                 </div>
                             </div>
                         </div>
@@ -369,7 +327,7 @@
                             <img src="img/fpt-logo.png" class="job-logo-ima" alt="job-logo">
                         </a>
                     </div>
-                    <h2 class="company-intro-name">Fpt Software</h2>
+                    <h2 class="company-intro-name" id="nameCompany2">Fpt Software</h2>
                     <ul class="job-add">
                         <li>
                             <i class="fa fa-map-marker ja-icn"></i>
@@ -650,7 +608,7 @@
 
 
 <script src="js/jquery.min.js"></script>
-<script  src ="js/offer/detailOffer.js"></script>
+<script src="js/offer/detailOffer.js"></script>
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
