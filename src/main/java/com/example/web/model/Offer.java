@@ -29,7 +29,6 @@ public class Offer {
     private City city;
     private int amount;
     private int workExperience;
-//    @JoinColumn(name = "skill")
     @OneToMany
     private List<Skill> skill;
     @ManyToOne
