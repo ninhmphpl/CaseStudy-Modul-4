@@ -1,4 +1,29 @@
-//
+function searchByName(){
+    let search = document.getElementById("searchByName").value
+    $.ajax({
+        type: "GET",
+        url: "http://localhost:8080/admOffer/search?search=" + search,
+        success: function (data) {
+            let content = ""
+            for (let i = 0; i < data.length; i++) {
+                let career = data[i].career
+                let description = data[i].description
+                let city = data[i].city
+                let amount = data[i].amount
+                let workExperience = data[i].workExperience
+                let skill = data[i].skill
+                let endDate = data[i].endDate
+                let name = data[i].name
+                let status = data[i].status
+                let company = data[i].company
+                let id = data[i].id
+                // (id , name, description,career, endDate , city, amount,workExperience,skill, status,company)
+                content += form(id, name ,description, career , endDate , city , amount,workExperience, skill , status ,company )
+                document.getElementById("findAll").innerHTML = content;
+            }
+        }
+    })
+}
 function form(id , name, description,career, endDate , city, amount,workExperience,skill, status,company) {
     return ` <div class="job pagi">
               <div class="job-content">
