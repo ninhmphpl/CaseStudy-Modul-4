@@ -48,6 +48,7 @@ public class OfferService implements ICrudService<Offer,Long>{
                 careerRepository.findAll(), skillRepository.findAll(),
                 offerRepository.findById(id).get());
     }
-
-
+    public List<Offer> findAllByName(String name){
+        return offerRepository.findAllByNameContaining(name);
+    }
 }
