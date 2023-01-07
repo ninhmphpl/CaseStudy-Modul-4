@@ -22,6 +22,10 @@ public class OfferController {
     public ResponseEntity<List<Offer>> findAll(){
        return new ResponseEntity<>(offerService.findAll() , HttpStatus.OK);
     }
+    @GetMapping("/selectOffer")
+    public ResponseEntity<List<Offer>> findSelect(){
+        return new ResponseEntity<>(offerService.)
+    }
 
 }
 
