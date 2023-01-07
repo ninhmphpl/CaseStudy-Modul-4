@@ -1,5 +1,30 @@
-// form(id, career , city , amount , workExperience , endDate, status)
-function form(id , career, description,city,amount, workExperience , endDate, status) {
+function searchByName(){
+    let search = document.getElementById("searchByName").value
+    $.ajax({
+        type: "GET",
+        url: "http://localhost:8080/admOffer/search?search=" + search,
+        success: function (data) {
+            let content = ""
+            for (let i = 0; i < data.length; i++) {
+                let career = data[i].career
+                let description = data[i].description
+                let city = data[i].city
+                let amount = data[i].amount
+                let workExperience = data[i].workExperience
+                let skill = data[i].skill
+                let endDate = data[i].endDate
+                let name = data[i].name
+                let status = data[i].status
+                let company = data[i].company
+                let id = data[i].id
+                // (id , name, description,career, endDate , city, amount,workExperience,skill, status,company)
+                content += form(id, name ,description, career , endDate , city , amount,workExperience, skill , status ,company )
+                document.getElementById("findAll").innerHTML = content;
+            }
+        }
+    })
+}
+function form(id , name, description,career, endDate , city, amount,workExperience,skill, status,company) {
     return ` <div class="job pagi">
               <div class="job-content">
                 <div class="job-logo">
@@ -9,18 +34,30 @@ function form(id , career, description,city,amount, workExperience , endDate, st
                 </div>
                 <div class="job-desc">
                   <div class="job-title">
-                    <span>${career}</span>
+                    <span>${name}</span>
                   </div>
                   <div class="job-company">
                     <span href="">${description}</span>
-                  </div><div class="job-company">
+                  </div>
+                  <div class="job-company">
+                    <span href="">${career}</span>
+                  </div>
+                  <div class="job-company">
+                    <span href="">${endDate}</span>
+                  </div>
+                  <div class="job-company">
                     <span href="">${city}</span>
-                  </div><div class="job-company">
+                  </div>
+                  <div class="job-company">
                     <span href="">${amount}</span>
                   </div><div class="job-company">
                     <span href="">${workExperience}</span>
                   </div><div class="job-company">
-                    <span href="">${endDate}</span>
+                    <span href="">${skill}</span>
+                  </div><div class="job-company">
+                    <span href="">${status}</span>
+                  </div><div class="job-company">
+                    <span href="">${company}</span>
                   </div>
                   <div class="job-company">
                     Trạng thái: ${statusRender(status.id)}
@@ -58,10 +95,14 @@ function renderForm() {
                 let city = data[i].city
                 let amount = data[i].amount
                 let workExperience = data[i].workExperience
+                let skill = data[i].skill
                 let endDate = data[i].endDate
+                let name = data[i].name
                 let status = data[i].status
+                let company = data[i].company
                 let id = data[i].id
-                content += form(id, career ,description, city , amount , workExperience , endDate, status)
+                // (id , name, description,career, endDate , city, amount,workExperience,skill, status,company)
+                content += form(id, name ,description, career , endDate , city , amount,workExperience, skill , status ,company )
                 document.getElementById("findAll").innerHTML = content;
             }
         }
