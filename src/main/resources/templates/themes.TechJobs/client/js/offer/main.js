@@ -1,6 +1,6 @@
 //nameOffer
 
-function form(name, city, endDate, amount, career, skill) {
+function form(id,name, city, endDate, amount, career, skill) {
     return `         <div class="job pagi">
               <div class="job-content">
                 <div class="job-logo">
@@ -11,7 +11,7 @@ function form(name, city, endDate, amount, career, skill) {
 
                 <div class="job-desc">
                   <div class="job-title">
-                    <a href="jd-page.html">${name}</a>
+                 <a href="jd-page.html" onclick="createLocal(${id})"> ${name}</a> 
                   </div>
                   <div class="job-company">
                     <a href="jd-page">${career}</a> | <a href="#" class="job-address"><i class="fa fa-map-marker" aria-hidden="true"></i>
@@ -38,6 +38,11 @@ ${city}</a>
               </div>
             </div>`
 }
+function createLocal(id){
+    sessionStorage.setItem("idOffer", id)
+}
+
+
 
 function skillForm(skill) {
     let content = "";
@@ -71,7 +76,7 @@ function render() {
         url: "http://localhost:8081/admOffer",
         success: function (data) {
             for (let i = 0; i < data.length; i++) {
-                content += form(data[i].name, data[i].city.name, data[i].endDate, data[i].amount, data[i].career.name, data[i].skill)
+                content += form(data[i].id,data[i].name, data[i].city.name, data[i].endDate, data[i].amount, data[i].career.name, data[i].skill)
             }
             document.getElementById("listOffer").innerHTML = content;
         }
@@ -81,3 +86,4 @@ function render() {
 }
 
 render()
+sessionStorage.setItem("doing", "http://localhost:63342/CaseStudy_Modul4/web.main/templates/themes.TechJobs/client/offer.html?_ijt=6le19t0uke8dpfltoi12ane0d2&_ij_reload=RELOAD_ON_SAVE")

@@ -25,7 +25,8 @@ public class OfferService implements ICrudService<Offer,Long>{
 
     @Override
     public List<Offer> findAll() {
-        return offerRepository.findAll();
+        List<Offer> h = offerRepository.findAll();
+        return h;
     }
 
     @Override
