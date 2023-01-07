@@ -52,6 +52,7 @@ public class CustomerService implements ICrudService<Customer, Long> {
 
     @Override
     public void delete(Long id) {
+        customerRepository.deleteById(id);
     }
 
     public CustomerRender render(User user){

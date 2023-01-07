@@ -4,10 +4,13 @@ import com.example.web.model.Customer;
 import com.example.web.model.Gender;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.List;
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 public class CustomerRender {
     private List<City> city;
