@@ -28,6 +28,10 @@ public class OfferController {
     public ResponseEntity<List<Offer>> findAll(){
        return new ResponseEntity<>(offerService.findAll() , HttpStatus.OK);
     }
+    @GetMapping("/{id}")
+    public ResponseEntity<Offer> findById(@PathVariable Long id){
+        return new ResponseEntity<>(offerService.findById(id).get(),HttpStatus.OK);
+    }
     @GetMapping("/search")
     public ResponseEntity<List<Offer>> findSearch(@RequestParam("search") String search){
         return new ResponseEntity<>(offerService.findAllByName(search) , HttpStatus.OK);
