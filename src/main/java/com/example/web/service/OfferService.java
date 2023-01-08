@@ -25,7 +25,8 @@ public class OfferService implements ICrudService<Offer,Long>{
 
     @Override
     public List<Offer> findAll() {
-        return offerRepository.findAll();
+        List<Offer> h = offerRepository.findAll();
+        return h;
     }
 
     @Override
@@ -48,6 +49,7 @@ public class OfferService implements ICrudService<Offer,Long>{
                 careerRepository.findAll(), skillRepository.findAll(),
                 offerRepository.findById(id).get());
     }
-
-
+    public List<Offer> findAllByName(String name){
+        return offerRepository.findAllByNameContaining(name);
+    }
 }
