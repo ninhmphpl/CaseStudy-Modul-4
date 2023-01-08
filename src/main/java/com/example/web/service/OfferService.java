@@ -52,4 +52,7 @@ public class OfferService implements ICrudService<Offer,Long>{
     public List<Offer> findAllByName(String name){
         return offerRepository.findAllByNameContaining(name);
     }
+    public List<Offer> findAllByCityName(String city){
+        return offerRepository.findAllByCityNameContaining(city);
+    }
 }

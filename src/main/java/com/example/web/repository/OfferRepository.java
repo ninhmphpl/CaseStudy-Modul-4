@@ -9,4 +9,5 @@ import java.util.List;
 public interface OfferRepository extends JpaRepository<Offer,Long > {
     List<Offer> findAllByCareerContaining(String career);
     List<Offer> findAllByNameContaining (String name);
+    List<Offer> findAllByCityNameContaining(String city);
 }

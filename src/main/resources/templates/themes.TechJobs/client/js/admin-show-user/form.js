@@ -1,3 +1,14 @@
+// // lấy object token về js
+// let data = sessionStorage.getItem("token")
+// // lấy mã token từ data
+// let token
+// let name
+// if (data !=null){
+//     token = data.token
+// // lấy email của user đăng nhập
+//     name = data.name
+// }
+
 function form(id , name, role, status) {
     return ` <div class="job pagi">
               <div class="job-content">
@@ -40,6 +51,11 @@ function statusRender(statusId){
 }
 function renderForm() {
     $.ajax({
+        // headers: {
+        //     'Accept': 'application/json',
+        //     'Content-Type':'application/json',
+        //     'Authorization' : token
+        // },
         type: "GET",
         url: "http://localhost:8080/admUser",
         success: function (data) {
@@ -102,10 +118,10 @@ function blockUser(id) {
                 status: Status
             }
             $.ajax({
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
+                // headers: {
+                //     'Accept': 'application/json',
+                //     'Content-Type': 'application/json'
+                // },
                 type: "PUT",
                 url: "http://localhost:8080/userDisable/id=" + id + "&status=" + Status,
                 data: JSON.stringify(UserStatus),

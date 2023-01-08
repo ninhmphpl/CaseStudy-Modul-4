@@ -36,6 +36,10 @@ public class OfferController {
     public ResponseEntity<List<Offer>> findSearch(@RequestParam("search") String search){
         return new ResponseEntity<>(offerService.findAllByName(search) , HttpStatus.OK);
     }
+    @GetMapping("/searchCity")
+    public ResponseEntity<List<Offer>> findSearchCity(@RequestParam("searchCity") String searchCity){
+        return new ResponseEntity<>(offerService.findAllByCityName(searchCity) , HttpStatus.OK);
+    }
 }
 
 
