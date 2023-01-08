@@ -1,6 +1,7 @@
 package com.example.web.security.controller;
 
 import com.example.web.model.User;
+import com.example.web.security.model.UserFormCreate;
 import com.example.web.security.security.jwt.JwtResponse;
 import com.example.web.security.security.jwt.JwtService;
 import com.example.web.service.UserService;
@@ -10,9 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -27,6 +27,8 @@ public class AuthController {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody User user) {
@@ -40,6 +42,12 @@ public class AuthController {
         JwtResponse response  = new JwtResponse(currentUser.getId(),
                 jwt, currentUser.getEmail(), currentUser.getRole().getName());
         return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    @PostMapping("/singIn")
+    public ResponseEntity<?> signIn(@RequestBody UserFormCreate userFormCreate){
+        userFormCreate.setPassword(passwordEncoder.encode(userFormCreate.getPassword()));
+        return new ResponseEntity<>(userService.signIn(userFormCreate));
     }
 
     @GetMapping("/hello")
