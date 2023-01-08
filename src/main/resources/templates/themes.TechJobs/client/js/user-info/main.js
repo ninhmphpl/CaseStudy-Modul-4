@@ -34,7 +34,8 @@ function save(){
     $.ajax({
         headers: {
             'Accept': 'application/json',
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            Authorization: getToken()
         },
         type: "PUT",
         url: "http://localhost:8080/customers",

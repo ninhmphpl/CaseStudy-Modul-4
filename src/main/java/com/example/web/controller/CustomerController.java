@@ -4,7 +4,7 @@ import com.example.web.service.CustomerService;
 import com.example.web.model.Customer;
 import com.example.web.model.User;
 import com.example.web.model.customer.CustomerRender;
-import com.example.web.repository.UserRepository;
+import com.example.web.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,21 +17,16 @@ public class CustomerController {
     @Autowired
     CustomerService customerService;
     @Autowired
-    UserRepository userRepository;
-    @GetMapping("/{id}")
-    public ResponseEntity<?> findById(@PathVariable Long id){
-        Customer customer = customerService.findById(id).get();
-        return new ResponseEntity<>(customer, HttpStatus.OK);
-    }
-    @GetMapping("/data")
+    UserService userService;
+    @GetMapping
     public ResponseEntity<CustomerRender> findDataChoice(){
-        User user = userRepository.findUsersByEmail("ninhmp@gmail.com");
+        User user = userService.getUserLogging();
         CustomerRender customerRender = customerService.render(user);
         return new ResponseEntity<>(customerRender, HttpStatus.OK);
     }
     @PutMapping
     public ResponseEntity<?> save(@RequestBody Customer customer){
-        User user = userRepository.findUsersByEmail("ninhmp@gmail.com");
+        User user = userService.getUserLogging();
         customerService.saveInfoCustomer(customer, user);
         return new ResponseEntity<>(HttpStatus.OK);
     }

@@ -74,6 +74,16 @@ function skillForm(skill) {
 //     "status": null
 // }
 function render() {
+    if(getToken()){
+        setInnerHTMLById("navbarDropdown", getEmailAccount())
+        hide("signI")
+        hide("loginI")
+        show("accountI")
+    }else{
+        show('signI')
+        show('loginI')
+        hide("accountI")
+    }
     let content = ""
     $.ajax({
         type: "GET",

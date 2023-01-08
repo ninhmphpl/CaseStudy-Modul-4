@@ -22,7 +22,7 @@ function setToken(token) {
 function getToken() {
     if (token == null) {
         console.log("Token null")
-        return "Null"
+        return ""
     }
     console.log("Token OK:" + token.token)
     return token.type + token.token
@@ -49,7 +49,7 @@ function getId() {
 // trở lại trang trước khi đăng nhập
 function backPage(){
     if(pageBefore == null){
-        pageBefore = "/web/web.main/templates/themes.TechJobs/client/index.html"
+        pageBefore = "/web/web.main/templates/themes.TechJobs/client/offer.html"
     }
     window.location = pageBefore
 }
@@ -57,8 +57,30 @@ function backPage(){
 function autoSetURLDoing(){
     pageBefore = sessionStorage.getItem("doing")
     if (pageBefore === window.location.href){
-        pageBefore = "/web/web.main/templates/themes.TechJobs/client/index.html"
+        pageBefore = "/web/web.main/templates/themes.TechJobs/client/offer.html"
     }
     sessionStorage.setItem("doing", window.location.href)
+}
+// ẩn thẻ theo id
+function hide(id){
+    if(!document.getElementById(id).hidden){
+    document.getElementById(id).hidden = true
+    }
+}
+// hiện thẻ theo id
+function show(id){
+    if(!document.getElementById(id).hidden){
+        document.getElementById(id).hidden = false
+    }
+}
+//setInnerHTMLById , gán hiển thị của the theo id
+function setInnerHTMLById(id, value){
+    document.getElementById(id).innerHTML = value
+}
+// đăng xuất khỏi tài khoản
+function logOut(){
+    sessionStorage.clear()
+    window.location = "/web/web.main/templates/themes.TechJobs/client/offer.html"
+    event.preventDefault();
 }
 autoSetURLDoing()
