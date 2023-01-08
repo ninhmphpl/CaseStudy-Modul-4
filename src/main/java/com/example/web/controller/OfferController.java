@@ -1,6 +1,7 @@
 package com.example.web.controller;
 
 import com.example.web.model.Offer;
+import com.example.web.model.offer.CountAmountOffer;
 import com.example.web.repository.OfferRepository;
 import com.example.web.service.OfferService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +38,12 @@ public class OfferController {
         return new ResponseEntity<>(offerService.findAllByName(search) , HttpStatus.OK);
     }
 
-}
+    @GetMapping("/sort")
+    public ResponseEntity<?> sort(){
+        List<CountAmountOffer> list;
+        list = offerService.sortAmountOfferCompany();
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 
+}
 

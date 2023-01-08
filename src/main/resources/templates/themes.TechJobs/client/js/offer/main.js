@@ -33,13 +33,33 @@ ${city}</a>
                   </div>
                 </div>
                 <div class="wrap-btn-appl">
-                  <a href="#" class="btn btn-appl">Apply Now</a>
+                  <a class="btn btn-appl" onclick="apply(${id})">Apply Now</a>
                 </div>
               </div>
             </div>`
 }
 function createLocal(id){
     sessionStorage.setItem("idOffer", id)
+}
+
+function apply(id){
+    $.ajax({
+        headers: {
+            // 'Accept': 'application/json',
+            // 'Content-Type': 'application/json',
+            'Authorization' : token
+        },
+        type: "POST",
+        url: "http://localhost:8081/amdOffer",
+        data: JSON.stringify(data),
+        success: function (data) {
+
+        },
+        error: function (data){
+            window.location = "http://localhost:63342/CaseStudy_Modul4/web.main/templates/themes.TechJobs/client/login.html"
+        }
+    })
+    event.preventDefault();
 }
 
 
@@ -71,7 +91,13 @@ function skillForm(skill) {
 // }
 function render() {
     let content = ""
+    token = "Bearer " + token;
     $.ajax({
+        headers: {
+            // 'Accept': 'application/json',
+            // 'Content-Type': 'application/json',
+            Authorization : 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsb2RhIiwiaWF0IjoxNjczMTUwMDQwLCJleHAiOjg4MDczMTUwMDQwfQ.wYP9Vsu2Z8dcvQ-TSjJCUbvbtNtoE8TNYhi61y5IYK4'
+        },
         type: "GET",
         url: "http://localhost:8081/admOffer",
         success: function (data) {
@@ -79,11 +105,25 @@ function render() {
                 content += form(data[i].id,data[i].name, data[i].city.name, data[i].endDate, data[i].amount, data[i].career.name, data[i].skill)
             }
             document.getElementById("listOffer").innerHTML = content;
+        },
+        error: function (data) {
+            // window.location = "http://localhost:63342/CaseStudy_Modul4/web.main/templates/themes.TechJobs/client/login.html"
         }
 
     })
 
 }
+// lấy object token về js
+let data = JSON.parse(sessionStorage.getItem("token"))
+let token
+let name
+if(data != null){
+    // lấy mã token từ data
+    token = data.token
+// lấy email của user đăng nhập
+    name = data.name
+}
+
 
 render()
 sessionStorage.setItem("doing", "http://localhost:63342/CaseStudy_Modul4/web.main/templates/themes.TechJobs/client/offer.html?_ijt=6le19t0uke8dpfltoi12ane0d2&_ij_reload=RELOAD_ON_SAVE")
