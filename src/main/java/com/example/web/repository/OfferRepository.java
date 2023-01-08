@@ -8,4 +8,5 @@ import java.util.List;
 @Repository
 public interface OfferRepository extends JpaRepository<Offer,Long > {
     List<Offer> findAllByCareerContaining(String career);
+    List<Offer> findAllByNameContaining (String name);
 }

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -30,6 +31,10 @@ public class OfferController {
     @GetMapping("/{id}")
     public ResponseEntity<Offer> findById(@PathVariable Long id){
         return new ResponseEntity<>(offerService.findById(id).get(),HttpStatus.OK);
+    }
+    @GetMapping("/search")
+    public ResponseEntity<List<Offer>> findSearch(@RequestParam("search") String search){
+        return new ResponseEntity<>(offerService.findAllByName(search) , HttpStatus.OK);
     }
 
 }

@@ -140,13 +140,12 @@
             <div class="tab-content search-tab-content" id="myTabContent">
                 <!-- content tab 1 -->
                 <div class="tab-pane stab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                    <form class="bn-search-form">
                         <div class="row">
                             <div class="col-md-10 col-sm-12">
                                 <div class="row">
                                     <div class="col-md-5">
                                         <div class="input-group s-input-group">
-                                            <input type="text" class="form-control sinput"
+                                            <input type="text" class="form-control sinput" id="searchByName"
                                                    placeholder="Nhập kỹ năng, công việc,...">
                                             <span><i class="fa fa-search"></i></span>
                                         </div>
@@ -154,10 +153,9 @@
                                 </div>
                             </div>
                             <div class="col-md-2 col-sm-12">
-                                <button type="submit" class="btn btn-primary btn-search col-sm-12">Tìm kiếm</button>
+                                <button class="btn btn-primary btn-search col-sm-12" onclick="searchByName()">Tìm kiếm</button>
                             </div>
                         </div>
-                    </form>
                 </div>
                 <!-- (end) content tab 1 -->
                 <!-- content tab 2 -->
