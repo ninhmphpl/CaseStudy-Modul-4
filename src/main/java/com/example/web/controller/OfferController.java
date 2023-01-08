@@ -1,6 +1,7 @@
 package com.example.web.controller;
 
 import com.example.web.model.Offer;
+import com.example.web.repository.OfferRepository;
 import com.example.web.service.OfferService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,7 +23,8 @@ public class OfferController {
     @Autowired
     OfferService offerService;
     @Autowired
-    private OfferRepository offerRepository;
+    private
+    OfferRepository offerRepository;
 
     @GetMapping
     public ResponseEntity<List<Offer>> findAll(){
@@ -30,12 +32,7 @@ public class OfferController {
     }
     @Autowired
     OfferRepository repository;
-    @PostMapping
-    public ResponseEntity<?>abc(){
-        List<Offer> offers = repository.findAllBySkillContaining(new Skill(1L, null));
-        System.out.println(offers);
-        return new ResponseEntity<>("abc", HttpStatus.OK);
-    }
+
     @GetMapping("/{id}")
     public ResponseEntity<Offer> findById(@PathVariable Long id){
         return new ResponseEntity<>(offerService.findById(id).get(),HttpStatus.OK);

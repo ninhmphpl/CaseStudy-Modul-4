@@ -48,11 +48,17 @@ function getId() {
 }
 // trở lại trang trước khi đăng nhập
 function backPage(){
-    window.location = getDoingUrl()
+    if(pageBefore == null){
+        pageBefore = "/web/web.main/templates/themes.TechJobs/client/index.html"
+    }
+    window.location = pageBefore
 }
 // tự động gán url doing(tham số truyền vào là những trang ngoại lệ không gán)
 function autoSetURLDoing(){
     pageBefore = sessionStorage.getItem("doing")
+    if (pageBefore === window.location.href){
+        pageBefore = "/web/web.main/templates/themes.TechJobs/client/index.html"
+    }
     sessionStorage.setItem("doing", window.location.href)
 }
 autoSetURLDoing()

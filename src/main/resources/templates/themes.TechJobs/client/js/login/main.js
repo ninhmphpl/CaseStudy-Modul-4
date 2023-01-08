@@ -14,15 +14,18 @@ function login(){
         url: "http://localhost:8080/api/login",
         data: JSON.stringify(data),
         success: function (data) {
-            sessionStorage.setItem("token", JSON.stringify(data))
-            window.location = sessionStorage.getItem("doing")
+            setToken(data)
+            backPage()
             console.log(data)
         },
-        error: function (data){
+        error: function (jqXHR, textStatus, errorThrown){
+            console.log("mã lỗi: " + jqXHR.status)
+            console.log("Text: " + textStatus)
+            console.log("Thrown: " + errorThrown)
             document.getElementById("message").innerText = "Tài khoản mật khẩu không chính xác"
         }
     })
     event.preventDefault();
-
 }
-// sessionStorage.setItem("doing", "http://localhost:63342/web/web.main/templates/themes.TechJobs/client/login.html")
+
+
