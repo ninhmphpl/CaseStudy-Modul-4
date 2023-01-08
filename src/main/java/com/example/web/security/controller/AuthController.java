@@ -47,7 +47,7 @@ public class AuthController {
     @PostMapping("/singIn")
     public ResponseEntity<?> signIn(@RequestBody UserFormCreate userFormCreate){
         userFormCreate.setPassword(passwordEncoder.encode(userFormCreate.getPassword()));
-        return new ResponseEntity<>("signIn",userService.signIn(userFormCreate));
+        return new ResponseEntity<>(userService.signIn(userFormCreate));
     }
 
     @GetMapping("/hello")
