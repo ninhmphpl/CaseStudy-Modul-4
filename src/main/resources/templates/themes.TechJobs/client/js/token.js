@@ -1,3 +1,5 @@
+let pageBefore
+
 let token = JSON.parse(sessionStorage.getItem("token"))
 // gán lại url trang hiện tại
 function setDoingURL() {
@@ -7,8 +9,7 @@ function setDoingURL() {
 function getDoingUrl() {
     let url = sessionStorage.getItem("doing")
     if (url == null) {
-
-        url = "/web/web.main/templates/themes.TechJobs/client/login.html"
+        url = "/web/web.main/templates/themes.TechJobs/client/index.html"
     }
     return url
 }
@@ -50,11 +51,8 @@ function backPage(){
     window.location = getDoingUrl()
 }
 // tự động gán url doing(tham số truyền vào là những trang ngoại lệ không gán)
-function autoSetURLDoing(urlArray){
-    let url = window.location.href
-    for (let i = 0; i < urlArray.length; i++){
-        if (url.indexOf(urlArray[i]) !== -1) return
-    }
-    setDoingURL()
+function autoSetURLDoing(){
+    pageBefore = sessionStorage.getItem("doing")
+    sessionStorage.setItem("doing", window.location.href)
 }
-autoSetURLDoing(["login.html"])
+autoSetURLDoing()
