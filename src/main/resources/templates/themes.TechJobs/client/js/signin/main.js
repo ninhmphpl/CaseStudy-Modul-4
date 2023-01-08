@@ -76,6 +76,7 @@ function signIn() {
         },
         error: function (jqXHR, textStatus, errorThrown){
             //415 tài khoản tồn tại
+            let content = "Đăng ký không thành công"
             console.log(jqXHR.status)
             if (jqXHR.status === 415) {
                 content += ", Tài khoản này đã tồn tại"
