@@ -80,7 +80,7 @@ public class UserService implements UserDetailsService {
             }
         } catch (Exception ex) {
             System.out.println("error:" + ex.getMessage());
-            return HttpStatus.BAD_REQUEST;
+            return HttpStatus.valueOf(415);
         }
     }
 }

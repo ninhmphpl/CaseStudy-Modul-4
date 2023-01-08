@@ -19,33 +19,7 @@ inputs.forEach(input => {
 	input.addEventListener("blur", remcl);
 });
 
-$('#click_advance').click(function() {
-    $("i", this).toggleClass("fa fa-filter fa fa-times");
-});
-$('#clickc_advance').click(function() {
-    $("i", this).toggleClass("fa fa-angle-down fa fa-angle-up");
-});
-$('#clickc2_advance').click(function() {
-    $("i", this).toggleClass("fa fa-angle-down fa fa-angle-up");
-});
-$('#clickc3_advance').click(function() {
-    $("i", this).toggleClass("fa fa-angle-down fa fa-angle-up");
-});
-$('#clickc4_advance').click(function() {
-    $("i", this).toggleClass("fa fa-angle-down fa fa-angle-up");
-});
-$('#clickc1_advance1').click(function() {
-    $("i", this).toggleClass("fa fa-angle-down fa fa-angle-up");
-});
-$('#clickc1_advance2').click(function() {
-    $("i", this).toggleClass("fa fa-angle-down fa fa-angle-up");
-});
-$('#clickc1_advance3').click(function() {
-    $("i", this).toggleClass("fa fa-angle-down fa fa-angle-up");
-});
-$('#clickc1_advance4').click(function() {
-    $("i", this).toggleClass("fa fa-angle-down fa fa-angle-up");
-});
+
 
 
 let dropArea = document.getElementById("drop-area");
