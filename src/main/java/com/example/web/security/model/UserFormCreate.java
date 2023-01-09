@@ -56,7 +56,7 @@ public class UserFormCreate {
                 new City(1L, null));
     }
     public Company buildCompany(){
-        return new Company(null,name,user,phoneNumber,null,null,new ArrayList<>());
+        return new Company(null,name,user,phoneNumber,null,null,null,new ArrayList<>());
     }
 
 

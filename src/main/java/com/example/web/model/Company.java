@@ -17,13 +17,13 @@ public class Company {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    @OneToOne
+    private User user;
     private String career;
     private String description;
     private String address;
     private String phoneNumber;
 //    @JoinColumn(name = "user")
-    @OneToOne
-    private User user;
 
     @JsonIgnore
     @OneToMany(mappedBy = "company")

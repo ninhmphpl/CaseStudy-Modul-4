@@ -1,34 +1,24 @@
-function showCompany(){
+function showForm(){
     $.ajax({
+        headers:{
+            Authorization: getToken()
+        },
         type: "GET",
         url: "http://localhost:8080/api/companies",
         success: function (data) {
             render(data)
         }
+
     })
 }
 
-
-// "id": 1,
-//     "name": "hun",
-//     "career": "oto",
-//     "description": "dsfdsf",
-//     "address": "hn",
-//     "phoneNumber": "034466767",
-//     "user": {
-//     "id": 1,
-//         "name": null,
-//         "email": "dvd@gmail",
-//         "role": null,
-//         "status": null
-function render(a){
-    let data=a[1]
-    let name=data.name
-    let career=data.career
-    let description=data.description
-    let address=data.address
-    let phoneNumber=data.phoneNumber
-    let email=data.user.email
+function render(data){
+    let name = data.name
+    let career = data.career
+    let email = (data.user)?data.user.email:""
+    let address = data.address
+    let phoneNumber = data.phoneNumber
+    let description= data.description
 
     document.getElementById("name").value=name
     document.getElementById("career").value=career
@@ -36,39 +26,42 @@ function render(a){
     document.getElementById("address").value=address
     document.getElementById("phoneNumber").value=phoneNumber
     document.getElementById("email").value = email
-
 }
+showForm()
+
+
 function save(){
     let name = document.getElementById("name").value
+    let email = document.getElementById("email").value
     let career = document.getElementById("career").value
     let phoneNumber = document.getElementById("phoneNumber").value
-    let description = document.getElementById("description").value
     let address = document.getElementById("address").value
-    let email = document.getElementById("email").value
+    let description = document.getElementById("description").value
 
     let data = {
-        id:2,
         name : name,
-        career : career,
-        description: description,
-        address: address,
-        phoneNumber: phoneNumber,
         email: email,
+        career : career,
+        phoneNumber: phoneNumber,
+        address: address,
+        description: description,
 
     }
+    let token = getToken()
     $.ajax({
+
         headers: {
             'Accept': 'application/json',
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            Authorization: token
+
         },
         type: "PUT",
         url: "http://localhost:8080/api/companies",
-        data: JSON.stringify(data),
+        data: JSON.stringify( data),
         success: function (data) {
             alert("Cập nhật thành công")
         }
 
     })
 }
-
-showCompany()

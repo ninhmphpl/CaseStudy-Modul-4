@@ -1,7 +1,8 @@
 package com.example.web.controller.company;
 
 import com.example.web.model.Company;
-import com.example.web.service.company.CompanyService;
+import com.example.web.service.CompanyService;
+import com.example.web.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,19 +17,14 @@ public class CompanyController {
     @Autowired
     CompanyService companyService;
 
+    @Autowired
+    UserService userService;
+
+
+
     @GetMapping
-    public List<Company> showCompany() {
-        return companyService.findAll();
-    }
-
-//    @GetMapping()
-//    public ResponseEntity<Company> showUpdate(@PathVariable Long id){
-//        return new ResponseEntity<>(companyService.findById(id).get(), HttpStatus.OK);
-//    }
-
-    @GetMapping("/datacompany")
     public ResponseEntity<Company> findDataCompany() {
-        Company company = companyService.findCompanyByEmail("dhghd@gmail");
+        Company company = companyService.findByUser(userService.getUserLogging());
         company.setId(company.getId());
         return new ResponseEntity<>(companyService.save(company), HttpStatus.OK);
     }
@@ -36,8 +32,7 @@ public class CompanyController {
 
     @PutMapping
     public ResponseEntity<Company> update(@RequestBody Company company) {
-        Company company1 = companyService.findCompanyByEmail("dhghd@gmail");
-        company.setId(company1.getId());
-        return new ResponseEntity<>(companyService.save(company), HttpStatus.OK);
+        Company company2 = companyService.addCompany(company);
+        return new ResponseEntity<>(company2, HttpStatus.OK);
     }
 }
