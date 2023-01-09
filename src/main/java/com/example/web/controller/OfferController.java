@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,12 +23,16 @@ public class OfferController {
     @Autowired
     OfferService offerService;
     @Autowired
-    private OfferRepository offerRepository;
+    private
+    OfferRepository offerRepository;
 
     @GetMapping
     public ResponseEntity<List<Offer>> findAll(){
        return new ResponseEntity<>(offerService.findAll() , HttpStatus.OK);
     }
+    @Autowired
+    OfferRepository repository;
+
     @GetMapping("/{id}")
     public ResponseEntity<Offer> findById(@PathVariable Long id){
         return new ResponseEntity<>(offerService.findById(id).get(),HttpStatus.OK);

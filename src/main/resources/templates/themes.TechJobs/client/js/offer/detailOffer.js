@@ -4,20 +4,23 @@ function getidlocal() {
     id = sessionStorage.getItem("idOffer")
     return id;
 }
+
 getidlocal()
 offerByID(id)
+
 function offerByID(id) {
-    let url= "http://localhost:8081/admOffer/" + id
+    let url = "http://localhost:8080/admOffer/" + id
     let content = ""
     $.ajax({
         type: "GET",
-        url:url  ,
+        url: url,
         success: function (data) {
-render(data)
+            render(data)
         }
 
     })
 }
+
 function render(data) {
     document.getElementById("nameJd").innerHTML = data.name
     document.getElementById("nameCompany").innerHTML = data.company.name
@@ -41,11 +44,9 @@ function render(data) {
 
 
 }
+
 function displaySkill(skill) {
     return `<li>
         <a>${skill.name}</a>
          </li>`
-
-
 }
-sessionStorage.setItem("doing", "http://localhost:63342/CaseStudy_Modul4/web.main/templates/themes.TechJobs/client/jd-page.html")

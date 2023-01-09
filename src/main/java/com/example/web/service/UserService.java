@@ -14,8 +14,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -40,9 +38,9 @@ public class UserService implements UserDetailsService {
         return userRepository.findUsersByEmail(email);
     }
 
-    public String helloService() {
+    public User getUserLogging() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        return "hello" + authentication.getName();
+        return findUserByEmail(authentication.getName());
     }
 
 
@@ -80,7 +78,7 @@ public class UserService implements UserDetailsService {
             }
         } catch (Exception ex) {
             System.out.println("error:" + ex.getMessage());
-            return HttpStatus.BAD_REQUEST;
+            return HttpStatus.valueOf(415);
         }
     }
 }

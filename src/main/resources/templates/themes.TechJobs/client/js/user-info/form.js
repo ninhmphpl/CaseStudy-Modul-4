@@ -1,7 +1,10 @@
 function showForm(){
     $.ajax({
+        headers:{
+            Authorization: getToken()
+        },
         type: "GET",
-        url: "http://localhost:8080/customers/data",
+        url: "http://localhost:8080/customers",
         success: function (data) {
             render(data)
         }

@@ -24,7 +24,7 @@ ${city}</a>
                     </div>
                     <div class="job-salary">
                       <i class="fa fa-money" aria-hidden="true"></i>
-                      <span class="salary-min">Skill<em class="salary-unit">${skillForm(skill)}</em></span>
+                      <span class="salary-min">Kĩ năng: <em class="salary-unit">${skillForm(skill)}</em></span>
                       <span class="salary-max">35 <em class="salary-unit">triệu</em></span>
                     </div>
                     <div class="job-deadline">
@@ -45,9 +45,13 @@ function createLocal(id){
 
 
 function skillForm(skill) {
+    if (skill.length === 0) {
+        console.log("skill is null")
+        return "Không cần kĩ năng"
+    }
     let content = "";
     for (let i = 0; i < skill.length; i++) {
-        content += skill[i].name + " "
+        content += skill[i].name + ((i===skill.length-1)?"":", ")
     }
     return content;
 }
@@ -70,20 +74,34 @@ function skillForm(skill) {
 //     "status": null
 // }
 function render() {
+    if(getToken()){
+        setInnerHTMLById("navbarDropdown", getEmailAccount())
+        hide("signI")
+        hide("loginI")
+        show("accountI")
+    }else{
+        show('signI')
+        show('loginI')
+        hide("accountI")
+    }
     let content = ""
     $.ajax({
         type: "GET",
-        url: "http://localhost:8081/admOffer",
+        url: "http://localhost:8080/admOffer",
         success: function (data) {
             for (let i = 0; i < data.length; i++) {
-                content += form(data[i].id,data[i].name, data[i].city.name, data[i].endDate, data[i].amount, data[i].career.name, data[i].skill)
+                content += form(data[i].id?data[i].id:"ID: Trống",
+                    data[i].name?data[i].name:"Tên: Trống",
+                    data[i].city?data[i].city.name:"Địa chỉ: Trống",
+                    data[i].endDate?data[i].endDate: "Hạn: Trống",
+                    data[i].amount?data[i].amount:"Số lượng tuyển: Trống",
+                    data[i].career?data[i].career.name:"Ngành nghề: Trống",
+                    data[i].skill)
             }
             document.getElementById("listOffer").innerHTML = content;
         }
-
     })
 
 }
 
 render()
-sessionStorage.setItem("doing", "http://localhost:63342/CaseStudy_Modul4/web.main/templates/themes.TechJobs/client/offer.html?_ijt=6le19t0uke8dpfltoi12ane0d2&_ij_reload=RELOAD_ON_SAVE")

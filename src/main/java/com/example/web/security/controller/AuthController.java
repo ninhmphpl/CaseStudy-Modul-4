@@ -51,7 +51,7 @@ public class AuthController {
     }
 
     @GetMapping("/hello")
-    public ResponseEntity<String> hello() {
-        return new ResponseEntity<>(userService.helloService(), HttpStatus.OK);
+    public ResponseEntity<User> hello() {
+        return new ResponseEntity<>(userService.getUserLogging(), HttpStatus.OK);
     }
 }
