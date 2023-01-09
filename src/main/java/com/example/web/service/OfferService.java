@@ -59,6 +59,9 @@ public class OfferService implements ICrudService<Offer,Long>{
     public List<Offer> findAllByName(String name){
         return offerRepository.findAllByNameContaining(name);
     }
+    public List<Offer> findAllByCompany(String name){
+        return offerRepository.findAlloffercompanynam("%"+name+"%");
+    }
 
     public List<CountAmountOffer> sortAmountOfferCompany(){
         List<CountAmountOffer> list = new ArrayList<>();
@@ -72,6 +75,7 @@ public class OfferService implements ICrudService<Offer,Long>{
             list.add(new CountAmountOffer(amount, company));
         }
         list.sort(Comparator.comparing(CountAmountOffer::getAmount));
+
         return list;
     }
 

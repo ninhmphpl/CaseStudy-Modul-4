@@ -37,12 +37,16 @@ public class OfferController {
     public ResponseEntity<List<Offer>> findSearch(@RequestParam("search") String search){
         return new ResponseEntity<>(offerService.findAllByName(search) , HttpStatus.OK);
     }
+    @GetMapping("/searchCompany")
+    public ResponseEntity<List<Offer>> findSearchCompany(@RequestParam(name = "searchCompany") String search){
+        return new ResponseEntity<>(offerService.findAllByCompany(search) , HttpStatus.OK);
+    }
 
     @GetMapping("/sort")
     public ResponseEntity<?> sort(){
         List<CountAmountOffer> list;
         list = offerService.sortAmountOfferCompany();
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>(list,HttpStatus.OK);
     }
 
 }

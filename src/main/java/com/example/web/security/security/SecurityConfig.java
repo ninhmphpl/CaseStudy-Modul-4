@@ -61,7 +61,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.httpBasic().authenticationEntryPoint(restServicesEntryPoint());
         http.authorizeRequests()
                 .antMatchers( "/**").permitAll()
-                .antMatchers( "/customers**","/api/hello", "/amdOffer").hasAnyRole("USER")
+//                .antMatchers( "/customers**","/api/hello", "/amdOffer").hasAnyRole("USER")
                 .anyRequest().authenticated()
                 .and().csrf().disable();
         http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
