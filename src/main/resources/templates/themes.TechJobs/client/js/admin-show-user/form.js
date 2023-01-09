@@ -1,13 +1,13 @@
-// lấy object token về js
-let data = sessionStorage.getItem("token")
-// lấy mã token từ data
-let token
-let name
-if (data !=null){
-    token = data.token
-// lấy email của user đăng nhập
-    name = data.name
-}
+// // lấy object token về js
+// let data = sessionStorage.getItem("token")
+// // lấy mã token từ data
+// let token
+// let name
+// if (data !=null){
+//     token = data.token
+// // lấy email của user đăng nhập
+//     name = data.name
+// }
 
 function form(id , name, role, status) {
     return ` <div class="job pagi">
@@ -120,8 +120,8 @@ function blockUser(id) {
             $.ajax({
                 headers: {
                     'Accept': 'application/json',
-                    'Content-Type':'application/json',
-                    Authorization : token
+                    'Content-Type': 'application/json',
+                    Authorization: token
                 },
                 type: "PUT",
                 url: "http://localhost:8080/userDisable/id=" + id + "&status=" + Status,
