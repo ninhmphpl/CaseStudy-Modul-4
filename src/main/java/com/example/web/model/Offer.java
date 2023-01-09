@@ -3,6 +3,7 @@ package com.example.web.model;
 import com.example.web.model.admin.Status;
 import com.example.web.model.customer.City;
 import com.example.web.model.offer.Career;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -34,6 +35,7 @@ public class Offer {
     private Status status;
     @ManyToOne
     private Company company;
-    @ManyToMany
-    private List<Customer> customers;
+    @JsonIgnore
+    @OneToMany(mappedBy = "offer")
+    private List<OfferCustomerStatus> offerStatus;
 }
