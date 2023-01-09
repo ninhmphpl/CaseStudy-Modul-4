@@ -3,9 +3,8 @@ package com.example.web.model;
 import com.example.web.model.customer.City;
 import com.example.web.model.customer.Education;
 import com.example.web.model.customer.ExpWork;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -13,7 +12,8 @@ import java.util.List;
 
 @Entity
 @Table(name = "customers")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Customer {
@@ -31,7 +31,8 @@ public class Customer {
     private Gender gender;
     @OneToOne
     private User user;
-    @ManyToMany
+    @JsonIgnore
+    @ManyToMany(mappedBy = "customers")
     private List<Offer> offer;
     @ManyToOne
     private City city;

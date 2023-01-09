@@ -19,33 +19,7 @@ inputs.forEach(input => {
 	input.addEventListener("blur", remcl);
 });
 
-$('#click_advance').click(function() {
-    $("i", this).toggleClass("fa fa-filter fa fa-times");
-});
-$('#clickc_advance').click(function() {
-    $("i", this).toggleClass("fa fa-angle-down fa fa-angle-up");
-});
-$('#clickc2_advance').click(function() {
-    $("i", this).toggleClass("fa fa-angle-down fa fa-angle-up");
-});
-$('#clickc3_advance').click(function() {
-    $("i", this).toggleClass("fa fa-angle-down fa fa-angle-up");
-});
-$('#clickc4_advance').click(function() {
-    $("i", this).toggleClass("fa fa-angle-down fa fa-angle-up");
-});
-$('#clickc1_advance1').click(function() {
-    $("i", this).toggleClass("fa fa-angle-down fa fa-angle-up");
-});
-$('#clickc1_advance2').click(function() {
-    $("i", this).toggleClass("fa fa-angle-down fa fa-angle-up");
-});
-$('#clickc1_advance3').click(function() {
-    $("i", this).toggleClass("fa fa-angle-down fa fa-angle-up");
-});
-$('#clickc1_advance4').click(function() {
-    $("i", this).toggleClass("fa fa-angle-down fa fa-angle-up");
-});
+
 
 
 let dropArea = document.getElementById("drop-area");
@@ -53,21 +27,13 @@ let filesDone = 0;
 let filesToDo = 0;
 let progressBar = document.getElementById("progress-bar");
 
-["dragenter", "dragover", "dragleave", "drop"].forEach((eventName) => {
-  dropArea.addEventListener(eventName, preventDefaults, false);
-});
 
 function preventDefaults(e) {
   e.preventDefault();
   e.stopPropagation();
 }
 
-["dragenter", "dragover"].forEach((eventName) => {
-  dropArea.addEventListener(eventName, highlight, false);
-});
-["dragleave", "drop"].forEach((eventName) => {
-  dropArea.addEventListener(eventName, unhighlight, false);
-});
+
 
 function highlight(e) {
   dropArea.classList.add("highlight");
@@ -76,7 +42,6 @@ function highlight(e) {
 function unhighlight(e) {
   dropArea.classList.remove("highlight");
 }
-dropArea.addEventListener("drop", handleDrop, false);
 
 function handleDrop(e) {
   let dt = e.dataTransfer;

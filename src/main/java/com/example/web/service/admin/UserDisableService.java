@@ -34,13 +34,5 @@ public class UserDisableService implements ICrudService <User, Long> {
     public void delete(Long id) {
 
     }
-    public Boolean checkDisable(Long id , Boolean status){
-        if (
-                status == true
-        ){
-            return status == false;
-        }
-        return status = true;
-    }
 }
 

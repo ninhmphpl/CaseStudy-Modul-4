@@ -1,7 +1,7 @@
-package com.example.web.controller.admin;
+package com.example.web.controller;
 
 import com.example.web.model.User;
-import com.example.web.service.admin.UserService;
+import com.example.web.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +21,7 @@ public class UserController {
 
     @GetMapping
     public ResponseEntity<List<User>> findAll() {
+
         return new ResponseEntity<>(userService.findAll(), HttpStatus.OK);
     }
 }

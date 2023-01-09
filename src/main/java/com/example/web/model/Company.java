@@ -1,15 +1,15 @@
 package com.example.web.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @Table(name = "companies")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Company {
@@ -24,8 +24,11 @@ public class Company {
 //    @JoinColumn(name = "user")
     @OneToOne
     private User user;
-
-    @OneToMany
+    private String phoneNumber;
+    private String career;
+    private String description;
+    @JsonIgnore
+    @OneToMany(mappedBy = "company")
     private List<Offer> offer;
 
 }
