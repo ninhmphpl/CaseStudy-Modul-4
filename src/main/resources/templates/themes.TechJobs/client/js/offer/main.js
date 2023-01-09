@@ -50,7 +50,7 @@ function apply(id) {
             'Authorization': token
         },
         type: "POST",
-        url: "http://localhost:8081/amdOffer",
+        url: "http://localhost:8080/amdOffer",
         data: JSON.stringify(data),
         success: function (data) {
 
@@ -140,7 +140,7 @@ function renderTopCompany() {
             Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsb2RhIiwiaWF0IjoxNjczMTUwMDQwLCJleHAiOjg4MDczMTUwMDQwfQ.wYP9Vsu2Z8dcvQ-TSjJCUbvbtNtoE8TNYhi61y5IYK4'
         },
         type: "GET",
-        url: "http://localhost:8081/admOffer/sort",
+        url: "http://localhost:8080/admOffer/sort",
         success: function (data) {
             for (let i = data.length - 1; i >= 0; i--) {
                 content += formTopCompany(data[i].company.name)
@@ -164,7 +164,7 @@ function findOfferName() {
             Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsb2RhIiwiaWF0IjoxNjczMTUwMDQwLCJleHAiOjg4MDczMTUwMDQwfQ.wYP9Vsu2Z8dcvQ-TSjJCUbvbtNtoE8TNYhi61y5IYK4'
         },
         type: "GET",
-        url: "http://localhost:8081/admOffer/search?search=" + searchOffer,
+        url: "http://localhost:8080/admOffer/search?search=" + searchOffer,
         success: function (data) {
             for (let i = 0; i < data.length; i++) {
                 content += form(data[i].id, data[i].name, data[i].city.name, data[i].endDate, data[i].amount, data[i].career.name, data[i].skill)
@@ -189,7 +189,7 @@ function findCompanyName() {
             Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsb2RhIiwiaWF0IjoxNjczMTUwMDQwLCJleHAiOjg4MDczMTUwMDQwfQ.wYP9Vsu2Z8dcvQ-TSjJCUbvbtNtoE8TNYhi61y5IYK4'
         },
         type: "GET",
-        url: "http://localhost:8081/admOffer/searchCompany?searchCompany=" + searchCompany,
+        url: "http://localhost:8080/admOffer/searchCompany?searchCompany=" + searchCompany,
         success: function (data) {
             for (let i = 0; i < data.length; i++) {
                 content += form(data[i].id, data[i].name, data[i].city.name, data[i].endDate, data[i].amount, data[i].career.name, data[i].skill)
