@@ -35,5 +35,5 @@ public class Offer {
     @ManyToOne
     private Company company;
     @ManyToMany
-    private List<Customer> customers;
+    private List<Customer>  customers;
 }

@@ -169,4 +169,17 @@ function changeStatus(id){
         }
     })
 }
+function oderByForm(com){
+    return '<div class="col-md-3 col-sm-6 col-12 top-employer-wrap">\n' +
+        '                        <div class="top-employer-item">\n' +
+        '                            <a href="#">\n' +
+        '                                <div class="emp-img-thumb">\n' +
+        '                                    <img src="img/fpt-logo.png">\n' +
+        '                                </div>\n' +
+        '                                <h3 class="company">FPT Software</h3>\n' +
+        '                            </a>\n' +
+        '                        </div>\n' +
+        '                    </div>'
+
+}
 renderForm()
