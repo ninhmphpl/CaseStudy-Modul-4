@@ -40,7 +40,8 @@ public class UserService implements UserDetailsService {
 
     public User getUserLogging() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        return findUserByEmail(authentication.getName());
+        String email = authentication.getName();
+        return findUserByEmail(email);
     }
 
 

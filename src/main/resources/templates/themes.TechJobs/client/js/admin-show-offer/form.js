@@ -1,23 +1,23 @@
-// // lấy object token về js
-// let data = sessionStorage.getItem("token")
-// // lấy mã token từ data
-// let token
-// let name
-// if (data !=null){
-//      token = data.token
-// // lấy email của user đăng nhập
-//     name = data.name
-// }
+// lấy object token về js
+let data = sessionStorage.getItem("token")
+// lấy mã token từ data
+let token
+let name
+if (data !=null){
+     token = data.token
+// lấy email của user đăng nhập
+    name = data.name
+}
 
 function searchByName(){
     let search = document.getElementById("searchByName").value
     $.ajax({
-        // headers: {
-        //     'Accept': 'application/json',
-        //     'Content-Type':'application/json',
-        //     'Authorization' : token
-        // },
-        // type: "GET",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type':'application/json',
+            Authorization : token
+        },
+        type: "GET",
         url: "http://localhost:8080/admOffer/search?search=" + search,
         success: function (data) {
             let content = ""
@@ -40,11 +40,11 @@ function searchByName(){
 function searchByCityName(){
     let search = document.getElementById("searchByCityName").value
     $.ajax({
-        // headers: {
-        //     'Accept': 'application/json',
-        //     'Content-Type':'application/json',
-        //     'Authorization' : token
-        // },
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type':'application/json',
+            Authorization : token
+        },
         type: "GET",
         url: "http://localhost:8080/admOffer/searchCity?searchCity=" + search,
         success: function (data) {
@@ -118,11 +118,11 @@ function statusRender(statusId){
 }
 function renderForm() {
     $.ajax({
-        // headers: {
-        //     'Accept': 'application/json',
-        //     'Content-Type':'application/json',
-        //     'Authorization' : token
-        // },
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type':'application/json',
+            Authorization : token
+        },
         type: "GET",
         url: "http://localhost:8080/admOffer",
         success: function (data) {
@@ -168,18 +168,5 @@ function changeStatus(id){
             alert(status.name + "Thành Công!")
         }
     })
-}
-function oderByForm(com){
-    return '<div class="col-md-3 col-sm-6 col-12 top-employer-wrap">\n' +
-        '                        <div class="top-employer-item">\n' +
-        '                            <a href="#">\n' +
-        '                                <div class="emp-img-thumb">\n' +
-        '                                    <img src="img/fpt-logo.png">\n' +
-        '                                </div>\n' +
-        '                                <h3 class="company">FPT Software</h3>\n' +
-        '                            </a>\n' +
-        '                        </div>\n' +
-        '                    </div>'
-
 }
 renderForm()

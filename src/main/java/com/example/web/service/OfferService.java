@@ -28,7 +28,6 @@ public class OfferService implements ICrudService<Offer,Long>{
         List<Offer> hi = offerRepository.findAll();
         return hi;
     }
-
     @Override
     public Optional<Offer> findById(Long id) {
         return offerRepository.findById(id);
@@ -44,10 +43,10 @@ public class OfferService implements ICrudService<Offer,Long>{
         offerRepository.deleteById(id);
     }
 
-    public OfferRender render(Long id){
+    public OfferRender render(Offer offer){
         return new OfferRender(cityRepository.findAll(),
                 careerRepository.findAll(), skillRepository.findAll(),
-                offerRepository.findById(id).get());
+                offer);
     }
     public List<Offer> findAllByName(String name){
         return offerRepository.findAllByNameContaining(name);

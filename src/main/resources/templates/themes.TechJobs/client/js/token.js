@@ -77,6 +77,9 @@ function show(id){
 function setInnerHTMLById(id, value){
     document.getElementById(id).innerHTML = value
 }
+function getValueById(id){
+    return document.getElementById(id).value
+}
 // đăng xuất khỏi tài khoản
 function logOut(){
     sessionStorage.clear()
