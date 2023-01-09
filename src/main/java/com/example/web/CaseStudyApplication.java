@@ -24,10 +24,10 @@ public class CaseStudyApplication implements CommandLineRunner {
     public void run(String... args) throws Exception {
         // Khi chương trình chạy
         // Insert vào csdl một user.
-//        User user = new User();
-//        user.setEmail("loda");
-//        user.setPassword(passwordEncoder.encode("loda"));
-//        userRepository.save(user);
-//        System.out.println(user);
+        User user = new User();
+        user.setEmail("loda");
+        user.setPassword(passwordEncoder.encode("loda"));
+        userRepository.save(user);
+        System.out.println(user);
     }
 }
