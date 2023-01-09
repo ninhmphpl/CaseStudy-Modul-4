@@ -54,16 +54,6 @@
                         <a class="nav-link" href="#">Tin Tức</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Dropdown
-                        </a>
-                        <div class="dropdown-menu tdropdown" aria-labelledby="navbarDropdown1">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
                     </li>
                 </ul>
                 <ul class="navbar-nav mr-auto my-2 my-lg-0 tnav-right tn-nav">
@@ -143,7 +133,7 @@
                                     <div class="col-md-5">
                                         <div class="input-group s-input-group">
                                             <input type="text" class="form-control sinput"
-                                                   placeholder="Nhập kỹ năng, công việc,...">
+                                                   placeholder="Nhập kỹ năng, công việc,..." id="searchNameOffer">
                                             <span><i class="fa fa-search"></i></span>
                                         </div>
                                     </div>
@@ -177,7 +167,7 @@
                                 </div>
                             </div>
                             <div class="col-md-2 col-sm-12">
-                                <button type="submit" class="btn btn-primary btn-search col-sm-12">Tìm kiếm</button>
+                                <button type="submit" class="btn btn-primary btn-search col-sm-12" onclick="findOfferName()">Tìm kiếm</button>
                             </div>
                         </div>
                     </form>
@@ -189,13 +179,13 @@
                         <div class="row">
                             <div class="col-md-10 col-sm-12">
                                 <div class="input-group s-input-group w-100">
-                                    <input type="text" class="form-control sinput"
+                                    <input type="text" class="form-control sinput" id="searhCompanyOffer"
                                            placeholder="Nhập kỹ năng, công việc,...">
                                     <span><i class="fa fa-search"></i></span>
                                 </div>
                             </div>
                             <div class="col-md-2 col-sm-12">
-                                <button type="submit" class="btn btn-primary btn-search col-sm-12">Tìm kiếm</button>
+                                <button type="submit" class="btn btn-primary btn-search col-sm-12" onclick="findCompanyName()">Tìm kiếm</button>
                             </div>
                         </div>
                     </form>
@@ -330,10 +320,6 @@
                                     <span class="cate-count">(300)</span>
                                 </a>
                             </li>
-                            <li>
-                                <a href="#" class="readallstyle reads1">Xem tất cả</a>
-                            </li>
-
                         </ul>
                     </div>
                 </div>
@@ -573,7 +559,8 @@
                 <div class="header">
                     <h3>Nhà tuyển dùng hàng đầu</h3>
                 </div>
-                <div class="row">
+                <div class="row" id="topCompany">
+
                     <div class="col-md-3 col-sm-6 col-12 top-employer-wrap">
                         <div class="top-employer-item">
                             <a href="#">
@@ -584,76 +571,9 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col-md-3 col-sm-6 col-12 top-employer-wrap">
-                        <div class="top-employer-item">
-                            <a href="#">
-                                <div class="emp-img-thumb">
-                                    <img src="img/nvg-logo.png">
-                                </div>
-                                <h3 class="company">mgm technology</h3>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6 col-12 top-employer-wrap">
-                        <div class="top-employer-item">
-                            <a href="#">
-                                <div class="emp-img-thumb">
-                                    <img src="img/alipay-logo.png">
-                                </div>
-                                <h3 class="company">ALIPAY Software</h3>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6 col-12 top-employer-wrap">
-                        <div class="top-employer-item">
-                            <a href="#">
-                                <div class="emp-img-thumb">
-                                    <img src="img/luxoft-vietnam-logo.png">
-                                </div>
-                                <h3 class="company">Luxoft Software</h3>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6 col-12 top-employer-wrap">
-                        <div class="top-employer-item">
-                            <a href="#">
-                                <div class="emp-img-thumb">
-                                    <img src="img/techcombank-logo.png">
-                                </div>
-                                <h3 class="company">Techcombank</h3>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6 col-12 top-employer-wrap">
-                        <div class="top-employer-item">
-                            <a href="#">
-                                <div class="emp-img-thumb">
-                                    <img src="img/home-credit.png">
-                                </div>
-                                <h3 class="company">Home Credit</h3>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6 col-12 top-employer-wrap">
-                        <div class="top-employer-item">
-                            <a href="#">
-                                <div class="emp-img-thumb">
-                                    <img src="img/grab-vietnam.png">
-                                </div>
-                                <h3 class="company">Grab (Vietnam) Ltd.</h3>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6 col-12 top-employer-wrap">
-                        <div class="top-employer-item">
-                            <a href="#">
-                                <div class="emp-img-thumb">
-                                    <img src="img/HINH.png">
-                                </div>
-                                <h3 class="company">Techbase Vietnam</h3>
-                            </a>
-                        </div>
-                    </div>
+
+
+
                 </div>
             </div>
         </div>

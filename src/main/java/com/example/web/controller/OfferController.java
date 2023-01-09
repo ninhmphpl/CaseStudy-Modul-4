@@ -1,6 +1,8 @@
 package com.example.web.controller;
 
 import com.example.web.model.Offer;
+import com.example.web.model.offer.CountAmountOffer;
+import com.example.web.model.offer.OfferRender;
 import com.example.web.repository.OfferRepository;
 import com.example.web.service.OfferService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +25,7 @@ public class OfferController {
     @Autowired
     OfferService offerService;
     @Autowired
-    private
-    OfferRepository offerRepository;
+    private OfferRepository offerRepository;
 
     @GetMapping
     public ResponseEntity<List<Offer>> findAll(){
@@ -41,7 +42,27 @@ public class OfferController {
     public ResponseEntity<List<Offer>> findSearch(@RequestParam("search") String search){
         return new ResponseEntity<>(offerService.findAllByName(search) , HttpStatus.OK);
     }
+    @GetMapping("/searchCompany")
+    public ResponseEntity<List<Offer>> findSearchCompany(@RequestParam(name = "searchCompany") String search){
+        return new ResponseEntity<>(offerService.findAllByCompany(search) , HttpStatus.OK);
+    }
 
+    @GetMapping("/sort")
+    public ResponseEntity<?> sort(){
+        List<CountAmountOffer> list;
+        list = offerService.sortAmountOfferCompany();
+        return new ResponseEntity<>(list,HttpStatus.OK);
+    }
+    @GetMapping("/searchCity")
+    public ResponseEntity<List<Offer>> findSearchCity(@RequestParam("searchCity") String searchCity){
+        return new ResponseEntity<>(offerService.findAllByCityName(searchCity) , HttpStatus.OK);
+    }
+    @GetMapping("/new")
+    public ResponseEntity<OfferRender> offerRenderResponseEntity(){
+        OfferRender offerRender = offerService.render(null);
+        return new ResponseEntity<>(offerRender, HttpStatus.OK);
+    }
 }
+
 
 

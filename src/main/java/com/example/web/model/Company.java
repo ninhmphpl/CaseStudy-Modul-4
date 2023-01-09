@@ -17,12 +17,14 @@ public class Company {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-//    @JoinColumn(name = "user")
     @OneToOne
     private User user;
-    private String phoneNumber;
     private String career;
     private String description;
+    private String address;
+    private String phoneNumber;
+//    @JoinColumn(name = "user")
+
     @JsonIgnore
     @OneToMany(mappedBy = "company")
     private List<Offer> offer;

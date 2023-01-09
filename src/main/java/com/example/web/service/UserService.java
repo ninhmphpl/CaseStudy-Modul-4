@@ -3,7 +3,7 @@ package com.example.web.service;
 import com.example.web.model.Customer;
 import com.example.web.model.User;
 import com.example.web.security.model.UserFormCreate;
-import com.example.web.repository.CompanyRepository;
+import com.example.web.repository.company.CompanyRepository;
 import com.example.web.repository.CustomerRepository;
 import com.example.web.repository.UserRepository;
 import com.example.web.security.model.UserPrinciple;
@@ -40,7 +40,8 @@ public class UserService implements UserDetailsService {
 
     public User getUserLogging() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        return findUserByEmail(authentication.getName());
+        String email = authentication.getName();
+        return findUserByEmail(email);
     }
 
 

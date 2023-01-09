@@ -1,6 +1,22 @@
+// lấy object token về js
+let data = sessionStorage.getItem("token")
+// lấy mã token từ data
+let token
+let name
+if (data !=null){
+     token = data.token
+// lấy email của user đăng nhập
+    name = data.name
+}
+
 function searchByName(){
     let search = document.getElementById("searchByName").value
     $.ajax({
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type':'application/json',
+            Authorization : token
+        },
         type: "GET",
         url: "http://localhost:8080/admOffer/search?search=" + search,
         success: function (data) {
@@ -10,21 +26,46 @@ function searchByName(){
                 let description = data[i].description
                 let city = data[i].city
                 let amount = data[i].amount
-                let workExperience = data[i].workExperience
-                let skill = data[i].skill
                 let endDate = data[i].endDate
                 let name = data[i].name
                 let status = data[i].status
-                let company = data[i].company
                 let id = data[i].id
                 // (id , name, description,career, endDate , city, amount,workExperience,skill, status,company)
-                content += form(id, name ,description, career , endDate , city , amount,workExperience, skill , status ,company )
+                content += form(id, name ,description, career , endDate , city , amount , status )
                 document.getElementById("findAll").innerHTML = content;
             }
         }
     })
 }
-function form(id , name, description,career, endDate , city, amount,workExperience,skill, status,company) {
+function searchByCityName(){
+    let search = document.getElementById("searchByCityName").value
+    $.ajax({
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type':'application/json',
+            Authorization : token
+        },
+        type: "GET",
+        url: "http://localhost:8080/admOffer/searchCity?searchCity=" + search,
+        success: function (data) {
+            let content = ""
+            for (let i = 0; i < data.length; i++) {
+                let career = data[i].career
+                let description = data[i].description
+                let city = data[i].city
+                let amount = data[i].amount
+                let endDate = data[i].endDate
+                let name = data[i].name
+                let status = data[i].status
+                let id = data[i].id
+                // (id , name, description,career, endDate , city, amount,workExperience,skill, status,company)
+                content += form(id, name ,description, career , endDate , city , amount , status )
+                document.getElementById("findAll").innerHTML = content;
+            }
+        }
+    })
+}
+function form(id , name, description,career, endDate , city, amount, status) {
     return ` <div class="job pagi">
               <div class="job-content">
                 <div class="job-logo">
@@ -37,27 +78,19 @@ function form(id , name, description,career, endDate , city, amount,workExperien
                     <span>${name}</span>
                   </div>
                   <div class="job-company">
-                    <span href="">${description}</span>
+                    <span href="">Mô Tả:${description}</span>
                   </div>
                   <div class="job-company">
-                    <span href="">${career}</span>
+                    <span href="">Nghề Nghiệp:${career.name}</span>
                   </div>
                   <div class="job-company">
-                    <span href="">${endDate}</span>
+                    <span href="">Hạn Nộp Hồ Sơ:${endDate}</span>
                   </div>
                   <div class="job-company">
-                    <span href="">${city}</span>
+                    <span href="">Thành Phố:${city.name}</span>
                   </div>
                   <div class="job-company">
-                    <span href="">${amount}</span>
-                  </div><div class="job-company">
-                    <span href="">${workExperience}</span>
-                  </div><div class="job-company">
-                    <span href="">${skill}</span>
-                  </div><div class="job-company">
-                    <span href="">${status}</span>
-                  </div><div class="job-company">
-                    <span href="">${company}</span>
+                    <span href="">Số Lượng:${amount}</span>
                   </div>
                   <div class="job-company">
                     Trạng thái: ${statusRender(status.id)}
@@ -85,6 +118,11 @@ function statusRender(statusId){
 }
 function renderForm() {
     $.ajax({
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type':'application/json',
+            Authorization : token
+        },
         type: "GET",
         url: "http://localhost:8080/admOffer",
         success: function (data) {
@@ -94,19 +132,17 @@ function renderForm() {
                 let description = data[i].description
                 let city = data[i].city
                 let amount = data[i].amount
-                let workExperience = data[i].workExperience
-                let skill = data[i].skill
                 let endDate = data[i].endDate
                 let name = data[i].name
                 let status = data[i].status
-                let company = data[i].company
                 let id = data[i].id
                 // (id , name, description,career, endDate , city, amount,workExperience,skill, status,company)
-                content += form(id, name ,description, career , endDate , city , amount,workExperience, skill , status ,company )
+                content += form(id, name ,description, career , endDate , city , amount , status  )
                 document.getElementById("findAll").innerHTML = content;
             }
         }
     })
+
 }
 //
 // function displayRole(id) {

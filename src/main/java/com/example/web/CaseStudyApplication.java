@@ -31,8 +31,6 @@ public class CaseStudyApplication implements CommandLineRunner {
     UserRepository userRepository;
     @Autowired
     PasswordEncoder passwordEncoder;
-    @Autowired
-    CityRepository cityRepository;
 
     @Override
     public void run(String... args) throws Exception {
