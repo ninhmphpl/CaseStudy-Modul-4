@@ -33,7 +33,7 @@ ${city}</a>
                   </div>
                 </div>
                 <div class="wrap-btn-appl">
-                  <a href="#" class="btn btn-appl">Apply Now</a>
+                  <a class="btn btn-appl" onclick="apply(${id})">Apply Now</a>
                 </div>
               </div>
             </div>`
@@ -42,6 +42,25 @@ function createLocal(id){
     sessionStorage.setItem("idOffer", id)
 }
 
+function apply(id) {
+    $.ajax({
+        headers: {
+            // 'Accept': 'application/json',
+            // 'Content-Type': 'application/json',
+            'Authorization': token
+        },
+        type: "POST",
+        url: "http://localhost:8081/amdOffer",
+        data: JSON.stringify(data),
+        success: function (data) {
+
+        },
+        error: function (data) {
+            window.location = "http://localhost:63342/CaseStudy_Modul4/web.main/templates/themes.TechJobs/client/login.html"
+        }
+    })
+    event.preventDefault();
+}
 
 
 function skillForm(skill) {
@@ -56,23 +75,6 @@ function skillForm(skill) {
     return content;
 }
 
-//     "id": 12,
-//     "name": "Nghèo",
-//     "career": {
-//     "id": 3,
-//         "name": "dfdasfa"
-// },
-//     "description": "Giao Thoong",
-//     "endDate": "2023-01-04",
-//     "city": {
-//     "id": 2,
-//         "name": "52"
-// },
-//     "amount": 4,
-//     "workExperience": 1,
-//     "skill": [],
-//     "status": null
-// }
 function render() {
     if(getToken()){
         setInnerHTMLById("navbarDropdown", getEmailAccount())
@@ -85,7 +87,13 @@ function render() {
         hide("accountI")
     }
     let content = ""
+    token = "Bearer " + token;
     $.ajax({
+        headers: {
+            // 'Accept': 'application/json',
+            // 'Content-Type': 'application/json',
+            Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsb2RhIiwiaWF0IjoxNjczMTUwMDQwLCJleHAiOjg4MDczMTUwMDQwfQ.wYP9Vsu2Z8dcvQ-TSjJCUbvbtNtoE8TNYhi61y5IYK4'
+        },
         type: "GET",
         url: "http://localhost:8080/admOffer",
         success: function (data) {
@@ -99,9 +107,102 @@ function render() {
                     data[i].skill)
             }
             document.getElementById("listOffer").innerHTML = content;
+        },
+        error: function (data) {
+            // window.location = "http://localhost:63342/CaseStudy_Modul4/web.main/templates/themes.TechJobs/client/login.html"
+        }
+
+    })
+
+}
+
+function formTopCompany(name) {
+    return `                    <div class="col-md-3 col-sm-6 col-12 top-employer-wrap">
+                        <div class="top-employer-item">
+                            <a href="#">
+                                <div class="emp-img-thumb">
+                                    <img src="img/fpt-logo.png">
+                                </div>
+                                <h3 class="company">${name}</h3>
+                            </a>
+                        </div>
+                    </div>
+                    `
+}
+
+function renderTopCompany() {
+    let content = ""
+    token = "Bearer " + token;
+    $.ajax({
+        headers: {
+            // 'Accept': 'application/json',
+            // 'Content-Type': 'application/json',
+            Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsb2RhIiwiaWF0IjoxNjczMTUwMDQwLCJleHAiOjg4MDczMTUwMDQwfQ.wYP9Vsu2Z8dcvQ-TSjJCUbvbtNtoE8TNYhi61y5IYK4'
+        },
+        type: "GET",
+        url: "http://localhost:8081/admOffer/sort",
+        success: function (data) {
+            for (let i = data.length - 1; i >= 0; i--) {
+                content += formTopCompany(data[i].company.name)
+
+            }
+            document.getElementById("topCompany").innerHTML = content;
         }
     })
 
 }
 
+function findOfferName() {
+    let searchOffer = document.getElementById("searchNameOffer").value;
+    let searchCompany = document.getElementById("searhCompanyOffer").value;
+    let content = ""
+    token = "Bearer " + token;
+    $.ajax({
+        headers: {
+            // 'Accept': 'application/json',
+            // 'Content-Type': 'application/json',
+            Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsb2RhIiwiaWF0IjoxNjczMTUwMDQwLCJleHAiOjg4MDczMTUwMDQwfQ.wYP9Vsu2Z8dcvQ-TSjJCUbvbtNtoE8TNYhi61y5IYK4'
+        },
+        type: "GET",
+        url: "http://localhost:8081/admOffer/search?search=" + searchOffer,
+        success: function (data) {
+            for (let i = 0; i < data.length; i++) {
+                content += form(data[i].id, data[i].name, data[i].city.name, data[i].endDate, data[i].amount, data[i].career.name, data[i].skill)
+            }
+            document.getElementById("listOffer").innerHTML = content;
+        },
+        error: function (data) {
+            // window.location = "http://localhost:63342/CaseStudy_Modul4/web.main/templates/themes.TechJobs/client/login.html"
+        }
+
+    })
+
+}
+function findCompanyName() {
+    let searchCompany = document.getElementById("searhCompanyOffer").value;
+    let content = ""
+    token = "Bearer " + token;
+    $.ajax({
+        headers: {
+            // 'Accept': 'application/json',
+            // 'Content-Type': 'application/json',
+            Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsb2RhIiwiaWF0IjoxNjczMTUwMDQwLCJleHAiOjg4MDczMTUwMDQwfQ.wYP9Vsu2Z8dcvQ-TSjJCUbvbtNtoE8TNYhi61y5IYK4'
+        },
+        type: "GET",
+        url: "http://localhost:8081/admOffer/searchCompany?searchCompany=" + searchCompany,
+        success: function (data) {
+            for (let i = 0; i < data.length; i++) {
+                content += form(data[i].id, data[i].name, data[i].city.name, data[i].endDate, data[i].amount, data[i].career.name, data[i].skill)
+            }
+            document.getElementById("listOffer").innerHTML = content;
+        },
+        error: function (data) {
+            // window.location = "http://localhost:63342/CaseStudy_Modul4/web.main/templates/themes.TechJobs/client/login.html"
+        }
+
+    })
+
+}
+
+renderTopCompany()
 render()
