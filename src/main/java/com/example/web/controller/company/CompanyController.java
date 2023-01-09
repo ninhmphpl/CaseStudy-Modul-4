@@ -2,7 +2,6 @@ package com.example.web.controller.company;
 
 import com.example.web.model.Company;
 import com.example.web.service.company.CompanyService;
-import com.example.web.service.company.ICompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +17,7 @@ public class CompanyController {
     CompanyService companyService;
 
     @GetMapping
-    public List<Company> showCompany(){
+    public List<Company> showCompany() {
         return companyService.findAll();
     }
 
@@ -27,10 +26,18 @@ public class CompanyController {
 //        return new ResponseEntity<>(companyService.findById(id).get(), HttpStatus.OK);
 //    }
 
+    @GetMapping("/datacompany")
+    public ResponseEntity<Company> findDataCompany() {
+        Company company = companyService.findCompanyByEmail("dhghd@gmail");
+        company.setId(company.getId());
+        return new ResponseEntity<>(companyService.save(company), HttpStatus.OK);
+    }
+
+
     @PutMapping
-    public ResponseEntity<Company>update(@RequestBody Company company){
-        Company company1= companyService.findCompanyByEmail("dhghd@gmail");
+    public ResponseEntity<Company> update(@RequestBody Company company) {
+        Company company1 = companyService.findCompanyByEmail("dhghd@gmail");
         company.setId(company1.getId());
-        return new ResponseEntity<>(companyService.save(company),HttpStatus.OK);
+        return new ResponseEntity<>(companyService.save(company), HttpStatus.OK);
     }
 }
