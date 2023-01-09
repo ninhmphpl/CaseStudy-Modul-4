@@ -4,7 +4,6 @@ import com.example.web.model.Offer;
 import com.example.web.model.User;
 import com.example.web.model.admin.Status;
 import com.example.web.repository.UserRepository;
-import com.example.web.repository.customer.UserRepository;
 import com.example.web.service.ICrudService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -24,9 +24,7 @@ public class Company {
 //    @JoinColumn(name = "user")
     @OneToOne
     private User user;
-    private String phoneNumber;
-    private String career;
-    private String description;
+
     @JsonIgnore
     @OneToMany(mappedBy = "company")
     private List<Offer> offer;
