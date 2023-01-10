@@ -25,9 +25,9 @@ public class CompanyService implements ICrudService<Company,Long> {
         List<Company> h=companyRepository.findAll();
         return h;
     }
-//    public Company findByUser(User user){
-//        return companyRepository.findByUser(user);
-//    }
+    public Company findByUser(User user){
+        return companyRepository.findByUser(user);
+    }
 
     @Override
     public Optional<Company> findById(Long id) {
