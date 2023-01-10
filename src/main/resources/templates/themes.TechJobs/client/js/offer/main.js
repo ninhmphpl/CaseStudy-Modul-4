@@ -32,7 +32,7 @@ ${city}</a>
                     </div>
                   </div>
                 </div>
-                <div class="wrap-btn-appl">
+                <div ${showIsCustomer()} class="wrap-btn-appl">
                   <a class="btn btn-appl" onclick="apply(${id})">Apply Now</a>
                 </div>
               </div>

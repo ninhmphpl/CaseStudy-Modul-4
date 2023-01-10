@@ -2,11 +2,13 @@ package com.example.web;
 
 import com.example.web.model.Gender;
 import com.example.web.model.Role;
+import com.example.web.model.Skill;
 import com.example.web.model.User;
 import com.example.web.model.admin.Status;
 import com.example.web.model.customer.City;
 import com.example.web.model.customer.Education;
 import com.example.web.model.customer.ExpWork;
+import com.example.web.model.offer.Career;
 import com.example.web.repository.RoleRepository;
 import com.example.web.repository.StatusRepository;
 import com.example.web.repository.UserRepository;
@@ -14,6 +16,8 @@ import com.example.web.repository.customer.CityRepository;
 import com.example.web.repository.customer.EducationRepository;
 import com.example.web.repository.customer.ExpWorkRepository;
 import com.example.web.repository.customer.GenderRepository;
+import com.example.web.repository.offer.CareerRepository;
+import com.example.web.repository.offer.SkillRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -31,6 +35,8 @@ public class CaseStudyApplication implements CommandLineRunner {
     UserRepository userRepository;
     @Autowired
     PasswordEncoder passwordEncoder;
+    @Autowired
+    CityRepository cityRepository;
 
     @Override
     public void run(String... args) throws Exception {
@@ -43,6 +49,8 @@ public class CaseStudyApplication implements CommandLineRunner {
             insertCity();
             insertExpWork();
             insertRole();
+            insertCareer();
+            insertSkill();
             create();
         }catch (Exception ex){
             System.out.println(ex.getMessage());
@@ -194,6 +202,44 @@ public class CaseStudyApplication implements CommandLineRunner {
         if (educationRepository.findAll().size() == 0) {
             for (Integer i = 0; i < role.length; i++) {
                 educationRepository.save(new Education(i.longValue() +1 , role[i]));
+            }
+        }
+    }
+    @Autowired
+    private CareerRepository careerRepository;
+    public void insertCareer() {
+        String[] role = new String[]{
+                "Công nghệ thông tin",
+                "Marketing",
+                "Bất động sản",
+                "Quản trị kinh doanh",
+                "Lao động phổ thông",
+                "Kĩ sư",
+                "Văn phòng",
+                "Kinh doanh online",
+                "Quảng cáo",
+                "Kiểm thử phần mềm"};
+        if (careerRepository.findAll().size() == 0) {
+            for (Integer i = 0; i < role.length; i++) {
+                careerRepository.save(new Career(i.longValue() +1 , role[i]));
+            }
+        }
+    }
+    @Autowired
+    private SkillRepository skillRepository;
+    public void insertSkill() {
+        String[] role = new String[]{
+                "Lắng nghe",
+                "Giao tiếp",
+                "Quản lý thời gian",
+                "Giải quyết vấn đề",
+                "Làm việc nhóm",
+                "Linh hoạt, thích nghi nhanh",
+                "Chịu được áp lực tốt"
+        };
+        if (skillRepository.findAll().size() == 0) {
+            for (Integer i = 0; i < role.length; i++) {
+                skillRepository.save(new Skill(i.longValue() +1 , role[i]));
             }
         }
     }

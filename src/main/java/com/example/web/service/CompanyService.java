@@ -4,8 +4,6 @@ import com.example.web.model.Company;
 import com.example.web.model.User;
 import com.example.web.repository.company.CompanyRepository;
 import com.example.web.repository.UserRepository;
-import com.example.web.model.User;
-import com.example.web.repository.CompanyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -48,9 +46,6 @@ public class CompanyService implements ICrudService<Company,Long> {
     public Company findCompanyByEmail(String email){
         User user= userRepository.findUsersByEmail(email);
         return companyRepository.findByUser(user);
-    }
-    public Company findByUser(User user){
-        return  companyRepository.findByUser(user);
     }
     public Company addCompany(Company company){
         Company company1 = findByUser(userService.getUserLogging());
