@@ -37,7 +37,7 @@ public class CrudOfferCompany {
         return new ResponseEntity<>(offerRenders, HttpStatus.OK);
     }
 
-    @PutMapping
+    @PostMapping
     public ResponseEntity<?> save(@RequestBody Offer offer) {
         User user = userService.getUserLogging();
         Company company = companyService.findByUser(user);
@@ -46,6 +46,21 @@ public class CrudOfferCompany {
         offerServices.save(offer);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+    @GetMapping("/{id}")
+    public ResponseEntity<?> renderUpdate(@PathVariable Long id){
+        Offer offer = offerServices.findById(id).get();
+        OfferRender offerRender = offerServices.render(offer);
+        return new ResponseEntity<>(offerRender, HttpStatus.OK);
+    }
+    @PutMapping
+    public ResponseEntity<?>update(@RequestBody Offer offer){
+        User user = userService.getUserLogging();
+        Company company = companyService.findByUser(user);
+        offer.setCompany(company);
+        offerServices.save(offer);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
 }
 
 

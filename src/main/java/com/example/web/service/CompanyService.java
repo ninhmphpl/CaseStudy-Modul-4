@@ -47,9 +47,6 @@ public class CompanyService implements ICrudService<Company,Long> {
         User user= userRepository.findUsersByEmail(email);
         return companyRepository.findByUser(user);
     }
-    public Company findByUser(User user){
-        return  companyRepository.findByUser(user);
-    }
     public Company addCompany(Company company){
         Company company1 = findByUser(userService.getUserLogging());
         company1.setName(company.getName());
