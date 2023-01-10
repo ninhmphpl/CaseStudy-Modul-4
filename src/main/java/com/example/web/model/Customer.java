@@ -32,8 +32,8 @@ public class Customer {
     @OneToOne
     private User user;
     @JsonIgnore
-    @ManyToMany(mappedBy = "customers")
-    private List<Offer> offer;
+    @OneToMany(mappedBy = "customer")
+    private List<OfferCustomerStatus> offerStatus;
     @ManyToOne
     private City city;
 

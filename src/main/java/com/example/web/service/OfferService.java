@@ -2,6 +2,7 @@ package com.example.web.service;
 
 import com.example.web.model.Company;
 import com.example.web.model.Offer;
+import com.example.web.model.Skill;
 import com.example.web.model.offer.CountAmountOffer;
 import com.example.web.model.offer.OfferRender;
 import com.example.web.repository.OfferRepository;
@@ -10,13 +11,14 @@ import com.example.web.repository.customer.CityRepository;
 import com.example.web.repository.offer.CareerRepository;
 import com.example.web.repository.offer.SkillRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
+
 @Service
+@Transactional
 public class OfferService implements ICrudService<Offer,Long>{
     @Autowired
     OfferRepository offerRepository;
@@ -42,7 +44,14 @@ public class OfferService implements ICrudService<Offer,Long>{
 
     @Override
     public Offer save(Offer offer) {
-        return offerRepository.save(offer);
+//        Set<Skill> skillSet = offer.getSkill();
+//        offer.setSkill(null);
+        Offer offer1 = offerRepository.save(offer);
+//        offerRepository.deleteAllSkill(offer1.getId());
+//        for(Skill skill : skillSet){
+//            offerRepository.insertIntoSkill(offer1.getId(),  skill.getId());
+//        }
+        return offer1;
     }
 
     @Override

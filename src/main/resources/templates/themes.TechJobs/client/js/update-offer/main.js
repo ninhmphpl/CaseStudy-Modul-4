@@ -1,4 +1,4 @@
-function render() {
+function render(id) {
     let token = getToken()
     $.ajax({
         headers: {
@@ -7,29 +7,31 @@ function render() {
             Authorization: token
         },
         type: "GET",
-        url: "http://localhost:8080/crud-offer/offer-name",
+        url: "http://localhost:8080/crud-offer/"+id,
         success: function (data) {
-            form(data.cities, data.careers, data.skills)
+            form(data.cities, data.careers, data.skills, data.offer)
         }
-
     })
 }
 
-function form(cities, careers, skills) {
+function form(cities, careers, skills, offer) {
     let city = ""
     let career = ""
     let skill = ""
+
+    let offer_skill = offer.skill
     for (let i = 0; i < cities.length; i++) {
-        city += `<option value='${cities[i].id}'>${cities[i].name}</option>`
+        city += `<option ${selected(getID(offer.city), getID(cities[i]))} value='${cities[i].id}'>${cities[i].name}</option>`
     }
     for (let i = 0; i < careers.length; i++) {
-        career += `<option value='${careers[i].id}'>${careers[i].name}</option>`
+        career += `<option ${selected(getID(offer.career), getID(careers[i]))} value='${careers[i].id}'>${careers[i].name}</option>`
     }
     for (let i = 0; i < skills.length; i++) {
+        let value = skills[i].id
         skill += `<div class="filter-topic">
                                             <label class="label-container">
                                                 <span>${skills[i].name}</span>
-                                                <input type="checkbox" name="" value="${skills[i].id}" class="skill">
+                                                <input ${setChecked(offer_skill, value)} type="checkbox" name="" value="${value}" class="skill">
                                                 <span class="checkmark"></span>
                                             </label>
                                         </div>`
@@ -37,11 +39,17 @@ function form(cities, careers, skills) {
     setInnerHTMLById("city", city)
     setInnerHTMLById("career", career)
     setInnerHTMLById("skill", skill)
+
+    setValueById("name",offer.name)
+    setValueById("description", offer.description)
+    setValueById("amount", offer.amount)
+    setValueById("workExperience", offer.workExperience)
+
 }
+let offer_id = 17
+render(offer_id)
 
-render()
-
-function save(){
+function save() {
     let arr = document.getElementsByClassName("skill")
 
     let name = getValueById("name")
@@ -52,14 +60,15 @@ function save(){
     let workExperience = getValueById("workExperience")
 
     let skill = []
-    for (let i = 0 ; i<arr.length; i ++){
-        if(arr[i].checked){
-            skill.push({id:arr[i].value})
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i].checked) {
+            skill.push({id: arr[i].value})
         }
     }
 
 
     let a = {
+        id: offer_id,
         name: name,
         career: {
             id: career
@@ -79,7 +88,7 @@ function save(){
             'Content-Type': 'application/json',
             Authorization: getToken()
         },
-        type: "POST",
+        type: "PUT",
         url: "http://localhost:8080/crud-offer",
         data: JSON.stringify(a),
         success: function (data) {
@@ -90,7 +99,6 @@ function save(){
 
 
 }
-
 
 
 // Long id;

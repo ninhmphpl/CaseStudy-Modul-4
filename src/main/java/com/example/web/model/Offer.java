@@ -3,11 +3,13 @@ package com.example.web.model;
 import com.example.web.model.admin.Status;
 import com.example.web.model.customer.City;
 import com.example.web.model.offer.Career;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "offers")
@@ -28,12 +30,13 @@ public class Offer {
     private City city;
     private int amount;
     private int workExperience;
-    @OneToMany
-    private List<Skill> skill;
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    private Set<Skill> skill;
     @ManyToOne
     private Status status;
     @ManyToOne
     private Company company;
-    @ManyToMany
-    private List<Customer>  customers;
+    @JsonIgnore
+    @OneToMany(mappedBy = "offer")
+    private List<OfferCustomerStatus> offerStatus;
 }
