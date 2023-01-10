@@ -25,6 +25,9 @@ public class CompanyService implements ICrudService<Company,Long> {
         List<Company> h=companyRepository.findAll();
         return h;
     }
+    public Company findByUser(User user){
+        return companyRepository.findByUser(user);
+    }
 
     @Override
     public Optional<Company> findById(Long id) {
@@ -43,9 +46,6 @@ public class CompanyService implements ICrudService<Company,Long> {
     public Company findCompanyByEmail(String email){
         User user= userRepository.findUsersByEmail(email);
         return companyRepository.findByUser(user);
-    }
-    public Company findByUser(User user){
-        return  companyRepository.findByUser(user);
     }
     public Company addCompany(Company company){
         Company company1 = findByUser(userService.getUserLogging());

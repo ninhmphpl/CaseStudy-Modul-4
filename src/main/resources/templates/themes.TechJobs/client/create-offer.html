@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TechJobs</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Roboto Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i&display=swap"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i&display=swap"
+          rel="stylesheet">
+
+    <!-- bootstrap css -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+
+
+    <!-- Font Awesome -->
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+    <!-- select 2 css -->
+    <link rel="stylesheet" href="css/select2.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- main css -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+<!-- main nav -->
+<div class="container-fluid fluid-nav another-page">
+    <div class="container cnt-tnar">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light tjnav-bar">
+            <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+            <a href="#" class="nav-logo">
+                <img src="img/techjobs_bgw.png">
+            </a>
+            <button class="navbar-toggler tnavbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <!-- <span class="navbar-toggler-icon"></span> -->
+                <i class="fa fa-bars icn-res" aria-hidden="true"></i>
+
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto tnav-left tn-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Việc Làm IT</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Tin Tức</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Dropdown
+                        </a>
+                        <div class="dropdown-menu tdropdown" aria-labelledby="navbarDropdown1">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="navbar-nav mr-auto my-2 my-lg-0 tnav-right tn-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#"><i class="fa fa-search" aria-hidden="true"></i> <span
+                                class="hidden-text">Tìm kiếm</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Đăng Ký</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Đăng Nhập</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            VI
+                        </a>
+                        <div class="dropdown-menu tdropdown" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">English</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn-employers" href="#" tabindex="-1" aria-disabled="true"
+                           style="color: #fff!important">Nhà Tuyển Dụng</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+<!-- (end) main nav -->
+
+<div class="clearfix"></div>
+
+<!-- recuiter Nav -->
+<nav class="navbar navbar-expand-lg navbar-light nav-recuitment">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNava"
+            aria-controls="navbarNava" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse container" id="navbarNava">
+        <ul class="navbar-nav nav-recuitment-li">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Quản lý đăng tuyển</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Quản lý ứng viên</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Quản lý đăng tin</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Quản lý hồ sơ</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Tài khoản</a>
+            </li>
+        </ul>
+        <ul class="rec-nav-right">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Tìm hồ sơ</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Đăng tuyển</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<!--  recuiter Nav -->
+
+<!-- widget recuitment  -->
+<div class="container-fluid">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="home-ads">
+                    <a href="#">
+                        <img src="img/hna2.jpg">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- (end) widget recuitment  -->
+
+<!-- published recuitment -->
+<div class="container-fluid published-recuitment-wrapper">
+    <div class="container published-recuitment-content">
+        <div class="row">
+            <div class="col-md-8 col-sm-12 col-12 recuitment-inner">
+                    <div class="accordion" id="accordionExample">
+                        <div class="card recuitment-card">
+                            <div class="card-header recuitment-card-header" id="headingOne">
+                                <h2 class="mb-0">
+                                    <a class="btn btn-link btn-block text-left recuitment-header" type="button"
+                                       data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+                                       aria-controls="collapseOne">
+                                        Đăng tin tuyển dụng
+                                        <span id="clickc1_advance2" class="clicksd">
+                      <i class="fa fa fa-angle-up"></i>
+                    </span>
+                                    </a>
+                                </h2>
+                            </div>
+
+                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                                 data-parent="#accordionExample">
+                                <div class="card-body recuitment-body">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label text-right label">Tiêu đề<span
+                                                style="color: red" class="pl-2">*</span></label>
+                                        <div class="col-sm-9">
+                                            <input id="name" type="text" class="form-control" placeholder="Nhập tiêu đề">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label text-right label" >Số lượng cần
+                                            tuyển</label>
+                                        <div class="col-sm-9">
+                                            <input id="amount" type="number" class="form-control" placeholder="1">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label text-right label">Mô tả công việc<span
+                                                style="color: red" class="pl-2">*</span></label>
+                                        <div class="col-sm-9">
+                                            <textarea type="text" id="description" class="form-control"
+                                                      placeholder="Nhập mô tả công việc" rows="5"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label text-right label">Kinh nghiệm<span
+                                                style="color: red" class="pl-2">*</span></label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="workExperience">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label text-right label">Mức lương<span
+                                                style="color: red" class="pl-2">*</span></label>
+                                        <div class="col-sm-9">
+                                            <select type="text" class="form-control" id="jobSalary">
+                                                <option selected="selected" value="">Chọn mức lương</option>
+                                                <option value="2">Dưới 3 triệu</option>
+                                                <option value="4">3-5 triệu</option>
+                                                <option value="5">5-7 triệu</option>
+                                                <option value="7">7-10 triệu</option>
+                                                <option value="6">10-12 triệu</option>
+                                                <option value="10">12-15 triệu</option>
+                                                <option value="8">15-20 triệu</option>
+                                                <option value="11">20-25 triệu</option>
+                                                <option value="12">25-30 triệu</option>
+                                                <option value="13">30-40 triệu</option>
+                                                <option value="14">40-50 triệu</option>
+                                                <option value="15">Trên 50 triệu</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label text-right label">Ngành nghề</label>
+                                        <div class="col-sm-9">
+                                            <select type="text" class="form-control" id="career">
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label text-right label">Nơi làm việc</label>
+                                        <div class="col-sm-9">
+                                            <select type="text" class="form-control" id="city">
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card recuitment-card">
+                            <div class="card-header recuitment-card-header" id="headingTwo">
+                                <h2 class="mb-0">
+                                    <a class="btn btn-link btn-block text-left collapsed recuitment-header"
+                                       type="button" data-toggle="collapse" data-target="#collapseTwo"
+                                       aria-expanded="false" aria-controls="collapseTwo">
+                                        Chuyên Ngành
+                                        <span id="clickc1_advance3" class="clicksd">
+                      <i class="fa fa fa-angle-up"></i>
+                    </span>
+                                    </a>
+                                </h2>
+                            </div>
+                            <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo"
+                                 data-parent="#accordionExample">
+                                <div class="card-body recuitment-body">
+                                    <div class="" id="skill">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card recuitment-card">
+                            <div class="card-header recuitment-card-header" id="headingThree">
+                                <h2 class="mb-0">
+
+                                </h2>
+                            </div>
+                            <div id="collapseThree" class="collapse show" aria-labelledby="headingThree"
+                                 data-parent="#accordionExample">
+                                <div class="card-body recuitment-body">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card recuitment-card">
+                            <div class="card-header recuitment-card-header" id="heading4">
+
+                                </h2>
+                            </div>
+                            <div id="collapse4" class="collapse show" aria-labelledby="heading4"
+                                 data-parent="#collapse4">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="rec-submit">
+                        <button onclick="save()" class="btn-submit-recuitment" name="">
+                            <i class="fa fa-floppy-o pr-2"></i>Lưu Tin
+                        </button>
+                    </div>
+
+
+            </div>
+            <!-- Side bar -->
+            <div class="col-md-4 col-sm-12 col-12">
+                <div class="recuiter-info">
+                    <div class="recuiter-info-avt">
+                        <img src="img/icon_avatar.jpg">
+                    </div>
+                    <div class="clearfix list-rec">
+                        <h4>NESTLE Inc.</h4>
+                        <ul>
+                            <li><a href="#">Việc làm đang đăng <strong>(0)</strong></a></li>
+                            <li><a href="#">Follower <strong>(450)</strong></a></li>
+                        </ul>
+                    </div>
+                </div>
+
+
+                <div class="block-sidebar" style="margin-bottom: 20px;">
+                    <header>
+                        <h3 class="title-sidebar font-roboto bg-primary">
+                            Trung tâm quản lý
+                        </h3>
+                    </header>
+                    <div class="content-sidebar menu-trung-tam-ql menu-ql-employer">
+                        <h3 class="menu-ql-ntv">
+                            Quản lý tài khoản
+                        </h3>
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    Tài khoản
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    Giấy phép kinh doanh
+                                </a>
+                            </li>
+                        </ul>
+                        <h3 class="menu-ql-ntv">
+                            Quản lý dịch vụ
+                        </h3>
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    Lịch sử dịch vụ
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" target="_blank">
+                                    Báo giá
+                                </a>
+                            </li>
+                        </ul>
+                        <h3 class="menu-ql-ntv">
+                            Quản lý tin tuyển dụng
+                        </h3>
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    Đăng tin tuyển dụng
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    Danh sách tin tuyển dụng
+                                </a>
+                            </li>
+                        </ul>
+                        <h3 class="menu-ql-ntv">
+                            Quản lý ứng viên
+                        </h3>
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    Tìm kiếm hồ sơ
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    Hồ sơ đã lưu
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    Hồ sơ đã ứng tuyển
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" title="Thông báo hồ sơ phù hợp">
+                                    Thông báo hồ sơ phù hợp
+                                </a>
+                            </li>
+                        </ul>
+                        <h3 class="menu-ql-ntv">
+                            Hỗ trợ và thông báo
+                        </h3>
+                        <ul>
+                            <li>
+                                <a href="#" title="Gửi yêu cầu đến ban quản trị">
+                                    Gửi yêu cầu đến ban quản trị
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" title="Ban quản trị thông báo">
+                                    Ban quản trị thông báo
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" title="Hướng dẫn thao tác">
+                                    Hướng dẫn thao tác
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" target="_blank">
+                                    <span>Thông tin thanh toán</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a target="_blank" href="#">
+                                    <span>Cổng tra cứu lương</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a target="_blank" href="#">
+                                    <span> Cẩm nang tuyển dụng</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li class="logout">
+                                <a href="#" title="Đăng xuất">
+                                    Đăng xuất
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- (end) published recuitment -->
+
+<div class="clearfix"></div>
+
+
+<!-- job support -->
+<div class="container-fluid job-support-wrapper">
+    <div class="container-fluid job-support-wrap">
+        <div class="container job-support">
+            <div class="row">
+                <div class="col-md-6 col-sm-12 col-12">
+                    <ul class="spp-list">
+                        <li>
+                            <span><i class="fa fa-question-circle pr-2 icsp"></i>Hỗ trợ nhà tuyển dụng:</span>
+                        </li>
+                        <li>
+                            <span><i class="fa fa-phone pr-2 icsp"></i>0123.456.789</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-6 col-sm-12 col-12">
+                    <div class="newsletter">
+                        <span class="txt6">Đăng ký nhận bản tin việc làm</span>
+                        <div class="input-group frm1">
+                            <input type="text" placeholder="Nhập email của bạn" class="newsletter-email form-control">
+                            <a href="#" class="input-group-addon"><i class="fa fa-lg fa-envelope-o colorb"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- (end) job support -->
+
+
+<!-- footer -->
+<div class="container-fluid footer-wrap  clear-left clear-right">
+    <div class="container footer">
+        <div class="row">
+            <div class="col-md-4 col-sm-8 col-12">
+                <h2 class="footer-heading">
+                    <span>About</span>
+                </h2>
+                <p class="footer-content">
+                    Discover the best way to find houses, condominiums, apartments and HDBs for sale and rent in
+                    Singapore with JobsOnline, Singapore's Fastest Growing Jobs Portal.
+                </p>
+                <ul class="footer-contact">
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-phone fticn"></i> +123 456 7890
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-envelope fticn"></i>
+                            hello@123.com
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-map-marker fticn"></i>
+                            33 Xô Viết Nghệ Tĩnh, Đà Nẵng
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-2 col-sm-4 col-12">
+                <h2 class="footer-heading">
+                    <span>Ngôn ngữ nổi bật</span>
+                </h2>
+                <ul class="footer-list">
+                    <li><a href="#">Javascript</a></li>
+                    <li><a href="#">Java</a></li>
+                    <li><a href="#">Frontend</a></li>
+                    <li><a href="#">SQL Server</a></li>
+                    <li><a href="#">.NET</a></li>
+                </ul>
+            </div>
+            <div class="col-md-2 col-sm-6 col-12">
+                <h2 class="footer-heading">
+                    <span>Tất cả ngành nghề</span>
+                </h2>
+                <ul class="footer-list">
+                    <li><a href="#">Lập trình viên</a></li>
+                    <li><a href="#">Kiểm thử phần mềm</a></li>
+                    <li><a href="#">Kỹ sư cầu nối</a></li>
+                    <li><a href="#">Quản lý dự án</a></li>
+                </ul>
+            </div>
+            <div class="col-md-2 col-sm-6 col-12">
+                <h2 class="footer-heading">
+                    <span>Tất cả hình thức</span>
+                </h2>
+                <ul class="footer-list">
+                    <li><a href="#">Nhân viên chính thức</a></li>
+                    <li><a href="#">Nhân viên bán thời gian</a></li>
+                    <li><a href="#">Freelancer</a></li>
+                </ul>
+            </div>
+            <div class="col-md-2 col-sm-12 col-12">
+                <h2 class="footer-heading">
+                    <span>Tất cả tỉnh thành</span>
+                </h2>
+                <ul class="footer-list">
+                    <li><a href="#">Hồ Chính Minh</a></li>
+                    <li><a href="#">Hà Nội</a></li>
+                    <li><a href="#">Đà Nẵng</a></li>
+                    <li><a href="#">Buôn Ma Thuột</a></li>
+                </ul>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+<footer class="container-fluid copyright-wrap">
+    <div class="container copyright">
+        <p class="copyright-content">
+            Copyright © 2020 <a href="#"> Tech<b>Job</b></a>. All Right Reserved.
+        </p>
+    </div>
+</footer>
+
+
+<!-- (end) footer -->
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="js/token.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/create-offer/main.js"></script>
+
+
+</body>
+</html>

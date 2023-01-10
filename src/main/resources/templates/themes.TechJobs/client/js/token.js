@@ -1,4 +1,16 @@
 let pageBefore
+let ROLE_CUSTOMER = "ROLE_CUSTOMER"
+let ROLE_ADMIN = "ROLE_ADMIN"
+let ROLE_COMPANY = "ROLE_COMPANY"
+function checkCustomer(){
+    return getRole() === ROLE_CUSTOMER
+}
+function checkAdmin(){
+    return getRole() === ROLE_ADMIN
+}
+function checkCompany(){
+    return getRole() === ROLE_COMPANY
+}
 
 let token = JSON.parse(sessionStorage.getItem("token"))
 // gán lại url trang hiện tại
@@ -22,7 +34,7 @@ function setToken(token) {
 function getToken() {
     if (token == null) {
         console.log("Token null")
-        return ""
+        return null
     }
     console.log("Token OK:" + token.token)
     return token.type + token.token
@@ -77,6 +89,9 @@ function show(id){
 function setInnerHTMLById(id, value){
     document.getElementById(id).innerHTML = value
 }
+function getValueById(id){
+    return document.getElementById(id).value
+}
 // đăng xuất khỏi tài khoản
 function logOut(){
     sessionStorage.clear()
@@ -84,3 +99,38 @@ function logOut(){
     event.preventDefault();
 }
 autoSetURLDoing()
+// hiển thị nếu user là customer
+function showIsCustomer(){
+    return checkCustomer()?"":"hidden"
+}
+// hiển thị nếu user là admin
+function showIsAdmin(){
+    return checkAdmin()?"":"hidden"
+}
+// hiển thị nếu user là company
+function showIsCompany(){
+    return checkCompany()?"":"hidden"
+}
+function showWhenUserIsGuess(){
+    return (getToken() == null) ? "":"hidden"
+}
+function showWhenUserIsNotGuess(){
+    return (getToken() != null) ? "" : "hidden"
+}
+function getID(data){
+    return data?data.id:""
+}
+function getName(data){
+    return data?data.name:""
+}
+function selected(value1, value2){
+    return (value1 === value2)?"selected":""
+}
+function setChecked(arr, value){
+    if(arr.indexOf(value) !== -1){
+        return "checked"
+    }
+}
+function setValueById(id, value){
+    document.getElementById(id).value = value
+}
