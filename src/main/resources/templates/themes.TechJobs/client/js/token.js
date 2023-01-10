@@ -95,7 +95,7 @@ function getValueById(id){
 // đăng xuất khỏi tài khoản
 function logOut(){
     sessionStorage.clear()
-    window.location = "/web/web.main/templates/themes.TechJobs/client/offer.html"
+    window.location = "/web/web.main/templates/themes.TechJobs/client/login.html"
     event.preventDefault();
 }
 autoSetURLDoing()
@@ -143,4 +143,7 @@ function checkOtherCompanyBack(){
     if(!checkCompany()){
         window.location = "/web/web.main/templates/themes.TechJobs/client/offer.html"
     }
+}
+function backOffer(){
+    window.location = "/web/web.main/templates/themes.TechJobs/client/offer.html"
 }

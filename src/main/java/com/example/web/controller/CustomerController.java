@@ -1,5 +1,7 @@
 package com.example.web.controller;
 
+import com.example.web.model.Company;
+import com.example.web.repository.company.CompanyRepository;
 import com.example.web.service.CustomerService;
 import com.example.web.model.Customer;
 import com.example.web.model.User;
@@ -18,6 +20,9 @@ public class CustomerController {
     CustomerService customerService;
     @Autowired
     UserService userService;
+    @Autowired
+    private CompanyRepository companyRepository;
+
     @GetMapping
     public ResponseEntity<CustomerRender> findDataChoice(){
         User user = userService.getUserLogging();
@@ -30,4 +35,5 @@ public class CustomerController {
         customerService.saveInfoCustomer(customer, user);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
 }

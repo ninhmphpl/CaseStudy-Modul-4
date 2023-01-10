@@ -35,4 +35,12 @@ public class CompanyController {
         Company company2 = companyService.addCompany(company);
         return new ResponseEntity<>(company2, HttpStatus.OK);
     }
+    @GetMapping("/company-apply")
+    public ResponseEntity<?>companyApplyOffer(){
+        return new ResponseEntity<>(companyService.showOfferCompany(), HttpStatus.OK);
+    }
+    @GetMapping("/offer/{id}")
+    public ResponseEntity<?> getOfferByCompany(@PathVariable Long id){
+        return new ResponseEntity<>(companyService.showCustomerByOffer(id), HttpStatus.OK);
+    }
 }

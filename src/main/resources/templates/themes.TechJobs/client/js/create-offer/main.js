@@ -1,3 +1,7 @@
+if(!checkCompany()){
+    backOffer()
+}
+
 function render() {
     let token = getToken()
     $.ajax({

@@ -18,6 +18,7 @@ public class Company {
     private Long id;
     private String name;
     @OneToOne
+    @JoinColumn(unique = true)
     private User user;
     private String career;
     private String description;
@@ -27,6 +28,6 @@ public class Company {
 
     @JsonIgnore
     @OneToMany(mappedBy = "company")
-    private List<Offer> offer;
+    private List<Offer>offer;
 
 }
