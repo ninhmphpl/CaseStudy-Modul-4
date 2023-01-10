@@ -4,19 +4,21 @@ import com.example.web.model.Company;
 import com.example.web.model.Offer;
 import com.example.web.model.offer.CountAmountOffer;
 import com.example.web.model.offer.OfferRender;
-import com.example.web.repository.CompanyRepository;
 import com.example.web.repository.OfferRepository;
+import com.example.web.repository.company.CompanyRepository;
 import com.example.web.repository.customer.CityRepository;
 import com.example.web.repository.offer.CareerRepository;
 import com.example.web.repository.offer.SkillRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 @Service
+@Transactional
 public class OfferService implements ICrudService<Offer,Long>{
     @Autowired
     OfferRepository offerRepository;
@@ -42,6 +44,7 @@ public class OfferService implements ICrudService<Offer,Long>{
 
     @Override
     public Offer save(Offer offer) {
+
         return offerRepository.save(offer);
     }
 

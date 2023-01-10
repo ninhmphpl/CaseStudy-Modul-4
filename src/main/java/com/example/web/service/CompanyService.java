@@ -4,8 +4,6 @@ import com.example.web.model.Company;
 import com.example.web.model.User;
 import com.example.web.repository.company.CompanyRepository;
 import com.example.web.repository.UserRepository;
-import com.example.web.model.User;
-import com.example.web.repository.CompanyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,9 +25,9 @@ public class CompanyService implements ICrudService<Company,Long> {
         List<Company> h=companyRepository.findAll();
         return h;
     }
-    public Company findByUser(User user){
-        return companyRepository.findByUser(user);
-    }
+//    public Company findByUser(User user){
+//        return companyRepository.findByUser(user);
+//    }
 
     @Override
     public Optional<Company> findById(Long id) {
