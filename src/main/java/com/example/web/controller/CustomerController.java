@@ -1,5 +1,7 @@
 package com.example.web.controller;
 
+import com.example.web.model.Offer;
+import com.example.web.repository.OfferCustomerStatusRepository;
 import com.example.web.service.CustomerService;
 import com.example.web.model.Customer;
 import com.example.web.model.User;
@@ -18,6 +20,9 @@ public class CustomerController {
     CustomerService customerService;
     @Autowired
     UserService userService;
+    @Autowired
+    private OfferCustomerStatusRepository offerCustomerStatusRepository;
+
     @GetMapping
     public ResponseEntity<CustomerRender> findDataChoice(){
         User user = userService.getUserLogging();
@@ -29,5 +34,12 @@ public class CustomerController {
         User user = userService.getUserLogging();
         customerService.saveInfoCustomer(customer, user);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping ("/{id}")
+    public ResponseEntity<?> apply(@PathVariable Long id){
+        Offer offer = new Offer();
+        offer.setId(id);
+        return customerService.apply(offer);
     }
 }

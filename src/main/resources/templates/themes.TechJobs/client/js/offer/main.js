@@ -55,11 +55,10 @@ function apply(id) {
             // 'Content-Type': 'application/json',
             'Authorization': token
         },
-        type: "POST",
-        url: "http://localhost:8080/amdOffer",
-        data: JSON.stringify(data),
+        type: "GET",
+        url: "http://localhost:8080/customers/" + id,
+        // data: JSON.stringify(data),
         success: function (data) {
-
         },
         error: function (data) {
             window.location = "http://localhost:63342/CaseStudy_Modul4/web.main/templates/themes.TechJobs/client/login.html"

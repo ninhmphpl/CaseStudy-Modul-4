@@ -3,12 +3,17 @@ let ROLE_CUSTOMER = "ROLE_CUSTOMER"
 let ROLE_ADMIN = "ROLE_ADMIN"
 let ROLE_COMPANY = "ROLE_COMPANY"
 function checkCustomer(){
+    console.log(getRole())
     return getRole() === ROLE_CUSTOMER
 }
 function checkAdmin(){
+    console.log(getRole())
+
     return getRole() === ROLE_ADMIN
 }
 function checkCompany(){
+    console.log(getRole())
+
     return getRole() === ROLE_COMPANY
 }
 
