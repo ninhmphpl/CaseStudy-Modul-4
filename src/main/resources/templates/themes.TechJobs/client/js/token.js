@@ -21,7 +21,7 @@ function setDoingURL() {
 function getDoingUrl() {
     let url = sessionStorage.getItem("doing")
     if (url == null) {
-        url = "/web/web.main/templates/themes.TechJobs/client/index.html"
+        url = "/web/web.main/templates/themes.TechJobs/client/offer.html"
     }
     return url
 }
@@ -133,4 +133,14 @@ function setChecked(arr, value){
 }
 function setValueById(id, value){
     document.getElementById(id).value = value
+}
+function checkOtherAdminBack(){
+    if(!checkAdmin()){
+        window.location = "/web/web.main/templates/themes.TechJobs/client/offer.html"
+    }
+}
+function checkOtherCompanyBack(){
+    if(!checkCompany()){
+        window.location = "/web/web.main/templates/themes.TechJobs/client/offer.html"
+    }
 }

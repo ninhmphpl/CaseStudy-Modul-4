@@ -1,4 +1,10 @@
-//nameOffer
+if(checkAdmin()){
+    window.location="/web/web.main/templates/themes.TechJobs/client/admin-show-offer.html"
+}//nameOffer
+if(checkCompany()){
+    window.location = "/web/web.main/templates/themes.TechJobs/client/create-offer.html"
+}
+
 
 function form(id,name, city, endDate, amount, career, skill) {
     return `         <div class="job pagi">

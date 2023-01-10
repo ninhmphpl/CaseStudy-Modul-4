@@ -2,7 +2,6 @@ package com.example.web.service;
 
 import com.example.web.model.Company;
 import com.example.web.model.Offer;
-import com.example.web.model.Skill;
 import com.example.web.model.offer.CountAmountOffer;
 import com.example.web.model.offer.OfferRender;
 import com.example.web.repository.OfferRepository;
@@ -15,8 +14,10 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.*;
-
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Optional;
 @Service
 @Transactional
 public class OfferService implements ICrudService<Offer,Long>{

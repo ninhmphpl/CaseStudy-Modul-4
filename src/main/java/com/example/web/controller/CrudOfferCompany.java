@@ -42,7 +42,7 @@ public class CrudOfferCompany {
         User user = userService.getUserLogging();
         Company company = companyService.findByUser(user);
         offer.setCompany(company);
-        offer.setStatus(new Status(3L,null));
+//        offer.setStatus(new Status(3L,null));
         offerServices.save(offer);
         return new ResponseEntity<>(HttpStatus.OK);
     }

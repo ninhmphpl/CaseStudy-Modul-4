@@ -1,13 +1,6 @@
-// lấy object token về js
-let data = sessionStorage.getItem("token")
-// lấy mã token từ data
-let token
-let name
-if (data !=null){
-     token = data.token
-// lấy email của user đăng nhập
-    name = data.name
-}
+let tokens = getToken()
+renderForm()
+
 
 function searchByName(){
     let search = document.getElementById("searchByName").value
@@ -15,7 +8,7 @@ function searchByName(){
         headers: {
             'Accept': 'application/json',
             'Content-Type':'application/json',
-            Authorization : token
+            Authorization : tokens
         },
         type: "GET",
         url: "http://localhost:8080/admOffer/search?search=" + search,
@@ -43,7 +36,7 @@ function searchByCityName(){
         headers: {
             'Accept': 'application/json',
             'Content-Type':'application/json',
-            Authorization : token
+            Authorization : tokens
         },
         type: "GET",
         url: "http://localhost:8080/admOffer/searchCity?searchCity=" + search,
@@ -81,26 +74,26 @@ function form(id , name, description,career, endDate , city, amount, status) {
                     <span href="">Mô Tả:${description}</span>
                   </div>
                   <div class="job-company">
-                    <span href="">Nghề Nghiệp:${career.name}</span>
+                    <span href="">Nghề Nghiệp:${getName(career)}</span>
                   </div>
                   <div class="job-company">
                     <span href="">Hạn Nộp Hồ Sơ:${endDate}</span>
                   </div>
                   <div class="job-company">
-                    <span href="">Thành Phố:${city.name}</span>
+                    <span href="">Thành Phố:${getName(city)}</span>
                   </div>
                   <div class="job-company">
                     <span href="">Số Lượng:${amount}</span>
                   </div>
                   <div class="job-company">
-                    Trạng thái: ${statusRender(status.id)}
+                    Trạng thái: ${statusRender(getID(status))}
                   </div>
                 </div>
                 <div class="wrap-btn-appl">
                   <select onchange="changeStatus(${id})" id="statusOffer${id}">
-                    <option value="1" ${status.id==1?"selected":""}>Mở Offer</option>
-                    <option value="2" ${status.id==2?"selected":""}>Khoá Offer</option>
-                    <option value="3" ${status.id==3?"selected":""}>Xét Duyệt</option>
+                    <option value="1" ${getID(status)==1?"selected":""}>Mở Offer</option>
+                    <option value="2" ${getID(status)==2?"selected":""}>Khoá Offer</option>
+                    <option value="3" ${getID(status)==3?"selected":""}>Xét Duyệt</option>
                   </select>
                 </div>
               </div>
@@ -121,7 +114,7 @@ function renderForm() {
         headers: {
             'Accept': 'application/json',
             'Content-Type':'application/json',
-            Authorization : token
+            Authorization : tokens
         },
         type: "GET",
         url: "http://localhost:8080/admOffer",
@@ -169,4 +162,3 @@ function changeStatus(id){
         }
     })
 }
-renderForm()
