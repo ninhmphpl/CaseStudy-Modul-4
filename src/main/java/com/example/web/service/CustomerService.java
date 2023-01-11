@@ -67,6 +67,9 @@ public class CustomerService implements ICrudService<Customer, Long> {
     public void delete(Long id) {
         customerRepository.deleteById(id);
     }
+    public Customer findByUser(User user){
+       return customerRepository.findCustomerByUser(user);
+    }
 
 
     public CustomerRender render(User user){
