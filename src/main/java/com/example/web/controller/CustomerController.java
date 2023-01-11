@@ -2,6 +2,7 @@ package com.example.web.controller;
 
 import com.example.web.model.Company;
 import com.example.web.model.OfferCustomerStatus;
+import com.example.web.repository.OfferCustomerStatusRepository;
 import com.example.web.repository.company.CompanyRepository;
 import com.example.web.service.CustomerService;
 import com.example.web.model.Customer;
@@ -23,6 +24,8 @@ public class CustomerController {
     UserService userService;
     @Autowired
     private CompanyRepository companyRepository;
+    @Autowired
+    private OfferCustomerStatusRepository offerCustomerStatusRepository;
 
     @GetMapping
     public ResponseEntity<CustomerRender> findDataChoice(){
@@ -44,5 +47,20 @@ public class CustomerController {
         }
         return new ResponseEntity<>(offerCustomerStatus, HttpStatus.OK);
     }
-
+    @GetMapping("/list-offer")
+    public ResponseEntity<?> listOffer(){
+        Customer customer = customerService.findByUser(userService.getUserLogging());
+        if (customer == null){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(customer.getOfferStatus(), HttpStatus.OK);
+    }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteOffer(@PathVariable Long id){
+        if(!offerCustomerStatusRepository.existsById(id)){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        offerCustomerStatusRepository.deleteById(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }

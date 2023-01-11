@@ -19,7 +19,6 @@ public class OfferCustomerStatus {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
-    @JsonIgnore
     private Offer offer;
     @ManyToOne
     private Customer customer;

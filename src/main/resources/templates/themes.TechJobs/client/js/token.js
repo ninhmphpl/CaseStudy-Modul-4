@@ -95,7 +95,7 @@ function getValueById(id){
 // đăng xuất khỏi tài khoản
 function logOut(){
     sessionStorage.clear()
-    window.location = "/web/web.main/templates/themes.TechJobs/client/login.html"
+    window.location = "/web/web.main/templates/themes.TechJobs/client/offer.html"
     event.preventDefault();
 }
 autoSetURLDoing()
@@ -127,25 +127,10 @@ function selected(value1, value2){
     return (value1 === value2)?"selected":""
 }
 function setChecked(arr, value){
-    for(let i = 0; i<arr.length;i++){
-        if (arr[i].id === value){
-            return "checked"
-        }
+    if(arr.indexOf(value) !== -1){
+        return "checked"
     }
 }
 function setValueById(id, value){
     document.getElementById(id).value = value
-}
-function checkOtherAdminBack(){
-    if(!checkAdmin()){
-        window.location = "/web/web.main/templates/themes.TechJobs/client/offer.html"
-    }
-}
-function checkOtherCompanyBack(){
-    if(!checkCompany()){
-        window.location = "/web/web.main/templates/themes.TechJobs/client/offer.html"
-    }
-}
-function backOffer(){
-    window.location = "/web/web.main/templates/themes.TechJobs/client/offer.html"
 }
