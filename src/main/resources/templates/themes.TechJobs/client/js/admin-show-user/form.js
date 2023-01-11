@@ -4,7 +4,7 @@ function form(id , name, role, status) {
               <div class="job-content">
                 <div class="job-logo">
                   <span>
-                    <img src="img/fpt-logo.png" class="job-logo-ima" alt="job-logo">
+                    <img src="../img/fpt-logo.png" class="job-logo-ima" alt="job-logo">
                   </span>
                 </div>
 

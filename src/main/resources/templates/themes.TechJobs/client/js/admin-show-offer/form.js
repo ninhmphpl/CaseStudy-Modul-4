@@ -63,7 +63,7 @@ function form(id , name, description,career, endDate , city, amount, status , co
               <div class="job-content">
                 <div class="job-logo">
                   <span>
-                    <img src="img/fpt-logo.png" class="job-logo-ima" alt="job-logo">
+                    <img src="../img/hihihihihihihihihihihii.jpg" class="job-logo-ima" alt="job-logo">
                   </span>
                 </div>
                 <div class="job-desc">
