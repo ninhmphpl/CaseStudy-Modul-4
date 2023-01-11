@@ -1,5 +1,5 @@
 if (checkAdmin()) {
-    window.location = "../../admin/admin-show-offer.html"
+    window.location = "http://localhost:63342/web/web.main/templates/themes.TechJobs/client/admin/admin-show-offer.html"
 }//nameOffer
 if (checkCompany()) {
     window.location = "http://localhost:63342/web/web.main/templates/themes.TechJobs/client/company/status-offer-company.html"
