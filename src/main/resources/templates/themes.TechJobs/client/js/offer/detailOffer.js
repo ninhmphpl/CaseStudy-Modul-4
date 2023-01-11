@@ -1,12 +1,10 @@
-let id
-
 function getidlocal() {
-    id = sessionStorage.getItem("idOffer")
-    return id;
+    let idjd = sessionStorage.getItem("idOffer")
+    return idjd;
 }
 
 getidlocal()
-offerByID(id)
+offerByID(getidlocal())
 
 function offerByID(id) {
     let url = "http://localhost:8080/admOffer/" + id
@@ -49,4 +47,27 @@ function displaySkill(skill) {
     return `<li>
         <a>${skill.name}</a>
          </li>`
+}
+function checkjdoffer() {
+    if (checkAdmin() || checkCustomer() || checkCompany()) {
+        document.getElementById("jdregister").hidden = true
+        document.getElementById("jdlogin").hidden = true
+    }
+}
+checkjdoffer()
+function apply() {
+    $.ajax({
+        headers: {
+            Authorization: getToken()
+        },
+        type: "POST",
+        url: "http://localhost:8080/customers/apply/"+getidlocal(),
+        success: function (data) {
+            alert("Nộp đơn thành công, vui lòng chờ xét duyệt của nhà tuyển dụng")
+        },
+        error: function (data) {
+            alert("Đã xảy ra lỗi, nộp đơn thất bại")
+        }
+    })
+    event.preventDefault();
 }

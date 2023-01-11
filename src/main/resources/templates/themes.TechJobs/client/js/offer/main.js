@@ -11,7 +11,7 @@ function form(id, name, city, endDate, amount, career, skill) {
               <div class="job-content">
                 <div class="job-logo">
                   <a href="#">
-                    <img src="img/fpt-logo.png" class="job-logo-ima" alt="job-logo">
+                    <img src="img/${Math.floor(Math.random()*5)}.png" class="job-logo-ima" alt="job-logo">
                   </a>
                 </div>
 
@@ -111,7 +111,6 @@ function render() {
             document.getElementById("listOffer").innerHTML = content;
         },
         error: function (data) {
-            // window.location = "http://localhost:63342/CaseStudy_Modul4/web.main/templates/themes.TechJobs/client/login.html"
         }
 
     })
@@ -123,7 +122,7 @@ function formTopCompany(name) {
                         <div class="top-employer-item">
                             <a href="#">
                                 <div class="emp-img-thumb">
-                                    <img src="img/fpt-logo.png">
+                                    <img src="img/${Math.floor(Math.random()*5)}.png">
                                 </div>
                                 <h3 class="company">${name}</h3>
                             </a>
@@ -136,8 +135,6 @@ function renderTopCompany() {
     let content = ""
     $.ajax({
         headers: {
-            // 'Accept': 'application/json',
-            // 'Content-Type': 'application/json',
             Authorization: getToken()
         },
         type: "GET",
@@ -155,12 +152,9 @@ function renderTopCompany() {
 
 function findOfferName() {
     let searchOffer = document.getElementById("searchNameOffer").value;
-    let searchCompany = document.getElementById("searhCompanyOffer").value;
     let content = ""
     $.ajax({
         headers: {
-            // 'Accept': 'application/json',
-            // 'Content-Type': 'application/json',
             Authorization: getToken()
         },
         type: "GET",
@@ -172,7 +166,6 @@ function findOfferName() {
             document.getElementById("listOffer").innerHTML = content;
         },
         error: function (data) {
-            // window.location = "http://localhost:63342/CaseStudy_Modul4/web.main/templates/themes.TechJobs/client/login.html"
         }
 
     })
@@ -182,12 +175,13 @@ function findOfferName() {
 function findCompanyName() {
     let searchCompany = document.getElementById("searhCompanyOffer").value;
     let content = ""
+    let url = "http://localhost:8080/admOffer/searchCompany?searchCompany=" + searchCompany
     $.ajax({
         headers: {
             Authorization: getToken()
         },
         type: "GET",
-        url: "http://localhost:8080/admOffer/searchCompany?searchCompany=" + searchCompany,
+        url: url,
         success: function (data) {
             for (let i = 0; i < data.length; i++) {
                 content += form(data[i].id, data[i].name, data[i].city.name, data[i].endDate, data[i].amount, data[i].career.name, data[i].skill)
@@ -195,6 +189,7 @@ function findCompanyName() {
             document.getElementById("listOffer").innerHTML = content;
         },
         error: function (data) {
+            alert("lỗi")
             // window.location = "http://localhost:63342/CaseStudy_Modul4/web.main/templates/themes.TechJobs/client/login.html"
         }
 
