@@ -1,5 +1,6 @@
 package com.example.web.security.security;
 
+import com.example.web.model.User;
 import com.example.web.security.security.jwt.JwtService;
 import com.example.web.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,8 +32,11 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
             if (jwt != null && jwtService.validateJwtToken(jwt)) {
                 String username = jwtService.getUserNameFromJwtToken(jwt);
-
-                UserDetails userDetails = userService.loadUserByUsername(username);
+                User user = userService.findUserByEmail(username);
+                UserDetails userDetails = null;
+                if(user.getStatus().getId() == 1L){
+                    userDetails = userService.loadUserByUsername(username);
+                }
                 UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
                         userDetails, null, userDetails.getAuthorities());
                 authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
