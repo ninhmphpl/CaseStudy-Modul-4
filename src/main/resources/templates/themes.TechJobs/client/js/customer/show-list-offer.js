@@ -1,6 +1,6 @@
 renderForm()
 
-function form(id, name, career, description, endDate, city, amount, workExperience, status) {
+function form(id, name, career, description, endDate, city, amount, workExperience, statuss) {
     return ` <div class="job pagi">
               <div class="job-content">
                 <div class="job-logo">
@@ -31,7 +31,7 @@ function form(id, name, career, description, endDate, city, amount, workExperien
                     <span href="">Kinh nghiệm:${workExperience}Năm</span>
                   </div>
                   <div class="job-company">
-                    <span href="">Trạng thái:${getName(status)}</span>
+                    <span href="">Trạng thái:${getName(statuss)}</span>
                   </div>
                   <div class="job-company">
                   </div>
@@ -62,9 +62,11 @@ function renderForm() {
             Authorization: getToken()
         },
         type: "GET",
-        url: "http://localhost:8080/customer/list-offer",
+        url: "http://localhost:8080/customers/list-offer",
         success: function (data) {
+            let content = ""
             for(let i = 0 ; i< data.length; i++){
+                let id = data[i].id
                 let offer = data[i].offer
                 let name = offer.name
                 let career = offer.career
@@ -73,11 +75,11 @@ function renderForm() {
                 let city = offer.city
                 let amount = offer.amount
                 let workExperience = offer.workExperience
-                let status = data[i].status
-                form(id, name, career, description, endDate, city, amount, workExperience, status)
+                let statuss = data[i].status
+                content+=form(id, name, career, description, endDate, city, amount, workExperience, statuss)
 
             }
-
+            setInnerHTMLById("listOffer", content )
         }
     })
 }
@@ -87,7 +89,7 @@ function deleteOffer(id) {
         headers: {
             Authorization: getToken()
         },
-        type: "GET",
+        type: "DELETE",
         url: "http://localhost:8080/customers/" + id,
         success: function (data) {
             alert("Xóa thành công")

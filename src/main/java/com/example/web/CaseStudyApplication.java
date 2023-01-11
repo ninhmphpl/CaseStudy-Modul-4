@@ -40,7 +40,7 @@ public class CaseStudyApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-//        run();
+        run();
     }
     public void run(){
         try {
