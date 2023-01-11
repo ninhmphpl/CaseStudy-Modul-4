@@ -1,14 +1,4 @@
-// // lấy object token về js
-// let data = sessionStorage.getItem("token")
-// // lấy mã token từ data
-// let token
-// let name
-// if (data !=null){
-//     token = data.token
-// // lấy email của user đăng nhập
-//     name = data.name
-// }
-
+checkOtherAdminBack()
 function form(id , name, role, status) {
     return ` <div class="job pagi">
               <div class="job-content">
@@ -26,14 +16,14 @@ function form(id , name, role, status) {
                     <span href="">${role}</span>
                   </div>
                   <div class="job-company">
-                    Trạng thái: ${statusRender(status.id)}
+                    Trạng thái: ${statusRender(getID(status))}
                   </div>
                 </div>
                 <div class="wrap-btn-appl">
                   <select onchange="changeStatus(${id})" id="statusUser${id}">
-                    <option value="1" ${status.id==1?"selected":""}>Mở Tài Khoản</option>
-                    <option value="2" ${status.id==2?"selected":""}>Khoá Tài Khoản</option>
-                    <option value="3" ${status.id==3?"selected":""}>Xét Duyệt</option>
+                    <option value="1" ${getID(status)==1?"selected":""}>Mở Tài Khoản</option>
+                    <option value="2" ${getID(status)==2?"selected":""}>Khoá Tài Khoản</option>
+                    <option value="3" ${getID(status)==3?"selected":""}>Xét Duyệt</option>
                   </select>
                 </div>
               </div>
@@ -54,7 +44,7 @@ function renderForm() {
         headers: {
             'Accept': 'application/json',
             'Content-Type':'application/json',
-            Authorization : token
+            Authorization : getToken()
         },
         type: "GET",
         url: "http://localhost:8080/admUser",
@@ -87,6 +77,7 @@ function changeStatus(id){
     let url ="http://localhost:8080/userDisable/" + id + "/" + status
     $.ajax({
         headers: {
+            Authorization: getToken()
         },
         type: "PUT",
         url: url,
@@ -121,7 +112,7 @@ function blockUser(id) {
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
-                    Authorization: token
+                    Authorization: getToken()
                 },
                 type: "PUT",
                 url: "http://localhost:8080/userDisable/id=" + id + "&status=" + Status,

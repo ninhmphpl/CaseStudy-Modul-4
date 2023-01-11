@@ -1,6 +1,7 @@
 package com.example.web.model;
 
 import com.example.web.model.admin.Status;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,8 +19,10 @@ public class OfferCustomerStatus {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
+    @JsonIgnore
     private Offer offer;
     @ManyToOne
     private Customer customer;
-    private boolean status;
+    @ManyToOne
+    private Status status;
 }

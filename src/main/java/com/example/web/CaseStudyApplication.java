@@ -40,8 +40,9 @@ public class CaseStudyApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        // Khi chương trình chạy
-        // Insert vào csdl một user.
+//        run();
+    }
+    public void run(){
         try {
             insertStatus();
             insertGender();
@@ -55,9 +56,6 @@ public class CaseStudyApplication implements CommandLineRunner {
         }catch (Exception ex){
             System.out.println(ex.getMessage());
         }
-
-
-
     }
     public void create(){
         if(!userRepository.existsByEmail("loda")){

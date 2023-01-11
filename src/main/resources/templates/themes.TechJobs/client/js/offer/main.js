@@ -1,6 +1,12 @@
-//nameOffer
+if (checkAdmin()) {
+    window.location = "../../admin/admin-show-offer.html"
+}//nameOffer
+if (checkCompany()) {
+    window.location = "http://localhost:63342/web/web.main/templates/themes.TechJobs/client/company/status-offer-company.html"
+}
 
-function form(id,name, city, endDate, amount, career, skill) {
+
+function form(id, name, city, endDate, amount, career, skill) {
     return `         <div class="job pagi">
               <div class="job-content">
                 <div class="job-logo">
@@ -25,38 +31,35 @@ ${city}</a>
                     <div class="job-salary">
                       <i class="fa fa-money" aria-hidden="true"></i>
                       <span class="salary-min">Kĩ năng: <em class="salary-unit">${skillForm(skill)}</em></span>
-                      <span class="salary-max">35 <em class="salary-unit">triệu</em></span>
                     </div>
                     <div class="job-deadline">
                       <span><i class="fa fa-clock-o" aria-hidden="true"></i> Ngày hết hạn :<strong> ${endDate}</strong></span>
                     </div>
                   </div>
                 </div>
-                <div ${showIsCustomer()} class="wrap-btn-appl">
+                <div class="wrap-btn-appl">
                   <a class="btn btn-appl" onclick="apply(${id})">Apply Now</a>
                 </div>
               </div>
             </div>`
 }
-function createLocal(id){
+
+function createLocal(id) {
     sessionStorage.setItem("idOffer", id)
 }
 
 function apply(id) {
     $.ajax({
         headers: {
-            // 'Accept': 'application/json',
-            // 'Content-Type': 'application/json',
-            'Authorization': token
+            Authorization: getToken()
         },
         type: "POST",
-        url: "http://localhost:8080/amdOffer",
-        data: JSON.stringify(data),
+        url: "http://localhost:8080/customers/apply/"+id,
         success: function (data) {
-
+            alert("Nộp đơn thành công, vui lòng chờ xét duyệt của nhà tuyển dụng")
         },
         error: function (data) {
-            window.location = "http://localhost:63342/CaseStudy_Modul4/web.main/templates/themes.TechJobs/client/login.html"
+            alert("Đã xảy ra lỗi, nộp đơn thất bại")
         }
     })
     event.preventDefault();
@@ -70,40 +73,39 @@ function skillForm(skill) {
     }
     let content = "";
     for (let i = 0; i < skill.length; i++) {
-        content += skill[i].name + ((i===skill.length-1)?"":", ")
+        content += skill[i].name + ((i === skill.length - 1) ? "" : ", ")
     }
     return content;
 }
 
 function render() {
-    if(getToken()){
+    if (getToken()) {
         setInnerHTMLById("navbarDropdown", getEmailAccount())
         hide("signI")
         hide("loginI")
         show("accountI")
-    }else{
+    } else {
         show('signI')
         show('loginI')
         hide("accountI")
     }
     let content = ""
-    token = "Bearer " + token;
     $.ajax({
         headers: {
             // 'Accept': 'application/json',
             // 'Content-Type': 'application/json',
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsb2RhIiwiaWF0IjoxNjczMTUwMDQwLCJleHAiOjg4MDczMTUwMDQwfQ.wYP9Vsu2Z8dcvQ-TSjJCUbvbtNtoE8TNYhi61y5IYK4'
+            Authorization: getToken()
         },
         type: "GET",
         url: "http://localhost:8080/admOffer",
         success: function (data) {
             for (let i = 0; i < data.length; i++) {
-                content += form(data[i].id?data[i].id:"ID: Trống",
-                    data[i].name?data[i].name:"Tên: Trống",
-                    data[i].city?data[i].city.name:"Địa chỉ: Trống",
-                    data[i].endDate?data[i].endDate: "Hạn: Trống",
-                    data[i].amount?data[i].amount:"Số lượng tuyển: Trống",
-                    data[i].career?data[i].career.name:"Ngành nghề: Trống",
+                content += form(data[i].id ? data[i].id : "ID: Trống",
+                    data[i].name ? data[i].name : "Tên: Trống",
+                    data[i].city ? data[i].city.name : "Địa chỉ: Trống",
+                    data[i].endDate ? data[i].endDate : "Hạn: Trống",
+                    data[i].amount ? data[i].amount : "Số lượng tuyển: Trống",
+                    data[i].career ? data[i].career.name : "Ngành nghề: Trống",
                     data[i].skill)
             }
             document.getElementById("listOffer").innerHTML = content;
@@ -132,12 +134,11 @@ function formTopCompany(name) {
 
 function renderTopCompany() {
     let content = ""
-    token = "Bearer " + token;
     $.ajax({
         headers: {
             // 'Accept': 'application/json',
             // 'Content-Type': 'application/json',
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsb2RhIiwiaWF0IjoxNjczMTUwMDQwLCJleHAiOjg4MDczMTUwMDQwfQ.wYP9Vsu2Z8dcvQ-TSjJCUbvbtNtoE8TNYhi61y5IYK4'
+            Authorization: getToken()
         },
         type: "GET",
         url: "http://localhost:8080/admOffer/sort",
@@ -156,12 +157,11 @@ function findOfferName() {
     let searchOffer = document.getElementById("searchNameOffer").value;
     let searchCompany = document.getElementById("searhCompanyOffer").value;
     let content = ""
-    token = "Bearer " + token;
     $.ajax({
         headers: {
             // 'Accept': 'application/json',
             // 'Content-Type': 'application/json',
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsb2RhIiwiaWF0IjoxNjczMTUwMDQwLCJleHAiOjg4MDczMTUwMDQwfQ.wYP9Vsu2Z8dcvQ-TSjJCUbvbtNtoE8TNYhi61y5IYK4'
+            Authorization: getToken()
         },
         type: "GET",
         url: "http://localhost:8080/admOffer/search?search=" + searchOffer,
@@ -178,15 +178,13 @@ function findOfferName() {
     })
 
 }
+
 function findCompanyName() {
     let searchCompany = document.getElementById("searhCompanyOffer").value;
     let content = ""
-    token = "Bearer " + token;
     $.ajax({
         headers: {
-            // 'Accept': 'application/json',
-            // 'Content-Type': 'application/json',
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsb2RhIiwiaWF0IjoxNjczMTUwMDQwLCJleHAiOjg4MDczMTUwMDQwfQ.wYP9Vsu2Z8dcvQ-TSjJCUbvbtNtoE8TNYhi61y5IYK4'
+            Authorization: getToken()
         },
         type: "GET",
         url: "http://localhost:8080/admOffer/searchCompany?searchCompany=" + searchCompany,

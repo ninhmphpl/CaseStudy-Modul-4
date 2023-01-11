@@ -46,7 +46,7 @@ function form(cities, careers, skills, offer) {
     setValueById("workExperience", offer.workExperience)
 
 }
-let offer_id = 2
+let offer_id = sessionStorage.getItem("id_offer_update")
 render(offer_id)
 
 function save() {
@@ -92,7 +92,7 @@ function save() {
         url: "http://localhost:8080/crud-offer",
         data: JSON.stringify(a),
         success: function (data) {
-            console.log(data)
+            alert("Cap nhat thong tin thanh cong")
         }
 
     })
