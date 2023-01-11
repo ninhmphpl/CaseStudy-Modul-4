@@ -1,4 +1,23 @@
 checkOtherAdminBack()
+function searchByEmail(){
+    let search = document.getElementById("searchByEmail").value
+    $.ajax({
+        headers: {
+            Authorization : getToken()
+        },
+        type: "GET",
+        url: "http://localhost:8080/admUser/searchEmail?searchEmail=" + search,
+        success: function (data){
+            let content = ""
+                let email = data.email
+                let role = data.role
+                let status = data.status
+                let id = data.id
+                content += form(id, email, displayRole(role.id), status)
+                document.getElementById("findAll").innerHTML = content;
+        }
+    })
+}
 function form(id , name, role, status) {
     return ` <div class="job pagi">
               <div class="job-content">
@@ -10,10 +29,10 @@ function form(id , name, role, status) {
 
                 <div class="job-desc">
                   <div class="job-title">
-                    <span>${name}</span>
+                    <span>Email:${name}</span>
                   </div>
                   <div class="job-company">
-                    <span href="">${role}</span>
+                    <span href="">Vai Trò:${role}</span>
                   </div>
                   <div class="job-company">
                     Trạng thái: ${statusRender(getID(status))}
@@ -87,46 +106,45 @@ function changeStatus(id){
         }
     })
 }
-function blockUser(id) {
-    Swal.fire({
-        title: 'Block User',
-        text: "Are you sure to want to block this user ?",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#d33',
-        cancelButtonColor: '#7c7c7c',
-        confirmButtonText: 'Block'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            Swal.fire(
-                'Blocked!',
-                'User is blocked.',
-                'success'
-            )
-            let Status = 0;
-            let UserStatus = {
-                id: id,
-                status: Status
-            }
-            $.ajax({
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                    Authorization: getToken()
-                },
-                type: "PUT",
-                url: "http://localhost:8080/userDisable/id=" + id + "&status=" + Status,
-                data: JSON.stringify(UserStatus),
-                success: function () {
-                    getAllActiveUsers()
-                    getAllBlockedUsers()
-                    getAllPendingUsers()
-                }
-            })
-            event.preventDefault();
-        }
-    })
-}
+// function blockUser(id) {
+//     Swal.fire({
+//         title: 'Block User',
+//         text: "Are you sure to want to block this user ?",
+//         icon: 'warning',
+//         showCancelButton: true,
+//         confirmButtonColor: '#d33',
+//         cancelButtonColor: '#7c7c7c',
+//         confirmButtonText: 'Block'
+//     }).then((result) => {
+//         if (result.isConfirmed) {
+//             Swal.fire(
+//                 'Blocked!',
+//                 'User is blocked.',
+//                 'success'
+//             )
+//             let Status = 0;
+//             let UserStatus = {
+//                 id: id,
+//                 status: Status
+//             }
+//             $.ajax({
+//                 headers: {
+//                     'Accept': 'application/json',
+//                     'Content-Type': 'application/json',
+//                     Authorization: getToken()
+//                 },
+//                 type: "PUT",
+//                 url: "http://localhost:8080/userDisable/id=" + id + "&status=" + Status,
+//                 data: JSON.stringify(UserStatus),
+//                 success: function () {
+//                     getAllActiveUsers()
+//                     getAllBlockedUsers()
+//                     getAllPendingUsers()
+//                 }
+//             })
+//             event.preventDefault();
+//         }
+//     })
+// }
 renderForm()
-blockUser(id)
 // activeUser(id)

@@ -35,7 +35,11 @@ public class UserService implements UserDetailsService {
     }
 
     public User findUserByEmail(String email) {
+
         return userRepository.findUsersByEmail(email);
+    }
+    public User findUserEmail(String email){
+        return userRepository.findUserByEmailContaining(email);
     }
 
     public User getUserLogging() {
@@ -43,7 +47,6 @@ public class UserService implements UserDetailsService {
         String email = authentication.getName();
         return findUserByEmail(email);
     }
-
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {

@@ -68,7 +68,7 @@ function form(id , name, description,career, endDate , city, amount, status , co
                 </div>
                 <div class="job-desc">
                  <div class="job-title">
-                    <span>Công Ty:${company.name}</span>
+                    <span>Công Ty:${getName(company)}</span>
                   </div>
                   <div class="job-title">
                     <span>${name}</span>
