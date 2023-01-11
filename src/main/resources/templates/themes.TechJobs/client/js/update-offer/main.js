@@ -46,7 +46,7 @@ function form(cities, careers, skills, offer) {
     setValueById("workExperience", offer.workExperience)
 
 }
-let offer_id = 17
+let offer_id = 2
 render(offer_id)
 
 function save() {

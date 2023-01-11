@@ -126,9 +126,9 @@ function getName(data){
 function selected(value1, value2){
     return (value1 === value2)?"selected":""
 }
-function setChecked(arr, value){
-    if(arr.indexOf(value) !== -1){
-        return "checked"
+function setChecked(arr, id){
+    for (let i= 0 ; i<arr.length; i++){
+        if(arr[i].id === id) return "checked"
     }
 }
 function setValueById(id, value){

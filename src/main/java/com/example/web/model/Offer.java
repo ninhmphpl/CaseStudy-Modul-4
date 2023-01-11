@@ -30,7 +30,7 @@ public class Offer {
     private City city;
     private int amount;
     private int workExperience;
-    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToMany
     private Set<Skill> skill;
     @ManyToOne
     private Status status;
