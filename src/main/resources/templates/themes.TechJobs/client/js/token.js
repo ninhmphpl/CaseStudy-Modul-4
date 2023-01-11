@@ -4,17 +4,19 @@ let ROLE_ADMIN = "ROLE_ADMIN"
 let ROLE_COMPANY = "ROLE_COMPANY"
 function checkCustomer(){
     console.log(getRole())
-    return getRole() === ROLE_CUSTOMER
+    let a = getRole()
+    let b = ROLE_CUSTOMER;
+    return a === b
 }
 function checkAdmin(){
     console.log(getRole())
 
-    return getRole() === ROLE_ADMIN
+    return getRole() == ROLE_ADMIN
 }
 function checkCompany(){
     console.log(getRole())
 
-    return getRole() === ROLE_COMPANY
+    return getRole() == ROLE_COMPANY
 }
 
 let token = JSON.parse(sessionStorage.getItem("token"))

@@ -7,6 +7,7 @@ import com.example.web.model.User;
 import com.example.web.model.customer.CustomerRender;
 import com.example.web.repository.CustomerRepository;
 import com.example.web.repository.OfferCustomerStatusRepository;
+import com.example.web.repository.OfferRepository;
 import com.example.web.repository.customer.CityRepository;
 import com.example.web.repository.customer.EducationRepository;
 import com.example.web.repository.customer.ExpWorkRepository;
@@ -16,9 +17,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 @Service
+@Transactional
 public class CustomerService implements ICrudService<Customer, Long> {
     @Autowired
     CustomerRepository customerRepository;
@@ -37,6 +41,8 @@ public class CustomerService implements ICrudService<Customer, Long> {
 
     @Autowired
     OfferCustomerStatusRepository offerCustomerStatusRepository;
+    @Autowired
+    private OfferRepository offerRepository;
 
     @Override
     public List<Customer> findAll() {
@@ -77,13 +83,25 @@ public class CustomerService implements ICrudService<Customer, Long> {
     }
 
     public ResponseEntity<?> apply(Offer offer) {
+        //420: Offer không tôn tại trong database
+        if(!offerRepository.existsById(offer.getId())){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
         User user = userService.getUserLogging();
         if (user == null){
-            return new ResponseEntity<>(HttpStatus.valueOf(415));
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         Customer customer = customerRepository.findCustomerByUser(user);
         if(customer == null){
-            return new ResponseEntity<>(HttpStatus.valueOf(416));
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        List<OfferCustomerStatus> list =customer.getOfferStatus();
+        for(OfferCustomerStatus status : list){
+            Offer offerExist = status.getOffer();
+            if (Objects.equals(offer.getId(), offerExist.getId())){
+                return new ResponseEntity<>(HttpStatus.IM_USED);
+            }
         }
         OfferCustomerStatus offerCustomerStatus= new OfferCustomerStatus(null, offer,customer,false);
         OfferCustomerStatus status = offerCustomerStatusRepository.save(offerCustomerStatus);
