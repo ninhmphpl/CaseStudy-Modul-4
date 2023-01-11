@@ -102,7 +102,7 @@ function getValueById(id){
 // đăng xuất khỏi tài khoản
 function logOut(){
     sessionStorage.clear()
-    window.location = "/web/web.main/templates/themes.TechJobs/client/offer.html"
+    window.location = "/web/web.main/templates/themes.TechJobs/client/login.html"
     event.preventDefault();
 }
 autoSetURLDoing()
@@ -134,8 +134,10 @@ function selected(value1, value2){
     return (value1 === value2)?"selected":""
 }
 function setChecked(arr, value){
-    if(arr.indexOf(value) !== -1){
-        return "checked"
+    for(let i = 0; i<arr.length;i++){
+        if (arr[i].id === value){
+            return "checked"
+        }
     }
 }
 function setValueById(id, value){
@@ -150,4 +152,7 @@ function checkOtherCompanyBack(){
     if(!checkCompany()){
         window.location = "/web/web.main/templates/themes.TechJobs/client/offer.html"
     }
+}
+function backOffer(){
+    window.location = "/web/web.main/templates/themes.TechJobs/client/offer.html"
 }

@@ -1,3 +1,7 @@
+if(!checkCompany()){
+    backOffer()
+}
+
 function render() {
     let token = getToken()
     $.ajax({
@@ -43,14 +47,12 @@ render()
 
 function save(){
     let arr = document.getElementsByClassName("skill")
-
     let name = getValueById("name")
     let career = getValueById("career")
     let description = getValueById("description")
     let city = getValueById("city")
     let amount = getValueById("amount")
     let workExperience = getValueById("workExperience")
-
     let skill = []
     for (let i = 0 ; i<arr.length; i ++){
         if(arr[i].checked){
@@ -72,7 +74,6 @@ function save(){
         workExperience: workExperience,
         skill: skill
     }
-
     $.ajax({
         headers: {
             'Accept': 'application/json',
@@ -83,12 +84,11 @@ function save(){
         url: "http://localhost:8080/crud-offer",
         data: JSON.stringify(a),
         success: function (data) {
-            console.log(data)
+            alert("Tạo thành công")
+            render()
         }
 
     })
-
-
 }
 
 

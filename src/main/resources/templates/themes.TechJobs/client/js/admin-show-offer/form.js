@@ -1,6 +1,6 @@
 let tokens = getToken()
 renderForm()
-
+checkOtherAdminBack()
 
 function searchByName(){
     let search = document.getElementById("searchByName").value
@@ -8,7 +8,7 @@ function searchByName(){
         headers: {
             'Accept': 'application/json',
             'Content-Type':'application/json',
-            Authorization : tokens
+            Authorization : getToken()
         },
         type: "GET",
         url: "http://localhost:8080/admOffer/search?search=" + search,
@@ -36,7 +36,7 @@ function searchByCityName(){
         headers: {
             'Accept': 'application/json',
             'Content-Type':'application/json',
-            Authorization : tokens
+            Authorization : getToken()
         },
         type: "GET",
         url: "http://localhost:8080/admOffer/searchCity?searchCity=" + search,
@@ -58,7 +58,7 @@ function searchByCityName(){
         }
     })
 }
-function form(id , name, description,career, endDate , city, amount, status) {
+function form(id , name, description,career, endDate , city, amount, status , company) {
     return ` <div class="job pagi">
               <div class="job-content">
                 <div class="job-logo">
@@ -67,6 +67,9 @@ function form(id , name, description,career, endDate , city, amount, status) {
                   </span>
                 </div>
                 <div class="job-desc">
+                 <div class="job-title">
+                    <span>Công Ty:${company.name}</span>
+                  </div>
                   <div class="job-title">
                     <span>${name}</span>
                   </div>
@@ -129,8 +132,9 @@ function renderForm() {
                 let name = data[i].name
                 let status = data[i].status
                 let id = data[i].id
+                let company = data[i].company
                 // (id , name, description,career, endDate , city, amount,workExperience,skill, status,company)
-                content += form(id, name ,description, career , endDate , city , amount , status  )
+                content += form(id, name ,description, career , endDate , city , amount , status , company )
                 document.getElementById("findAll").innerHTML = content;
             }
         }

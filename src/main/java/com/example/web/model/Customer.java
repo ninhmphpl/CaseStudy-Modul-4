@@ -30,6 +30,7 @@ public class Customer {
     @ManyToOne
     private Gender gender;
     @OneToOne
+    @JoinColumn(unique = true)
     private User user;
     @JsonIgnore
     @OneToMany(mappedBy = "customer")
