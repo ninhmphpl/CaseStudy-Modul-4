@@ -27,6 +27,7 @@
     <link rel="stylesheet" href="css/owlcarousel/owl.theme.default.min.css">
     <!-- main css -->
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="js/token.js"></script>
 </head>
 <body>
 <!-- main nav -->
@@ -48,16 +49,12 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto tnav-left tn-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Việc Làm IT</a>
+                        <a class="nav-link" href="offer.html">Việc Làm IT</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Tin Tức</a>
+                        <a class="nav-link" href="https://dantri.com.vn/">Tin Tức</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Dropdown
-                        </a>
                         <div class="dropdown-menu tdropdown" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="#">Action</a>
                             <a class="dropdown-item" href="#">Another action</a>
@@ -72,10 +69,10 @@
                                 class="hidden-text">Tìm kiếm</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Đăng Ký</a>
+                        <a id="jdregister" class="nav-link" href="#">Đăng Ký</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Đăng Nhập</a>
+                        <a id="jdlogin" class="nav-link" href="#">Đăng Nhập</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -87,8 +84,8 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn-employers" href="#" tabindex="-1" aria-disabled="true"
-                           style="color: #fff!important">Nhà Tuyển Dụng</a>
+                        <a class="nav-link btn-employers" href="offer.html" tabindex="-1" aria-disabled="true"
+                           style="color: #fff!important" >Trang chủ</a>
                     </li>
                 </ul>
             </div>
@@ -137,8 +134,7 @@
                 <div class="col-md-3 col-sm-12 col-12">
                     <div class="jd-header-wrap-right">
                         <div class="jd-center">
-                            <a href="#" class="btn btn-primary btn-apply">Nộp đơn</a>
-                            <p class="jd-view">Lượt xem: <span>1.520</span></p>
+                            <a onclick="apply()" class="btn btn-primary btn-apply">Nộp đơn</a>
                         </div>
                     </div>
                 </div>
@@ -335,12 +331,11 @@
                         </li>
                         <li>
                             <i class="fa fa-bar-chart ja-icn"></i>
-                            <span>Quy mô công ty: 50-100 người</span>
+                            <span >Quy mô công ty: 50-100 người</span>
                         </li>
                     </ul>
 
                     <div class="wrap-comp-info mb-2">
-                        <a href="#" class="btn btn-primary btn-company">Xem thêm</a>
                     </div>
                 </div>
 
