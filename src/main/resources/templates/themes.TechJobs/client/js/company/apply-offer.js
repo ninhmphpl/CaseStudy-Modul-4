@@ -1,11 +1,12 @@
 
 renderForm()
-function form(id , name, description,career, endDate , city, amounts, status){
+//id, name ,description, career , endDate , city , amount , status
+function form(id , name, description,career, endDate , city, amounts){
     return ` <div class="job pagi">
               <div class="job-content">
                 <div class="job-logo">
                   <span>
-                    <img src="img/fpt-logo.png" class="job-logo-ima" alt="job-logo">
+                    <img src="../img/fpt-logo.png" class="job-logo-ima" alt="job-logo">
                   </span>
                 </div>
                 <div class="job-desc">
@@ -16,7 +17,7 @@ function form(id , name, description,career, endDate , city, amounts, status){
                     <span href="">Mô Tả:${description}</span>
                   </div>
                   <div class="job-company">
-                    <span href="">Nghề Nghiệp:${getName(career)}</span>
+                    <span href="">Ngành nghề:${getName(career)}</span>
                   </div>
                   <div class="job-company">
                     <span href="">Hạn Nộp Hồ Sơ:${endDate}</span>
@@ -28,13 +29,23 @@ function form(id , name, description,career, endDate , city, amounts, status){
                     <span href="">Số Lượng:${amounts}</span>
                   </div>
                   <div class="job-company">
-                    Trạng thái:
                   </div>
                 </div>
-                <div class="wrap-btn-appl">
+                 <div class="wrap-btn-appl">
+                  <a onclick="updateOffer(${id})" class="btn btn-appl">Sửa thông tin</a>
+                  <a onclick="applyOffer(${id})" class="btn btn-appl">Duyệt đơn</a>
+                </div>
                 </div>
               </div>
             </div>`
+}
+function updateOffer(id){
+    sessionStorage.setItem("id_offer_update", id)
+    window.location = "/web/web.main/templates/themes.TechJobs/client/company/update-offer.html"
+}
+function applyOffer(id){
+    sessionStorage.setItem("id_offer_apply", id)
+    window.location = "/web/web.main/templates/themes.TechJobs/client/company/offer-applyed.html"
 }
 // "id": 5,
 //     "name": "CNTT",
@@ -67,7 +78,7 @@ function renderForm() {
         success: function (data) {
             let content = ""
             for (let i = 0; i < data.length; i++) {
-                let career = data[i].career.name
+                let career = data[i].career
                 let description = data[i].description
                 let city = data[i].city
                 let amount = data[i].amount
@@ -77,7 +88,7 @@ function renderForm() {
                 let id = data[i].id
                 // (id , name, description,career, endDate , city, amount,workExperience,skill, status,company)
                 content += form(id, name ,description, career , endDate , city , amount , status  )
-                document.getElementById("findAll").innerHTML = content;
+                document.getElementById("listOffer").innerHTML = content;
             }
         }
     })

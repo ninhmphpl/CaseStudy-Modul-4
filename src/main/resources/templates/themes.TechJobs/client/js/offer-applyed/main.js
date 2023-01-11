@@ -1,17 +1,18 @@
-
 renderForm()
+setInnerHTMLById("nameCompany", getEmailAccount())
+
 // content += form(name,birth,education,expWork,phoneNumber,status)
-function form(name,birth,education,expWork,phoneNumber,city,status){
+function form(id,name, birth, education, expWork, phoneNumber, city, status, customer_id) {
     return ` <div class="job pagi">
               <div class="job-content">
                 <div class="job-logo">
                   <span>
-                    <img src="img/fpt-logo.png" class="job-logo-ima" alt="job-logo">
+                    <img src="../img/fpt-logo.png" class="job-logo-ima" alt="job-logo">
                   </span>
                 </div>
                 <div class="job-desc">
                   <div class="job-title">
-                    <span>${name}</span>
+                    <a href="#">${name}</a>
                   </div>
                   <div class="job-company">
                     <span href="">Ngày sinh:${birth}</span>
@@ -26,14 +27,51 @@ function form(name,birth,education,expWork,phoneNumber,city,status){
                     <span href="">Thành Phố:${getName(city)}</span>
                   </div>
                   <div class="job-company">
-                    <span href="">Trạng thái:${status?"Đã duyệt":"Không duyệt"}</span>
+                    <span href="">Trạng thái:${statusDisplay(getID(status))}</span>
                   </div>
                 </div>
                 <div class="wrap-btn-appl">
+                 <div class="wrap-btn-appl">
+                  <select onchange="statusChange(${id})" id="status${id}">
+                  <option value="1" ${selected(getID(status),1)}>Đồng ý</option>
+                  <option value="2" ${selected(getID(status),2)}>Từ chối</option>
+                  <option value="3" ${selected(getID(status),3)}>Chờ duyệt</option>
+</select>
+                </div>
                 </div>
               </div>
             </div>`
 }
+function statusDisplay(value){
+    switch (value) {
+        case 1:
+            return "Đồng ý"
+        case 2:
+            return "Từ chối"
+        case 3:
+            return "Chờ duyệt"
+        default:
+            return ''
+    }
+}
+function statusChange(id){
+    let statusValue = document.getElementById("status"+id).value
+
+    $.ajax({
+        headers: {
+            Authorization: getToken()
+        },
+        type: "GET",
+        url: "http://localhost:8080/api/companies/" + id + "/" + statusValue,
+        success: function (data) {
+            renderForm()
+        },
+        error: function (){
+            alert("Cập nhật thất bại")
+        }
+    })
+}
+
 // customer": {
 // "id": 1,
 //     "name": "ab",
@@ -58,13 +96,12 @@ function form(name,birth,education,expWork,phoneNumber,city,status){
 // }
 // "status": false
 function renderForm() {
-    let id = sessionStorage.getItem("offer_id")
-    id = 5
+    let id = sessionStorage.getItem("id_offer_apply")
     $.ajax({
         headers: {
             'Accept': 'application/json',
-            'Content-Type':'application/json',
-            Authorization : getToken()
+            'Content-Type': 'application/json',
+            Authorization: getToken()
         },
         type: "GET",
         url: "http://localhost:8080/api/companies/offer/" + id,
@@ -72,6 +109,8 @@ function renderForm() {
             let content = ""
             for (let i = 0; i < data.length; i++) {
                 let a = data[i].customer
+                let customer_id
+                let id = data[i].id
                 let name = a.name
                 let birth = a.birth
                 let education = a.education
@@ -80,7 +119,7 @@ function renderForm() {
                 let city = a.city
                 let status = data[i].status
 
-                content += form(name,birth,education,expWork,phoneNumber,city, status)
+                content += form(id, name, birth, education, expWork, phoneNumber, city, status, customer_id)
                 document.getElementById("findAll").innerHTML = content;
             }
         }

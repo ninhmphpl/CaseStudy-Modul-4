@@ -1,0 +1,145 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TechJobs</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Roboto Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i&display=swap"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i&display=swap"
+          rel="stylesheet">
+
+    <!-- bootstrap css -->
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+
+
+    <!-- Font Awesome -->
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+    <!-- select 2 css -->
+    <link rel="stylesheet" href="../css/select2.min.css">
+
+    <!-- Owl Stylesheets -->
+    <link rel="stylesheet" href="../css/owlcarousel/owl.carousel.min.css">
+    <link rel="stylesheet" href="../css/owlcarousel/owl.theme.default.min.css">
+    <!-- main css -->
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+</head>
+<body>
+<!-- main nav -->
+<div class="container-fluid fluid-nav">
+    <div class="container cnt-tnar">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light tjnav-bar">
+            <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+            <a href="#" class="nav-logo">
+                <img src="../img/techjobs_bgb.png">
+            </a>
+            <button class="navbar-toggler tnavbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <!-- <span class="navbar-toggler-icon"></span> -->
+                <i class="fa fa-bars icn-res" aria-hidden="true"></i>
+
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto my-2 my-lg-0 tnav-right tn-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" onclick="logOut()">Đăng xuất</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="nameCompany" href="thongtinCTy.html"></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+<div class="clearfix"></div>
+
+<!-- main banner -->
+<div class="container-fluid clear-left clear-right">
+    <div style="height: 350px" class="main-banner">
+        <div class="banner-image">
+            <img src="../img/banner2.jpg" alt="banner-image">
+        </div>
+    </div>
+    <div class="banner-content">
+        <h3>Jobs For Developers</h3>
+    </div>
+    <!-- (end) main banner -->
+
+
+    <!-- job board & sidebar section  -->
+    <div class="container-fluid jb-wrapper">
+        <div class="container">
+            <div class="row">
+                <!-- job board -->
+                <div class="col-md-8 col-sm-12 col-12">
+                    <div class="job-board-wrap">
+                        <h2 class="widget-title">
+                            <span>Company Apply Offer</span>
+                        </h2>
+                        <div class="job-group">
+                            <div id="findAll"></div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- (end) job board -->
+                <!-- sidebar -->
+
+                <div class="col-md-4 col-sm-12 col-12 clear-left">
+                    <div class="job-sidebar">
+                        <div class="sb-banner">
+                            <img src="../img/ads1.jpg" class="advertisement">
+                        </div>
+                    </div>
+                </div>
+                <!-- (end) sidebar -->
+            </div>
+        </div>
+    </div>
+    <!-- (end) job board & sidebar section  -->
+    <!-- news -->
+    <!-- (end) news -->
+    <!-- job support -->
+    <div class="container-fluid job-support-wrapper">
+        <div class="container-fluid job-support-wrap">
+            <div class="container job-support">
+                <div class="row">
+                    <div class="col-md-6 col-sm-12 col-12">
+                        <ul class="spp-list">
+                            <li>
+                                <span><i class="fa fa-question-circle pr-2 icsp"></i>Hỗ trợ nhà tuyển dụng:</span>
+                            </li>
+                            <li>
+                                <span><i class="fa fa-phone pr-2 icsp"></i>0123.456.789</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 col-sm-12 col-12">
+                        <div class="newsletter">
+                            <span class="txt6">Đăng ký nhận bản tin việc làm</span>
+                            <div class="input-group frm1">
+                                <input type="text" placeholder="Nhập email của bạn"
+                                       class="newsletter-email form-control">
+                                <a href="#" class="input-group-addon"><i class="fa fa-lg fa-envelope-o colorb"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/token.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/offer-applyed/main.js"></script>
+
+</body>
+</html>

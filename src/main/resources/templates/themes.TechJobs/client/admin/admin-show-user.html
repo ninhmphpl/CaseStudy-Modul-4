@@ -11,7 +11,7 @@
           rel="stylesheet">
 
     <!-- bootstrap css -->
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
 
 
     <!-- Font Awesome -->
@@ -19,13 +19,13 @@
           integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
     <!-- select 2 css -->
-    <link rel="stylesheet" href="css/select2.min.css">
+    <link rel="stylesheet" href="../css/select2.min.css">
 
     <!-- Owl Stylesheets -->
-    <link rel="stylesheet" href="css/owlcarousel/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owlcarousel/owl.theme.default.min.css">
+    <link rel="stylesheet" href="../css/owlcarousel/owl.carousel.min.css">
+    <link rel="stylesheet" href="../css/owlcarousel/owl.theme.default.min.css">
     <!-- main css -->
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
 </head>
 <body>
 <!-- main nav -->
@@ -34,7 +34,7 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light tjnav-bar">
             <!-- <a class="navbar-brand" href="#">Navbar</a> -->
             <a href="#" class="nav-logo">
-                <img src="img/techjobs_bgb.png">
+                <img src="../img/techjobs_bgb.png">
             </a>
             <button class="navbar-toggler tnavbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -65,15 +65,10 @@
                         </div>
                     </li>
                 </ul>
-                <ul class="navbar-nav mr-auto my-2 my-lg-0 tnav-right tn-nav">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#"><i class="fa fa-search" aria-hidden="true"></i> <span
-                                class="hidden-text">Tìm kiếm</span></a>
-                    </li>
+
                     <li class="nav-item">
                         <a onclick="logOut()" class="nav-link" href="#">Đăng Xuất</a>
                     </li>
-
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -84,7 +79,7 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn-employers" href="company-apply-offer.html" tabindex="-1" aria-disabled="true">Nhà Tuyển Dụng</a>
+                        <a class="nav-link btn-employers" href="../company/company-apply-offer.html" tabindex="-1" aria-disabled="true">Nhà Tuyển Dụng</a>
                     </li>
                 </ul>
             </div>
@@ -99,7 +94,7 @@
 <div class="container-fluid clear-left clear-right">
     <div class="main-banner">
         <div class="banner-image">
-            <img src="img/banner2.jpg" alt="banner-image">
+            <img src="../img/banner2.jpg" alt="banner-image">
         </div>
     </div>
     <div class="banner-content">
@@ -128,22 +123,23 @@
             <ul class="nav nav-tabs search-nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item search-nav-item">
                     <a class="nav-link snav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
-                       aria-controls="home" aria-selected="true">Tìm Việc Làm</a>
+                       aria-controls="home" aria-selected="true">Tìm việc làm</a>
                 </li>
                 <li class="nav-item search-nav-item">
                     <a class="nav-link snav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
-                       aria-controls="profile" aria-selected="false">Tìm Thành Phố</a>
+                       aria-controls="profile" aria-selected="false">Tìm công ty</a>
                 </li>
             </ul>
             <div class="tab-content search-tab-content" id="myTabContent">
                 <!-- content tab 1 -->
                 <div class="tab-pane stab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <form class="bn-search-form">
                         <div class="row">
                             <div class="col-md-10 col-sm-12">
                                 <div class="row">
                                     <div class="col-md-5">
                                         <div class="input-group s-input-group">
-                                            <input type="text" class="form-control sinput" id="searchByName"
+                                            <input type="text" class="form-control sinput"
                                                    placeholder="Nhập kỹ năng, công việc,...">
                                             <span><i class="fa fa-search"></i></span>
                                         </div>
@@ -151,25 +147,28 @@
                                 </div>
                             </div>
                             <div class="col-md-2 col-sm-12">
-                                <button class="btn btn-primary btn-search col-sm-12" onclick="searchByName()">Tìm kiếm</button>
+                                <button type="submit" class="btn btn-primary btn-search col-sm-12">Tìm kiếm</button>
                             </div>
                         </div>
+                    </form>
                 </div>
                 <!-- (end) content tab 1 -->
                 <!-- content tab 2 -->
                 <div class="tab-pane stab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                    <form class="bn-search-form">
                         <div class="row">
                             <div class="col-md-10 col-sm-12">
                                 <div class="input-group s-input-group w-100">
-                                    <input type="text" class="form-control sinput" id="searchByCityName"
+                                    <input type="text" class="form-control sinput"
                                            placeholder="Nhập kỹ năng, công việc,...">
                                     <span><i class="fa fa-search"></i></span>
                                 </div>
                             </div>
                             <div class="col-md-2 col-sm-12">
-                                <button class="btn btn-primary btn-search col-sm-12" onclick="searchByCityName()">Tìm kiếm</button>
+                                <button type="submit" class="btn btn-primary btn-search col-sm-12">Tìm kiếm</button>
                             </div>
                         </div>
+                    </form>
                 </div>
                 <!-- (end) content tab 2 -->
             </div>
@@ -187,9 +186,10 @@
             <div class="col-md-8 col-sm-12 col-12">
                 <div class="job-board-wrap">
                     <h2 class="widget-title">
-                        <span>Danh sách Offer</span>
+                        <span>Danh sách User</span>
                     </h2>
                     <div class="job-group">
+
                         <div id="findAll"></div>
                         <div class="readmorestyle-wrap">
                             <a href="" class="readallstyle reads1">Xem tất cả</a>
@@ -201,22 +201,20 @@
 
             <!-- (end) job board -->
             <!-- sidebar -->
-
             <div class="col-md-4 col-sm-12 col-12 clear-left">
-                <a href="admin-show-user.html"> Danh Sách User</a>
+                <a href="admin-show-offer.html">
                 <div class="job-sidebar">
                     <div class="sb-banner">
-                        <img src="img/ads1.jpg" class="advertisement">
+                        <img src="../img/ads1.jpg" class="advertisement">
                     </div>
                 </div>
+                </a>
             </div>
             <!-- (end) sidebar -->
         </div>
     </div>
 </div>
 <!-- (end) job board & sidebar section  -->
-<!-- news -->
-<!-- (end) news -->
 <!-- job support -->
 <div class="container-fluid job-support-wrapper">
     <div class="container-fluid job-support-wrap">
@@ -339,13 +337,14 @@
 
 
 <!-- (end) footer -->
-<script src="js/jquery.min.js"></script>
 
+
+<script src="../js/token.js"></script>
+<script src="../js/jquery.min.js"></script>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="js/token.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/admin-show-offer/form.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/admin-show-user/form.js"></script>
 
 </body>
 </html>

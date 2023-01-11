@@ -23,5 +23,6 @@ public class OfferCustomerStatus {
     private Offer offer;
     @ManyToOne
     private Customer customer;
-    private boolean status;
+    @ManyToOne
+    private Status status;
 }

@@ -18,6 +18,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+
 @Controller
 @CrossOrigin("*")
 @RequestMapping("/crud-offer")
@@ -42,7 +44,8 @@ public class CrudOfferCompany {
         User user = userService.getUserLogging();
         Company company = companyService.findByUser(user);
         offer.setCompany(company);
-//        offer.setStatus(new Status(3L,null));
+        offer.setStatus(new Status(3L,null));
+        offer.setEndDate(LocalDate.now().plusDays(5));
         offerServices.save(offer);
         return new ResponseEntity<>(HttpStatus.OK);
     }

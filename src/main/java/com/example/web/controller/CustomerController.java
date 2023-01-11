@@ -1,6 +1,7 @@
 package com.example.web.controller;
 
 import com.example.web.model.Company;
+import com.example.web.model.OfferCustomerStatus;
 import com.example.web.repository.company.CompanyRepository;
 import com.example.web.service.CustomerService;
 import com.example.web.model.Customer;
@@ -34,6 +35,14 @@ public class CustomerController {
         User user = userService.getUserLogging();
         customerService.saveInfoCustomer(customer, user);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+    @PostMapping("/apply/{id}")
+    public ResponseEntity<?> apply(@PathVariable Long id){
+        OfferCustomerStatus offerCustomerStatus = customerService.apply(id);
+        if(offerCustomerStatus == null){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(offerCustomerStatus, HttpStatus.OK);
     }
 
 }

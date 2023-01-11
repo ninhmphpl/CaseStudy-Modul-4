@@ -1,6 +1,7 @@
 package com.example.web.service;
 
 import com.example.web.model.*;
+import com.example.web.model.admin.Status;
 import com.example.web.repository.OfferCustomerStatusRepository;
 import com.example.web.repository.company.CompanyRepository;
 import com.example.web.repository.UserRepository;
@@ -83,6 +84,22 @@ public class CompanyService implements ICrudService<Company,Long> {
         offer.setId(id);
         List<OfferCustomerStatus> list = offerCustomerStatusRepository.findByOffer(offer);
         return list;
+    }
+    public OfferCustomerStatus saveStatusOffer(Long id, Long statusId){
+        OfferCustomerStatus offerCustomerStatus = offerCustomerStatusRepository.findById(id).get();
+        if(offerCustomerStatus != null){
+            offerCustomerStatus.setStatus(new Status(statusId,null));
+            return offerCustomerStatusRepository.save(offerCustomerStatus);
+        }
+        Company company = companyRepository.findByUser(userService.getUserLogging());
+        Company companyResult = offerCustomerStatus.getOffer().getCompany();
+
+        if(!company.getId().equals(companyResult.getId())){
+            System.out.println("Offer khong thuoc so huu cua company");
+            return null;
+        }
+        System.out.println("khong tim thay offerStatus");
+        return null;
     }
 
 
